@@ -1,0 +1,1 @@
+C:\cloudEDUproject\Courstore\CloudEDU\CloudEDU\CloudEDU.csproj;x86

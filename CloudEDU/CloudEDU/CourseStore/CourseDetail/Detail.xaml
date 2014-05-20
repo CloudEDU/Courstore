@@ -1,0 +1,44 @@
+﻿<Page
+    x:Class="CloudEDU.CourseStore.CourseDetail.Detail"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CloudEDU.CourseStore.CourseDetail"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="552"
+    d:DesignWidth="635">
+
+    <Grid Style="{StaticResource LayoutRootStyle}" Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer x:Name="OverviewScroll" Style="{StaticResource VerticalScrollViewerStyle}"
+                      VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical" Margin="20, 20">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Course Name:" FontWeight="Bold" />
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="{Binding Title}" Margin="20, 0, 0, 0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Course Number:" FontWeight="Bold" />
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="{Binding ID}" Margin="20, 0, 0, 0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0, 40, 0, 0">
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Instructor:" FontWeight="Bold" />
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="{Binding Teacher}" Margin="20, 0, 0, 0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0, 40, 0, 0">
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Abstract:" FontWeight="Bold" />
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="{Binding Intro}" Margin="20, 0, 0, 0"
+                               Width="500" TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0, 40, 0, 0">
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Total Lessons:" FontWeight="Bold" />
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="{Binding LessonNum}" Margin="20, 0, 0, 0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0, 40, 0, 0">
+                    <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Time of Submit:" FontWeight="Bold" />
+                    <TextBlock x:Name="submitOfTimeTextBlock" Style="{StaticResource SubheaderTextStyle}" Text="" Margin="20, 0, 0, 0" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

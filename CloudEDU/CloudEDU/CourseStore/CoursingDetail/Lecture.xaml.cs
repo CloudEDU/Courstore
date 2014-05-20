@@ -38,6 +38,13 @@ namespace CloudEDU.CourseStore.CoursingDetail
         List<LESSON> allLessons = null;
         Dictionary<string, int> resourceDic = null;
         Dictionary<Image, string> Res_URL = null;
+        Dictionary<Image, int> Img_Lsn = null;
+        List<LESSON> LearnedLessons = null;
+
+        //int testLessonID;
+
+        Course course = null;
+
         /// <summary>
         /// Constructor, initilize the components.
         /// </summary>
@@ -46,8 +53,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             this.InitializeComponent();
             ctx = new CloudEDUEntities(new Uri(Constants.DataServiceURI));
             dba = new DBAccessAPIs();
+
             allLessons = new List<LESSON>();
+            
             Res_URL = new Dictionary<Image, string>();
+            Img_Lsn = new Dictionary<Image, int>();
         }
 
         /// <summary>
@@ -57,14 +67,60 @@ namespace CloudEDU.CourseStore.CoursingDetail
         /// 属性通常用于配置页。</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            Course course = e.Parameter as Course;
+            course = e.Parameter as Course;
             dba = new DBAccessAPIs();
             dba.GetLessonsByCourseId((int)course.ID, onGetLessonComplete);
+
+
+
             
             //allLessonsStackPanel.Children.Add(GenerateALessonBox(null));
             //allLessonsStackPanel.Children.Add(GenerateALessonBox(null));
         }
 
+
+        private async void GetLearnedLessons()
+        {
+            /*
+            System.Diagnostics.Debug.WriteLine("get learned courses");
+            try
+            {
+                string uri = "/EnrollLesson?customer_id=" + Constants.User.ID + "&lesson_id=" + testLessonID;
+                TaskFactory<IEnumerable<int>> tf = new TaskFactory<IEnumerable<int>>();
+                IEnumerable<int> lessons = await tf.FromAsync(ctx.BeginExecute<int>(new Uri(uri, UriKind.Relative), null, null), iar => ctx.EndExecute<int>(iar));
+
+            }
+            catch
+            {
+                ShowMessageDialog("Network connection error1!");
+                return;
+            }
+            */
+            
+            System.Diagnostics.Debug.WriteLine("get learned courses");
+            try
+            {
+                string uri = "/LessonsInCourseByCustomer?customer_id=" + Constants.User.ID + "&course_id=" + course.ID;
+                TaskFactory<IEnumerable<LESSON>> tf = new TaskFactory<IEnumerable<LESSON>>();
+                IEnumerable<LESSON> lessons = await tf.FromAsync(ctx.BeginExecute<LESSON>(new Uri(uri, UriKind.Relative), null, null), iar => ctx.EndExecute<LESSON>(iar));
+
+
+                LearnedLessons = new List<LESSON>();
+                foreach (LESSON l in lessons){
+                    System.Diagnostics.Debug.WriteLine("lessons learned:"+l.TITLE+"id:"+l.ID);
+                    LearnedLessons.Add(l);
+                }
+                
+            }
+            catch
+            {
+                ShowMessageDialog("Network connection error1!");
+                return;
+            }
+
+
+
+        }
 
         private async void onGetLessonComplete(IAsyncResult iar)
         {
@@ -72,6 +128,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
             {
                 System.Diagnostics.Debug.WriteLine("get lesson complete");
                 IEnumerable<LESSON> lessons = dba.lessonDsq.EndExecute(iar);
+                
                 foreach (var l in lessons)
                 {
                     this.allLessons.Add(l);
@@ -115,6 +172,9 @@ namespace CloudEDU.CourseStore.CoursingDetail
                 ShowMessageDialog("Network connection error!11");
                 return;
             }
+
+
+            GetLearnedLessons();
 
         }
 
@@ -229,7 +289,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
         private async void AddImageButton(int lessonId, StackPanel parent)
         {
-            System.Diagnostics.Debug.WriteLine("AddImageButton!");
+            //System.Diagnostics.Debug.WriteLine("AddImageButton!");
             DataServiceQuery<RESOURCE> dps = (DataServiceQuery<RESOURCE>)(ctx.RESOURCE.Where(r => r.LESSON_ID == lessonId));
             TaskFactory<IEnumerable<RESOURCE>> tf = new TaskFactory<IEnumerable<RESOURCE>>();
             IEnumerable<RESOURCE> resources = (await tf.FromAsync(dps.BeginExecute(null, null), iar => dps.EndExecute(iar)));
@@ -241,16 +301,19 @@ namespace CloudEDU.CourseStore.CoursingDetail
                 {
                     image = GenerateDocImage(r.URL);
                     parent.Children.Add(image);
+                    Img_Lsn.Add(image, lessonId);
                 }
                 else if (r.TYPE == 1)
                 {
                     image = GenerateAudioImage(r.URL);
                     parent.Children.Add(image);
+                    Img_Lsn.Add(image, lessonId);
                 }
                 else if (r.TYPE == 3)
                 {
                     image = GenerateAudioImage(r.URL);
                     parent.Children.Add(image);
+                    Img_Lsn.Add(image, lessonId);
                 }
                 image.Tapped += ResImageTapped;
             }
@@ -293,6 +356,31 @@ namespace CloudEDU.CourseStore.CoursingDetail
         {
             Image image = (Image)sender;
             string url = Res_URL[image];
+
+
+
+
+            int lessonId = Img_Lsn[image];
+
+            try
+            {
+                string uri1 = "/EnrollLesson?customer_id=" + Constants.User.ID + "&lesson_id=" + lessonId;
+                TaskFactory<IEnumerable<int>> tf = new TaskFactory<IEnumerable<int>>();
+                IEnumerable<int> lessons = await tf.FromAsync(ctx.BeginExecute<int>(new Uri(uri1, UriKind.Relative), null, null), iar => ctx.EndExecute<int>(iar));
+
+            }
+            catch
+            {
+                ShowMessageDialog("Network connection error1!");
+                return;
+            }
+
+
+
+
+
+
+
             System.Diagnostics.Debug.WriteLine(url);
             Uri uri = new Uri(Constants.BaseURI+url);
             string[] fileArray = url.Split('\\');

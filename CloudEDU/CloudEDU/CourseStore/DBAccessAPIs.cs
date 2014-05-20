@@ -71,6 +71,13 @@ namespace CloudEDU.CourseStore
         }
 
 
+        public void GetLearnedLessonsInCourseByCustomerId(int customer_id, int course_id, OnQueryComplete onComplete)
+        {
+            //lessonDsq = (DataServiceQuery<LESSON>(from les in ctx.LESSON where les.COURSE_ID == customer_id and les))
+        }
+
+
+
         public void GetResourcesByLessonId(int id, OnQueryComplete onComplete)
         {
             resourceDsq = (DataServiceQuery<RESOURCE>)(ctx.RESOURCE.Where(r => r.LESSON_ID == id));

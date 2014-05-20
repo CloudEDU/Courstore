@@ -73,6 +73,7 @@
         <NavigationProperty Name="NOTE" Relationship="CloudEDUModel.FK__NOTE__LESSON_ID__3A81B327" ToRole="NOTE" FromRole="LESSON" />
         <NavigationProperty Name="ATTEND" Relationship="CloudEDUModel.FK_ATTEND_CURRENTLESSON" ToRole="ATTEND" FromRole="LESSON" />
         <NavigationProperty Name="RESOURCE" Relationship="CloudEDUModel.FK_RESOURCE_LESSON" ToRole="RESOURCE" FromRole="LESSON" />
+        <NavigationProperty Name="CUSTOMER" Relationship="CloudEDUModel.HADLESSON" ToRole="CUSTOMER" FromRole="LESSON" />
       </EntityType>
       <EntityType Name="PARENT_GUIDE">
         <Key>
@@ -148,6 +149,7 @@
         <NavigationProperty Name="SALEORDER" Relationship="CloudEDUModel.FK__SALEORDER__BUYER__5070F446" ToRole="SALEORDER" FromRole="CUSTOMER" />
         <NavigationProperty Name="SALEORDER1" Relationship="CloudEDUModel.FK__SALEORDER__SALER__5165187F" ToRole="SALEORDER" FromRole="CUSTOMER" />
         <NavigationProperty Name="COURSE1" Relationship="CloudEDUModel.FAVORITE" ToRole="COURSE" FromRole="CUSTOMER" />
+        <NavigationProperty Name="LESSON" Relationship="CloudEDUModel.HADLESSON" ToRole="LESSON" FromRole="CUSTOMER" />
       </EntityType>
       <EntityType Name="NOTE">
         <Key>
@@ -566,6 +568,10 @@
           </Dependent>
         </ReferentialConstraint>
       </Association>
+      <Association Name="HADLESSON">
+        <End Type="CloudEDUModel.CUSTOMER" Role="CUSTOMER" Multiplicity="*" />
+        <End Type="CloudEDUModel.LESSON" Role="LESSON" Multiplicity="*" />
+      </Association>
       <Association Name="FK_RESOURCE_TYPE">
         <End Type="CloudEDUModel.RES_TYPE" Role="RES_TYPE" Multiplicity="1" />
         <End Type="CloudEDUModel.RESOURCE" Role="RESOURCE" Multiplicity="*" />
@@ -703,6 +709,14 @@
         <FunctionImport Name="GetRecommendedCourses" ReturnType="Collection(CloudEDUModel.COURSE_AVAIL)" EntitySet="COURSE_AVAIL" m:HttpMethod="GET">
           <Parameter Name="customer_id" Type="Edm.Int32" Nullable="false" />
         </FunctionImport>
+        <FunctionImport Name="EnrollLesson" ReturnType="Edm.Int32" m:HttpMethod="GET">
+          <Parameter Name="customer_id" Type="Edm.Int32" Nullable="false" />
+          <Parameter Name="lesson_id" Type="Edm.Int32" Nullable="false" />
+        </FunctionImport>
+        <FunctionImport Name="LessonsInCourseByCustomer" ReturnType="Collection(CloudEDUModel.LESSON)" EntitySet="LESSON" m:HttpMethod="GET">
+          <Parameter Name="course_id" Type="Edm.Int32" Nullable="false" />
+          <Parameter Name="customer_id" Type="Edm.Int32" Nullable="false" />
+        </FunctionImport>
         <AssociationSet Name="FK_COURSE_CATEGORY" Association="CloudEDUModel.FK_COURSE_CATEGORY">
           <End Role="CATEGORY" EntitySet="CATEGORY" />
           <End Role="COURSE" EntitySet="COURSE" />
@@ -758,6 +772,10 @@
         <AssociationSet Name="FK_RESOURCE_LESSON" Association="CloudEDUModel.FK_RESOURCE_LESSON">
           <End Role="LESSON" EntitySet="LESSON" />
           <End Role="RESOURCE" EntitySet="RESOURCE" />
+        </AssociationSet>
+        <AssociationSet Name="HADLESSON" Association="CloudEDUModel.HADLESSON">
+          <End Role="LESSON" EntitySet="LESSON" />
+          <End Role="CUSTOMER" EntitySet="CUSTOMER" />
         </AssociationSet>
         <AssociationSet Name="FK_RESOURCE_TYPE" Association="CloudEDUModel.FK_RESOURCE_TYPE">
           <End Role="RES_TYPE" EntitySet="RES_TYPE" />

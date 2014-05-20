@@ -32,6 +32,8 @@
             </Grid>
         </StackPanel>
 
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
+        <TextBlock Style="{StaticResource SubheaderTextStyle}" x:Name="FinishPercentage" Text="Finish%" FontWeight="Bold" Margin="0, 30, 100, 10" HorizontalAlignment="Right" FontSize="50" Foreground="White" />
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
             <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Info" FontWeight="Bold" Margin="0, 30, 0, 10" HorizontalAlignment="Right" FontSize="35" Foreground="White" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
@@ -47,8 +49,8 @@
                 <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="PG" HorizontalAlignment="Right" Foreground="White" Margin="10, 0, 0, 0" />
             </StackPanel>
         </StackPanel>
-
-        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Width="358">
+        </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="20, 0, 0, 0" Width="358">
             <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Overview" FontWeight="Bold" Margin="0, 20, 0, 10" HorizontalAlignment="Left" FontSize="35" Foreground="White" />
             <ScrollViewer Style="{StaticResource VerticalScrollViewerStyle}" Height="268">
                 <TextBlock Style="{StaticResource SubheaderTextStyle}"  Width="400" HorizontalAlignment="Left" TextWrapping="Wrap" Foreground="White"

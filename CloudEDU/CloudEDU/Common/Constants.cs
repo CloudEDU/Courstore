@@ -18,11 +18,11 @@ namespace CloudEDU.Common
 {
     public class Constants
     {
-        public static string BaseURI = "http://luyirenmax.oicp.net/BackgroundTransferSample/";
-        public static string DataServiceURI = "http://luyirenmax.oicp.net/DataService/Service.svc/";
+        //public static string BaseURI = "http://luyirenmax.oicp.net/BackgroundTransferSample/";
+        //public static string DataServiceURI = "http://luyirenmax.oicp.net/DataService/Service.svc/";
 
-        //public static string BaseURI = "http://cloudeduserver.cloudapp.net/BackgroundTransferSample/";
-        //public static string DataServiceURI =  "http://cloudedudataserv.azurewebsites.net/Service.svc/";
+        public static string BaseURI = "http://10.0.1.83/BackgroundTransferSample/";
+        public static string DataServiceURI = "http://10.0.1.83/DataService/Service.svc/";
 
         public static string FillStar = "\x2605";
         public static string BlankStar = "\x2606";

@@ -25,3 +25,26 @@ c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\obj\Debug\
 c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\obj\Debug\layout.resfiles.intermediate
 c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\obj\Debug\resources.resfiles.intermediate
 c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\obj\Debug\pri.resfiles.intermediate
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\TestPop.exe
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\TestPop.pdb
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\resources.pri
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\AppxManifest.xml
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\TestPop.build.appxrecipe
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\App.g.i.cs
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\App.g.cs
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\Common\StandardStyles.g.i.cs
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\Common\StandardStyles.g.cs
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\MainPage.g.i.cs
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\MainPage.g.cs
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\App.xaml
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\Common\StandardStyles.xaml
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\MainPage.xaml
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\TestPop.exe
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\TestPop.pdb
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\priconfig.xml
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\layout.resfiles
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\resources.resfiles
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\pri.resfiles
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\LanguageQualifiers.txt
+C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\obj\Debug\ProjectArchitectures.txt

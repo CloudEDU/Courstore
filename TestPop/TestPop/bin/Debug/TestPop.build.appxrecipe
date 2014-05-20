@@ -1,50 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>VIRTUAL-WIN8</Machine>
-    <WindowsUser>Zephyr</WindowsUser>
+    <Machine>APPLECLUB</Machine>
+    <WindowsUser>k</WindowsUser>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\bin\Debug\TestPop.exe">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\TestPop.exe">
       <PackagePath>TestPop.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\bin\Debug\TestPop.pdb">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\TestPop.pdb">
       <PackagePath>TestPop.pdb</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\Assets\Logo.png">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\Assets\SmallLogo.png">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\Assets\SmallLogo.png">
       <PackagePath>Assets\SmallLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\Assets\SplashScreen.png">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\bin\Debug\App.xaml">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\App.xaml">
       <PackagePath>App.xaml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\bin\Debug\Common\StandardStyles.xaml">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\Common\StandardStyles.xaml">
       <PackagePath>Common\StandardStyles.xaml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\bin\Debug\MainPage.xaml">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\MainPage.xaml">
       <PackagePath>MainPage.xaml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\zephyr\documents\visual studio 2012\Projects\TestPop\TestPop\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\TestPop\TestPop\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

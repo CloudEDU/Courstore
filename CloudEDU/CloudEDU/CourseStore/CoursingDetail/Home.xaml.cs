@@ -77,6 +77,26 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
             pgDsq = (DataServiceQuery<PARENT_GUIDE>)(from pg in ctx.PARENT_GUIDE select pg);
             pgDsq.BeginExecute(OnPGComplete, null);
+
+
+            getLearnedPercentage();
+            
+        }
+
+        
+
+
+
+        private async void getLearnedPercentage()
+        {
+            double percent;
+
+            string uri2 = "/CoursePercentByCustomer?customer_id=" + Constants.User.ID + "&course_id=" + course.ID;
+            TaskFactory<IEnumerable<double>> tf = new TaskFactory<IEnumerable<double>>();
+            IEnumerable<double> percentages = await tf.FromAsync(ctx.BeginExecute<double>(new Uri(uri2, UriKind.Relative), null, null), iar => ctx.EndExecute<double>(iar));
+            percent = percentages.FirstOrDefault();
+
+            FinishPercentage.Text = "Finished " + percent*100 + "%";
         }
 
         private void SetStarsStackPanel(double rate)

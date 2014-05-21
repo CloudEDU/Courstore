@@ -100,8 +100,10 @@ namespace CloudEDU.Common
                         break;
                     }
                 }
-
-
+                if (course == null)
+                {
+                    return new List<DepCourse>();
+                }
                 foreach(DepCourse dc in course.DepCourses){
                     if (!dc.Learned)
                     {
@@ -120,7 +122,8 @@ namespace CloudEDU.Common
             
 
             public static bool IfLearned(string courseName){
-                if(LearnedCourses==null){
+                if (LearnedCourses == null)
+                {
                     GetAllLearned();
                 }
                 foreach(COURSE_AVAIL ca in LearnedCourses){
@@ -157,23 +160,23 @@ namespace CloudEDU.Common
         public static void ConstructDependentCourses()
         {
             DepCourse datamining = new DepCourse("DataMining");
-            DepCourse statistics = new DepCourse("Statistics");
-            DepCourse ml = new DepCourse("MachineLearning");
+            DepCourse statistics = new DepCourse("Probability and Statistics");
+            DepCourse ml = new DepCourse("Machine Learning");
             ml.Learned = true;
-            DepCourse algorithms = new DepCourse("Algorithems");
-            DepCourse discrete = new DepCourse("DiscreteMathematics");
-            DepCourse datastruct = new DepCourse("DataStructure");
-            DepCourse compiler = new DepCourse("Compiler");
-            DepCourse linux = new DepCourse("LinuxProgramming");
-            DepCourse os = new DepCourse("OperatingSystem");
-            DepCourse mobile = new DepCourse("MobileProgramming");
+            DepCourse algorithms = new DepCourse("Algorithm Design");
+            DepCourse discrete = new DepCourse("Discrete Mathematics");
+            DepCourse datastruct = new DepCourse("Data Structure");
+            DepCourse compiler = new DepCourse("Compilers");
+            DepCourse linux = new DepCourse("Linux Programming");
+            DepCourse os = new DepCourse("Operating System");
+            DepCourse mobile = new DepCourse("Mobile Programming");
             DepCourse oop = new DepCourse("OOP");
-            DepCourse web = new DepCourse("WebProgramming");
-            DepCourse c = new DepCourse("CProgramming");
-            DepCourse embedded = new DepCourse("EmbeddedProgramming");
-            DepCourse ca = new DepCourse("ComputerArchitecture");
-            DepCourse intro = new DepCourse("IntroductionToCS");
-            DepCourse network = new DepCourse("ComputerNetwork");
+            DepCourse web = new DepCourse("Web2.0 Program Design");
+            DepCourse c = new DepCourse("C Language"); 
+            DepCourse embedded = new DepCourse("Embedded Programming");
+            DepCourse ca = new DepCourse("Computer Architecture");
+            DepCourse intro = new DepCourse("Computer Basics");
+            DepCourse network = new DepCourse("Computer Network");
 
             datamining.DepCourses.Add(statistics);
             datamining.DepCourses.Add(ml);
@@ -196,7 +199,7 @@ namespace CloudEDU.Common
             List<DepCourse> allCourse = DepCourse.GetAllDepCourse();
             foreach(DepCourse course in allCourse)
             {
-                //System.Diagnostics.Debug.WriteLine(course.CourseName);
+                System.Diagnostics.Debug.WriteLine(course.CourseName);
                 
             }
 

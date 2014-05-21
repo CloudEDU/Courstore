@@ -218,6 +218,7 @@
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\WidthLogo.png" />
     <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Images\background.png" />
     <Content Include="Images\Category\Biology.jpg" />
     <Content Include="Images\Category\Chemistry.jpg" />
     <Content Include="Images\Category\Computer Science.jpg" />

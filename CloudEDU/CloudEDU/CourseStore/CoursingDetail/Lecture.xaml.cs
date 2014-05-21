@@ -406,7 +406,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
                     string text = await Windows.Storage.FileIO.ReadTextAsync(file);
 
                     string htmlcontent = text;
-                    string content = "<html><head><link rel=\"stylesheet\" href=\"http://yandex.st/highlightjs/8.0/styles/default.min.css\"><script src=\"http://yandex.st/highlightjs/8.0/highlight.min.js\"></script> <script>hljs.initHighlightingOnLoad();</script></head><body><pre><code>"
+                    string content = "<html><head><link rel=\"stylesheet\" href=\"http://yandex.st/highlightjs/8.0/styles/monokai_sublime.min.css\"><script src=\"http://yandex.st/highlightjs/8.0/highlight.min.js\"></script> <script>hljs.initHighlightingOnLoad();</script></head><body><pre><code>"
                                 +
                                     htmlcontent
                                 + "</code></pre></body> </html>";

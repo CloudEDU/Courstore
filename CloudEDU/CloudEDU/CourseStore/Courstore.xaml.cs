@@ -125,6 +125,9 @@ namespace CloudEDU.CourseStore
             courseDsq.BeginExecute(OnCourseAvailComplete, null);
             UserProfileBt.DataContext = Constants.User;
             //UserProfileBt.IsEnabled = false;
+
+
+            Constants.DepCourse.GetAllLearned();
         }
 
         /// <summary>

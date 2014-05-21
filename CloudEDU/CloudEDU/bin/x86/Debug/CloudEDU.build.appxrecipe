@@ -129,6 +129,9 @@
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\Images\background.png">
+      <PackagePath>Images\background.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\Images\Courses\arrow.png">
       <PackagePath>Images\Courses\arrow.png</PackagePath>
     </AppxPackagedFile>

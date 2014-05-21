@@ -66,17 +66,7 @@ namespace CloudEDU.CourseStore
             //// Prerequisite initialization:
 
 
-            List<Constants.DepCourse> results = Constants.DepCourse.GetDepCourses("MobileProgramming");
-
-
-
-            foreach (Constants.DepCourse dc in results)
-            {
-
-                AddToPreRequestCoursesPanel(dc.CourseName);
-
-                //System.Diagnostics.Debug.WriteLine(dc.CourseName);
-            }
+            
 
 
 
@@ -89,6 +79,22 @@ namespace CloudEDU.CourseStore
             */
 
 
+            List<Constants.DepCourse> results = Constants.DepCourse.GetDepCourses("Mobile Programming");
+
+
+
+            foreach (Constants.DepCourse dc in results)
+            {
+
+                System.Diagnostics.Debug.WriteLine("if learned");
+                if (!Constants.DepCourse.IfLearned(dc.CourseName))
+                {
+                    System.Diagnostics.Debug.WriteLine("Learned");
+                    AddToPreRequestCoursesPanel(dc.CourseName);
+                }
+
+                //System.Diagnostics.Debug.WriteLine(dc.CourseName);
+            }
 
 
 
@@ -186,6 +192,12 @@ namespace CloudEDU.CourseStore
         private int numPrerequisite = 0;
         private void AddToPreRequestCoursesPanel(string courseName)
         {
+
+
+
+
+
+
             numPrerequisite++;
             Grid newGrid = new Grid();
             Viewbox courseViewbox = new Viewbox()
@@ -441,6 +453,11 @@ namespace CloudEDU.CourseStore
                 }
                 else
                 {
+
+
+                    
+
+
                     prerequestCoursePopup.IsOpen = true;
                 }
                 //Frame.Navigate(typeof(Coursing), courseInfo);
@@ -452,7 +469,16 @@ namespace CloudEDU.CourseStore
                 if (numPrerequisite != 0)
                 {
                     //courseInfo.Add("attending");
+                    
                     //Frame.Navigate(typeof(Coursing), courseInfo);
+
+
+
+
+
+
+
+
                     prerequestCoursePopup.IsOpen = true;
                     return;
                 }

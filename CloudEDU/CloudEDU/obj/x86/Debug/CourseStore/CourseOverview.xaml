@@ -38,7 +38,8 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                    <Button x:ConnectionId='7' Content="Close" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 20, 0, 0"                               />
+                    <Button x:ConnectionId='7' Content="Continue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100, 20, 0, 0"                                       />
+                    <Button x:ConnectionId='8' Content="Close" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-80, 20, 0, 0"                               />
                 </Grid>
             </Grid>
         </Popup>

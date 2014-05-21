@@ -156,7 +156,7 @@ namespace CloudEDU.Common
         
         public static void ConstructDependentCourses()
         {
-            DepCourse datamining = new DepCourse("Data Mining");
+            DepCourse datamining = new DepCourse("DataMining");
             DepCourse statistics = new DepCourse("Statistics");
             DepCourse ml = new DepCourse("MachineLearning");
             ml.Learned = true;

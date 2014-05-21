@@ -55,13 +55,44 @@ namespace CloudEDU.CourseStore
         /// property is typically used to configure the page.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+
+
+
+
+
             course = e.Parameter as Course;
 
+
+            //// Prerequisite initialization:
+
+
+            List<Constants.DepCourse> results = Constants.DepCourse.GetDepCourses("MobileProgramming");
+
+
+
+            foreach (Constants.DepCourse dc in results)
+            {
+
+                AddToPreRequestCoursesPanel(dc.CourseName);
+
+                //System.Diagnostics.Debug.WriteLine(dc.CourseName);
+            }
+
+
+
+            /*
             for (int i = 0; i < 30; ++i)
             {
                 AddToPreRequestCoursesPanel("Algorithm" + i);
             }
             AddToPreRequestCoursesPanel("We See");
+            */
+
+
+
+
+
+
 
             try
             {
@@ -151,8 +182,11 @@ namespace CloudEDU.CourseStore
             }
         }
 
+
+        private int numPrerequisite = 0;
         private void AddToPreRequestCoursesPanel(string courseName)
         {
+            numPrerequisite++;
             Grid newGrid = new Grid();
             Viewbox courseViewbox = new Viewbox()
             {
@@ -316,9 +350,79 @@ namespace CloudEDU.CourseStore
             Frame.Navigate(typeof(Login.Profile));
         }
 
+
+
+
+
+        private async void BuyCourse(Button bt,List<Object> courseInfo)
+        {
+
+
+            bool isToBuy = false;
+            bool isHaveBuy = false;
+
+            var buySure = new MessageDialog("Are you sure to buy this course?", "Buy Course");
+            buySure.Commands.Add(new UICommand("Yes", (command) =>
+            {
+                isToBuy = true;
+            }));
+            buySure.Commands.Add(new UICommand("No", (command) =>
+            {
+                isToBuy = false;
+                return;
+            }));
+            await buySure.ShowAsync();
+
+            if (isToBuy)
+            {
+                try
+                {
+                    string uri = "/EnrollCourse?customer_id=" + Constants.User.ID + "&course_id=" + course.ID;
+                    TaskFactory<IEnumerable<int>> tf = new TaskFactory<IEnumerable<int>>();
+                    IEnumerable<int> code = await tf.FromAsync(ctx.BeginExecute<int>(new Uri(uri, UriKind.Relative), null, null), iar => ctx.EndExecute<int>(iar));
+                    isHaveBuy = true;
+
+                    if (code.FirstOrDefault() != 0)
+                    {
+                        isHaveBuy = false;
+                        var buyError = new MessageDialog("You don't have enough money. Please contact Scott Zhao.", "Buy Failed");
+                        buyError.Commands.Add(new UICommand("Close"));
+                        await buyError.ShowAsync();
+                        return;
+                    }
+
+                }
+                catch
+                {
+                    ShowMessageDialog("Network connection error1!");
+                    return;
+                }
+            }
+
+            if (isHaveBuy)
+            {
+                var buyOkMsg = new MessageDialog("Do you want to start learning?", "Buy successfully");
+                buyOkMsg.Commands.Add(new UICommand("Yes", (command) =>
+                {
+                    courseInfo.Add("attending");
+                    Frame.Navigate(typeof(Coursing), courseInfo);
+                }));
+                buyOkMsg.Commands.Add(new UICommand("No", (command) =>
+                {
+                    bt.Content = "Attend";
+                }));
+                await buyOkMsg.ShowAsync();
+            }
+        }
+
+
+
+        private Button tmpButton;
+
         private async void AttendButton_Click(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
+            tmpButton = bt;
             List<object> courseInfo = new List<object>();
             courseInfo.Add(course);
 
@@ -329,13 +433,36 @@ namespace CloudEDU.CourseStore
             }
             else if (bt.Content.ToString() == "Attend")
             {
-                //!!!!!sprerequestCoursePopup.IsOpen = true;
 
-                courseInfo.Add("attending");
-                Frame.Navigate(typeof(Coursing), courseInfo);
+                if (numPrerequisite == 0)
+                {
+                    courseInfo.Add("attending");
+                    Frame.Navigate(typeof(Coursing), courseInfo);
+                }
+                else
+                {
+                    prerequestCoursePopup.IsOpen = true;
+                }
+                //Frame.Navigate(typeof(Coursing), courseInfo);
             }
             else if (bt.Content.ToString() == "Buy")
             {
+
+
+                if (numPrerequisite != 0)
+                {
+                    //courseInfo.Add("attending");
+                    //Frame.Navigate(typeof(Coursing), courseInfo);
+                    prerequestCoursePopup.IsOpen = true;
+                    return;
+                }
+                else
+                {
+
+                    BuyCourse(bt, courseInfo);
+                }
+                /*
+
                 bool isToBuy = false;
                 bool isHaveBuy = false;
 
@@ -391,6 +518,7 @@ namespace CloudEDU.CourseStore
                         }));
                     await buyOkMsg.ShowAsync();
                 }
+                 */
             }
         }
 
@@ -427,6 +555,29 @@ namespace CloudEDU.CourseStore
         private void ClosePopupButton_Click(object sender, RoutedEventArgs e)
         {
             prerequestCoursePopup.IsOpen = false;
+        }
+
+        private void ClosePopupContinueButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (tmpButton.Content.ToString() == "Attend")
+            {
+                System.Diagnostics.Debug.WriteLine("Continue Button Clicked");
+                prerequestCoursePopup.IsOpen = false;
+                List<object> courseInfo = new List<object>();
+                courseInfo.Add(course);
+                courseInfo.Add("attending");
+                Frame.Navigate(typeof(Coursing), courseInfo);
+            }
+            else if(tmpButton.Content.ToString() == "Buy")
+            {
+                System.Diagnostics.Debug.WriteLine("Continue Button Clicked with buy");
+                List<object> courseInfo = new List<object>();
+                courseInfo.Add(course);
+                BuyCourse(tmpButton, courseInfo);
+            }
+
+
+
         }
     }
 }

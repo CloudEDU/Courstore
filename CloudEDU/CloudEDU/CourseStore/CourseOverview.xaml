@@ -38,7 +38,8 @@
 
                         </StackPanel>
                     </ScrollViewer>
-                    <Button Content="Close" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 20, 0, 0" Click="ClosePopupButton_Click"/>
+                    <Button Content="Continue" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="100, 20, 0, 0" Click="ClosePopupContinueButton_Click"/>
+                    <Button Content="Close" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="-80, 20, 0, 0" Click="ClosePopupButton_Click"/>
                 </Grid>
             </Grid>
         </Popup>

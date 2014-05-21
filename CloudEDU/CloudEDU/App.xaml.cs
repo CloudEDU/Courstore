@@ -76,10 +76,7 @@ namespace CloudEDU
          
             Constants.ConstructDependentCourses();
 
-            List<Constants.DepCourse> results = Constants.DepCourse.GetDepCourses("Data Mining");
-            foreach(Constants.DepCourse dc in results){
-                System.Diagnostics.Debug.WriteLine(dc.CourseName);
-            }
+            
 
             
             // Do not repeat app initialization when already running, just ensure that

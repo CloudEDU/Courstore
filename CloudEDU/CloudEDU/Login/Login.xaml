@@ -36,9 +36,9 @@
         <PasswordBox x:Name="InputPassword" Style="{StaticResource ResourceKey=PasswordBox}" KeyDown="InputPassword_KeyDown" />
         <CheckBox x:Name="CheckAutoLogin" Content="Auto-Log" HorizontalAlignment="center" Margin="300, -70, 0, 0"
                   VerticalAlignment="Center" Foreground="White" Visibility="Collapsed" />
-        <Button HorizontalAlignment="Center" Style="{StaticResource NextAppBarButtonStyle}" Margin="784,400,482,268"
+        <Button x:Name="LoginButton" HorizontalAlignment="Center" Style="{StaticResource NextAppBarButtonStyle}" Margin="784,400,482,268"
                 Width="100" Height="100" VerticalAlignment="Center" AutomationProperties.Name="" Click="LoginButton_Click" Foreground="white" />
-        <Button Content="Sign Up?" HorizontalAlignment="Center" Margin="780,333,482,396" VerticalAlignment="Center"
+        <Button x:Name="SignUpButton" Content="Sign Up?" HorizontalAlignment="Center" Margin="780,333,482,396" VerticalAlignment="Center"
                 FontFamily="Candara" FontSize="20" BorderThickness="0" Background="Transparent"
                 Foreground="White" Click="SignUpButton_Click" />
 

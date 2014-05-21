@@ -1,18 +1,16 @@
 ﻿using CloudEDU.CourseStore;
+using CloudEDU.Login;
 using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Windows.UI.Popups;
-using CloudEDU.Login;
+using Windows.Networking.Connectivity;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
-using Windows.Storage.Streams;
 using Windows.Storage;
-using System.Text.RegularExpressions;
+using Windows.Storage.Streams;
 
 namespace CloudEDU.Common
 {
@@ -35,6 +33,15 @@ namespace CloudEDU.Common
 
         public static List<string> CategoryNameList = new List<string>();
         public static Dictionary<string, string> RecUriDic = new Dictionary<string, string>();
+        public static List<CUSTOMER> csl;
+
+        public static bool IsInternet()
+        {
+            ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
+            bool internet = connections != null && connections.GetNetworkConnectivityLevel() == NetworkConnectivityLevel.InternetAccess;
+            return internet;
+        }
+
         /// <summary>
         /// Cast the first character of every word in a string from lower to upper.
         /// </summary>
@@ -65,7 +72,7 @@ namespace CloudEDU.Common
         {
             public string CourseName = null;
             public bool Learned = false;
-            
+
             public DepCourse(string _CourseName)
             {
                 this.CourseName = _CourseName;
@@ -74,28 +81,32 @@ namespace CloudEDU.Common
 
                 /////check database if the user has learned this course and:
                 // learned = ??
-                
-                
+
+
             }
             private static List<DepCourse> AllDepCourses = null;
             public static List<DepCourse> GetAllDepCourse()
             {
-                if(AllDepCourses==null){
-                    AllDepCourses= new List<DepCourse>();
+                if (AllDepCourses == null)
+                {
+                    AllDepCourses = new List<DepCourse>();
                 }
                 return AllDepCourses;
             }
             public List<DepCourse> DepCourses;
 
 
-            public static List<DepCourse> GetDepCourses(String courseName, List<DepCourse> list =null)
+            public static List<DepCourse> GetDepCourses(String courseName, List<DepCourse> list = null)
             {
-                if(list == null){
+                if (list == null)
+                {
                     list = new List<DepCourse>();
                 }
                 DepCourse course = null;
-                foreach(DepCourse dc in GetAllDepCourse()){
-                    if(dc.CourseName.Equals(courseName)){
+                foreach (DepCourse dc in GetAllDepCourse())
+                {
+                    if (dc.CourseName.Equals(courseName))
+                    {
                         course = dc;
                         break;
                     }
@@ -104,7 +115,8 @@ namespace CloudEDU.Common
                 {
                     return new List<DepCourse>();
                 }
-                foreach(DepCourse dc in course.DepCourses){
+                foreach (DepCourse dc in course.DepCourses)
+                {
                     if (!dc.Learned)
                     {
                         list.Add(dc);
@@ -118,16 +130,19 @@ namespace CloudEDU.Common
 
             }
 
-            private static List<COURSE_AVAIL> LearnedCourses= null;
-            
+            private static List<COURSE_AVAIL> LearnedCourses = null;
 
-            public static bool IfLearned(string courseName){
+
+            public static bool IfLearned(string courseName)
+            {
                 if (LearnedCourses == null)
                 {
                     GetAllLearned();
                 }
-                foreach(COURSE_AVAIL ca in LearnedCourses){
-                    if (ca.TITLE.Equals(courseName)){
+                foreach (COURSE_AVAIL ca in LearnedCourses)
+                {
+                    if (ca.TITLE.Equals(courseName))
+                    {
                         return true;
                     }
                 }
@@ -135,7 +150,8 @@ namespace CloudEDU.Common
             }
             public async static void GetAllLearned()
             {
-                if(LearnedCourses==null){
+                if (LearnedCourses == null)
+                {
                     LearnedCourses = new List<COURSE_AVAIL>();
 
                     CloudEDUEntities ctx = new CloudEDUEntities(new Uri(Constants.DataServiceURI));
@@ -144,19 +160,20 @@ namespace CloudEDU.Common
                     IEnumerable<COURSE_AVAIL> attends = await tf.FromAsync(ctx.BeginExecute<COURSE_AVAIL>(
                         new Uri("/GetAllCoursesAttendedByCustomer?customer_id=" + Constants.User.ID, UriKind.Relative), null, null),
                         iar => ctx.EndExecute<COURSE_AVAIL>(iar));
-                    foreach(var ca in attends){
+                    foreach (var ca in attends)
+                    {
                         LearnedCourses.Add(ca);
                     }
                 }
-     
+
 
             }
 
 
         }
 
-        
-        
+
+
         public static void ConstructDependentCourses()
         {
             DepCourse datamining = new DepCourse("DataMining");
@@ -172,7 +189,7 @@ namespace CloudEDU.Common
             DepCourse mobile = new DepCourse("Mobile Programming");
             DepCourse oop = new DepCourse("OOP");
             DepCourse web = new DepCourse("Web2.0 Program Design");
-            DepCourse c = new DepCourse("C Language"); 
+            DepCourse c = new DepCourse("C Language");
             DepCourse embedded = new DepCourse("Embedded Programming");
             DepCourse ca = new DepCourse("Computer Architecture");
             DepCourse intro = new DepCourse("Computer Basics");
@@ -197,10 +214,10 @@ namespace CloudEDU.Common
             network.DepCourses.Add(intro);
 
             List<DepCourse> allCourse = DepCourse.GetAllDepCourse();
-            foreach(DepCourse course in allCourse)
+            foreach (DepCourse course in allCourse)
             {
                 System.Diagnostics.Debug.WriteLine(course.CourseName);
-                
+
             }
 
 
@@ -222,7 +239,7 @@ namespace CloudEDU.Common
         public static Course CourseAvail2Course(COURSE_AVAIL c)
         {
             Course course = new Course();
- 
+
             course.Title = c.TITLE;
             course.Intro = c.INTRO;
             course.ID = c.ID;

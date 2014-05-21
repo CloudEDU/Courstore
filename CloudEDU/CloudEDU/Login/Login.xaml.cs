@@ -1,26 +1,16 @@
 ﻿using CloudEDU.Common;
-using CloudEDU.Service;
 using CloudEDU.CourseStore;
+using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Security.Cryptography;
-using Windows.Security.Cryptography.Core;
-using Windows.Storage.Streams;
+using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Popups;
-using Windows.UI.Core;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,7 +23,7 @@ namespace CloudEDU.Login
     {
         private CloudEDUEntities ctx = null;
         private DataServiceQuery<CUSTOMER> customerDsq = null;
-        private List<CUSTOMER> csl;
+
         private string emptyUsername;
         private bool firstTimeForUsername = true;
 
@@ -50,13 +40,11 @@ namespace CloudEDU.Login
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.  The Parameter
         /// property is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+            InputUsername.IsEnabled = InputPassword.IsEnabled = LoginButton.IsEnabled = SignUpButton.IsEnabled = true;
 
-            customerDsq = (DataServiceQuery<CUSTOMER>)(from user in ctx.CUSTOMER select user);
-            customerDsq.BeginExecute(OnCustomerComplete, null);
-            
+            //csl = customers.ToList();
             // auto log
             //if (Constants.Read<bool>("AutoLog") == true)
             //{
@@ -80,12 +68,6 @@ namespace CloudEDU.Login
             //}
         }
 
-        private void OnCustomerComplete(IAsyncResult result)
-        {
-            csl = customerDsq.EndExecute(result).ToList();
-            System.Diagnostics.Debug.WriteLine(csl[0].NAME);
-        }
-
         /// <summary>
         /// Invoked when back button is clicked and navigate to sign up page.
         /// </summary>
@@ -98,6 +80,8 @@ namespace CloudEDU.Login
 
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            InputUsername.IsEnabled = InputPassword.IsEnabled = LoginButton.IsEnabled = SignUpButton.IsEnabled = false;
+
             //login
             if (InputUsername.Text.Equals(emptyUsername) || InputPassword.Password.Equals(string.Empty))
             {
@@ -127,7 +111,7 @@ namespace CloudEDU.Login
             bool isLogined = false;
             try
             {
-                foreach (CUSTOMER c in csl)
+                foreach (CUSTOMER c in Constants.csl)
                 {
                     if (c.NAME == InputUsername.Text)
                     {
@@ -188,6 +172,8 @@ namespace CloudEDU.Login
             if (isLogined) return;
             var msgDialog = new MessageDialog("Username Or Password is wrong");
             await msgDialog.ShowAsync();
+
+            InputUsername.IsEnabled = InputPassword.IsEnabled = LoginButton.IsEnabled = SignUpButton.IsEnabled = true;
         }
 
         private void InputUsername_TextChanged(object sender, TextChangedEventArgs e)
@@ -224,7 +210,7 @@ namespace CloudEDU.Login
 
         private void InputPassword_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            if (e.Key ==Windows.System.VirtualKey.Enter)
+            if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 LoginButton_Click(null, null);
             }

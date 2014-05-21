@@ -5,20 +5,13 @@ using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -47,7 +40,6 @@ namespace CloudEDU
             this.Suspending += OnSuspending;
 
             ctx = new CloudEDUEntities(new Uri(Constants.DataServiceURI));
-
         }
 
 
@@ -66,19 +58,29 @@ namespace CloudEDU
         /// search results, and so forth.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs args)
+        protected async override void OnLaunched(LaunchActivatedEventArgs args)
         {
-
+            if (!Constants.IsInternet())
+            {
+                var messageDialog = new MessageDialog("No Network has been found! Please check and restart application");
+                messageDialog.Commands.Add(new UICommand("Exit", (command) =>
+                {
+                    Application.Current.Exit();
+                }));
+                await messageDialog.ShowAsync();
+            }
 
             //customerDsq = (DataServiceQuery<CUSTOMER>)(from user in ctx.CUSTOMER select user);
             //customerDsq.BeginExecute(OnCustomerComplete, null);
+            DataServiceQuery<CUSTOMER> customerDsq = (DataServiceQuery<CUSTOMER>)(from user in ctx.CUSTOMER select user);
+            TaskFactory<IEnumerable<CUSTOMER>> tfc = new TaskFactory<IEnumerable<CUSTOMER>>();
+            Constants.csl = (await tfc.FromAsync(customerDsq.BeginExecute(null, null), iar => customerDsq.EndExecute(iar))).ToList();
 
-         
             Constants.ConstructDependentCourses();
 
-            
 
-            
+
+
             // Do not repeat app initialization when already running, just ensure that
             // the window is active
             if (args.PreviousExecutionState == ApplicationExecutionState.Running)
@@ -186,7 +188,7 @@ namespace CloudEDU
             deferral.Complete();
         }
 
-       
+
     }
 
     /// <summary>

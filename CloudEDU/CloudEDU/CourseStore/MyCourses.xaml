@@ -82,7 +82,7 @@
             
             <ScrollViewer Width="1366" Height="800" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="-683, 0, 0, 0" Background="Transparent" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
                 <Grid x:Name="topograph">
-                    <Image Source="ms-appx:///Images/Topograph.png" Height="800" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Visibility="Collapsed" Source="ms-appx:///Images/Topograph.png" Height="800" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center">
                     </Image>
                     <Border Margin="345,118,0,0">
                         <TextBlock Text="Data&#10;Mathematics" />
@@ -109,7 +109,7 @@
                         <TextBlock  Text="Compute&#10;Architecture"/>
                     </Border>
                     <Border  Margin="615,399,0,0">
-                        <TextBlock Text="OOP"/>
+                        <TextBlock x:Name="OOP" Text="OOP"/>
                     </Border>
                     <Border Margin="654,483,0,0">
                         <TextBlock Text="Embedded Programming"/>

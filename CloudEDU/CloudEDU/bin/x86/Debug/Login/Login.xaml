@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="CloudEDU.Login.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CloudEDU.Login"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:JulMar.Windows.Interactivity.Interactivity"
+    mc:Ignorable="d"
+    xmlns:wm="using:WinRTXamlToolkit.Controls"
+    >
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="LoginDictionary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    
+    <Grid Style="{StaticResource LayoutRootStyle}" Background="{StaticResource LoginPageBackgroundThemeBrush}">
+        <TextBox x:ConnectionId='1' x:Name="InputUsername"  HorizontalAlignment="Center" Margin="-120, -70, 0, 0" VerticalAlignment="Center"
+                 Width="300" Height="50" Background="#DDECF1" FontFamily="Candara" TextAlignment="Left" FontSize="25"
+                 BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MaxLength="14"
+                 i:WatermarkTextBehavior.Text="Username"                                         />
+                <!--<wm:WatermarkTextBox.WatermarkTextStyle>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="25" />
+                    <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+                </wm:WatermarkTextBox.WatermarkTextStyle>
+            </wm:WatermarkTextBox>-->
+
+        <PasswordBox x:ConnectionId='2' x:Name="InputPassword" Style="{StaticResource ResourceKey=PasswordBox}"                                 />
+        <CheckBox x:Name="CheckAutoLogin" Content="Auto-Log" HorizontalAlignment="center" Margin="300, -70, 0, 0"
+                  VerticalAlignment="Center" Foreground="White" Visibility="Collapsed" />
+        <Button x:ConnectionId='3' HorizontalAlignment="Center" Style="{StaticResource NextAppBarButtonStyle}" Margin="784,400,482,268"
+                Width="100" Height="100" VerticalAlignment="Center" AutomationProperties.Name=""                           Foreground="white" />
+        <Button x:ConnectionId='4' Content="Sign Up?" HorizontalAlignment="Center" Margin="780,333,482,396" VerticalAlignment="Center"
+                FontFamily="Candara" FontSize="20" BorderThickness="0" Background="Transparent"
+                Foreground="White"                            />
+
+    </Grid>
+</Page>
+

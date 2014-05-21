@@ -35,6 +35,7 @@ namespace CloudEDU.CourseStore
 
         private StoreData courseData;
         private List<GroupInfoList<Object>> dataCategory;
+        private List<Course> allCourses;
 
         private CloudEDUEntities ctx = null;
         private DataServiceQuery<COURSE_AVAIL> teachDsq = null;
@@ -132,7 +133,7 @@ namespace CloudEDU.CourseStore
 
 
             SetAllTextBlock();
-
+            allCourses = new List<Course>();
             //SetAllCourseElementStyle();
             try
             {
@@ -156,6 +157,7 @@ namespace CloudEDU.CourseStore
                     tmpCourse.IsBuy = true;
                     tmpCourse.IsTeach = false;
                     courseData.AddCourse(tmpCourse);
+                    allCourses.Add(tmpCourse);
                 }
                 foreach (var c in teaches)
                 {
@@ -163,6 +165,7 @@ namespace CloudEDU.CourseStore
                     tmpCourse.IsTeach = true;
                     tmpCourse.IsBuy = false;
                     courseData.AddCourse(tmpCourse);
+                    allCourses.Add(tmpCourse);
                 }
 
                 dataCategory = courseData.GetGroupsByAttendingOrTeaching();
@@ -345,6 +348,16 @@ namespace CloudEDU.CourseStore
         {
             TextBlock courseNameBlock = sender as TextBlock;
             System.Diagnostics.Debug.WriteLine("name = " + courseNameBlock.Text);
+
+            foreach(Course c in allCourses){
+                if(c.Title.Equals(courseNameBlock.Text)){
+                    Frame.Navigate(typeof(CourseOverview), c);
+                }
+            }
+
+            //List<GroupInfoList<object>> list = courseData.GetSearchResultGroup(courseNameBlock.Text);
+            //System.Diagnostics.Debug.WriteLine(list);
+            
         }
 
         private void Close_Tapped(object sender, TappedRoutedEventArgs e)

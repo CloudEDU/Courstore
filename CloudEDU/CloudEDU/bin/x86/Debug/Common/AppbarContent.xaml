@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="CloudEDU.Common.AppbarContent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CloudEDU.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="90"
+    d:DesignWidth="1000">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+            <Button x:ConnectionId='2' x:Name="CourstoreButton" Style="{StaticResource HomeAppBarButtonStyle}" AutomationProperties.Name="Courstore"
+                                                  />
+            <Button x:ConnectionId='3' x:Name="MyCoursesButton" Style="{StaticResource ListAppBarButtonStyle}" AutomationProperties.Name="My Courses"
+                                                  />
+            <Button x:ConnectionId='4' x:Name="UploadCourseButton" Style="{StaticResource UploadAppBarButtonStyle}" AutomationProperties.Name="Upload Course"
+                                                     />
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="50, 0, 0, 0" Orientation="Horizontal">
+                <TextBlock Text="Search" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+                <Border CornerRadius="10" Height="50" Width="200" Margin="10, 0, 0, 0">
+                    <TextBox x:ConnectionId='5' x:Name="searchBox" VerticalAlignment="Center" Width="200" Height="40" HorizontalAlignment="Center"                       Background="Azure" />
+                </Border>
+               
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:ConnectionId='1' x:Name="LogoutButton" Style="{StaticResource OtherUserAppBarButtonStyle}" AutomationProperties.Name="Log Out"
+                                                 />
+        </StackPanel>
+    </Grid>    
+</UserControl>
+

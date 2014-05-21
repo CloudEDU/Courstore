@@ -1,0 +1,3459 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CloudEDU</name>
+    </assembly>
+    <members>
+        <member name="T:CloudEDU.App">
+            <summary>
+            Provides application-specific behavior to supplement the default Application class.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.App.#ctor">
+            <summary>
+            Initializes the singleton application object.  This is the first line of authored code
+            executed, and as such is the logical equivalent of main() or WinMain().
+            </summary>
+        </member>
+        <member name="M:CloudEDU.App.OnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <summary>
+            Invoked when the application is launched normally by the end user.  Other entry points
+            will be used when the application is launched to open a specific file, to display
+            search results, and so forth.
+            </summary>
+            <param name="args">Details about the launch request and process.</param>
+        </member>
+        <member name="M:CloudEDU.App.OnSuspending(System.Object,Windows.ApplicationModel.SuspendingEventArgs)">
+            <summary>
+            Invoked when application execution is being suspended.  Application state is saved
+            without knowing whether the application will be terminated or resumed with the contents
+            of memory still intact.
+            </summary>
+            <param name="sender">The source of the suspend request.</param>
+            <param name="e">Details about the suspend request.</param>
+        </member>
+        <member name="T:CloudEDU.VariableSizedStyleSelector">
+            <summary>
+            Global ItemContainerStyleSelector for GridView
+            </summary>
+        </member>
+        <member name="M:CloudEDU.VariableSizedStyleSelector.SelectStyleCore(System.Object,Windows.UI.Xaml.DependencyObject)">
+            <summary>
+            Returns a specific Style based on custom logic.
+            </summary>
+            <param name="item">The content</param>
+            <param name="container">The element to which the style is applied</param>
+            <returns>An application-specific style to apply</returns>
+        </member>
+        <member name="M:CloudEDU.Common.AppbarContent.CourstoreButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            AppBar Button used to navigate to Courstore Page.
+            </summary>
+            <param name="sender">The Courstore button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Common.AppbarContent.MyCoursesButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            AppBar Button used to navigate to MyCourses Page.
+            </summary>
+            <param name="sender">My Courses button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Common.AppbarContent.UploadCourseButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            AppBar Button used to navigate to Uploading Page.
+            </summary>
+            <param name="sender">The Uploading Course button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Common.Constants.UpperInitialChar(System.String)">
+            <summary>
+            Cast the first character of every word in a string from lower to upper.
+            </summary>
+            <param name="v">The string to be transformed.</param>
+            <returns>The string after transformed.</returns>
+        </member>
+        <member name="M:CloudEDU.Common.Constants.CourseAvail2Course(CloudEDU.Service.COURSE_AVAIL)">
+            <summary>
+            Convert a dataservice COURSE_AVAIL view to Course model.
+            </summary>
+            <param name="c">COURSE_AVAIL to be converted.</param>
+            <returns>Course after converted.</returns>
+        </member>
+        <member name="M:CloudEDU.Common.Constants.Save``1(System.String,``0)">
+            <summary>
+            保存数据
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:CloudEDU.Common.Constants.Read``1(System.String)">
+            <summary>
+            读取数据
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="key">键</param>
+            <returns>值</returns>
+        </member>
+        <member name="M:CloudEDU.Common.Constants.Remove(System.String)">
+            <summary>
+            移除数据
+            </summary>
+            <param name="key">键</param>
+            <returns>成功true/失败false</returns>
+        </member>
+        <member name="T:CloudEDU.Common.GridViewItemContainerType">
+            <summary>
+            Used as selector to select container size.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Common.GlobalPage.GoHome(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked as an event handler to navigate backward in the page's associated
+            <see cref="T:Windows.UI.Xaml.Controls.Frame"/> until it reaches the top of the navigation stack.
+            </summary>
+            <param name="sender">Instance that triggered the event.</param>
+            <param name="e">Event data describing the conditions that led to the event.</param>
+        </member>
+        <member name="M:CloudEDU.Common.GlobalPage.GoBack(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked as an event handler to navigate backward in the navigation stack
+            associated with this page's <see cref="T:Windows.UI.Xaml.Controls.Frame"/>.
+            </summary>
+            <param name="sender">Instance that triggered the event.</param>
+            <param name="e">Event data describing the conditions that led to the
+            event.</param>
+        </member>
+        <member name="M:CloudEDU.Common.GlobalPage.GoForward(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked as an event handler to navigate forward in the navigation stack
+            associated with this page's <see cref="T:Windows.UI.Xaml.Controls.Frame"/>.
+            </summary>
+            <param name="sender">Instance that triggered the event.</param>
+            <param name="e">Event data describing the conditions that led to the
+            event.</param>
+        </member>
+        <member name="T:CloudEDU.Common.StarTextConverter">
+            <summary>
+            Convert star text property.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Common.StarWidthConverter">
+            <summary>
+            Convert star widtg property.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Common.StarMarginConverter">
+            <summary>
+            Convert star margin property.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.CourseStore.Category">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Category.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Category.OnCategoryCoursesComplete(System.IAsyncResult)">
+            <summary>
+            DataServiceQuery callback method to refresh the UI.
+            </summary>
+            <param name="result">Async operation result.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Category.ShowMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Category.BackButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and return the last page.
+            </summary>
+            <param name="sender">The back button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Category.Course_ItemClick(System.Object,Windows.UI.Xaml.Controls.ItemClickEventArgs)">
+            <summary>
+            Invoked when a course within a category is clicked.
+            </summary>
+            <param name="sender">The GridView displaying the course clicked.</param>
+            <param name="e">Event data that describes the course clicked.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Category.HeaderButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when a category is clicked.
+            </summary>
+            <param name="sender">The Button used as a category for the selected category.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CategoryForNewest">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CategoryForNewest.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CategoryForNewest.BackButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and return the last page.
+            </summary>
+            <param name="sender">The back button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CategoryForNewest.Course_ItemClick(System.Object,Windows.UI.Xaml.Controls.ItemClickEventArgs)">
+            <summary>
+            Invoked when a course within this category is clicked.
+            </summary>
+            <param name="sender">The GridView displaying the course clicked.</param>
+            <param name="e">Event data that describes the course clicked.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.Course">
+            <summary>
+            Course Model
+            </summary>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CourseDetail.Comment">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseDetail.Comment.#ctor">
+            <summary>
+            Constructor, initialize the components.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseDetail.Comment.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseDetail.Comment.ShowMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseDetail.Comment.AddCommentButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when Add Comment button clicked and add comment.
+            </summary>
+            <param name="sender">The Add Comment button clicked.</param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseDetail.Comment.GenerateACommentBox(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            Create a stackpanel representing a comment.
+            </summary>
+            <param name="title">Comment title.</param>
+            <param name="rate">Comment rate.</param>
+            <param name="content">Comment content.</param>
+            <returns>Comment Stackpanel created.</returns>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CourseDetail.Detail">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseDetail.Detail.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CourseDetail.Overview">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseDetail.Overview.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.Coursing">
+            <summary>
+            可用于自身或导航至 Frame 内部的空白页。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Coursing.#ctor">
+            <summary>
+            Constructor, initialize the components.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Coursing.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Coursing.BackButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and return the last page.
+            </summary>
+            <param name="sender">The back button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Coursing.HomeText_Tapped(System.Object,Windows.UI.Xaml.Input.TappedRoutedEventArgs)">
+            <summary>
+            Invoked when home text is tapped and navigating to the home fame
+            </summary>
+            <param name="sender">The home text tapped.</param>
+            <param name="e">Event data that describes how the tap was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Coursing.LecturesText_Tapped(System.Object,Windows.UI.Xaml.Input.TappedRoutedEventArgs)">
+            <summary>
+            Invoked when lecture text is tapped and navigating to the lecture fame
+            </summary>
+            <param name="sender">The lecture text tapped.</param>
+            <param name="e">Event data that describes how the tap was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Coursing.NotesText_Tapped(System.Object,Windows.UI.Xaml.Input.TappedRoutedEventArgs)">
+            <summary>
+            Invoked when note text is tapped and navigating to the note fame
+            </summary>
+            <param name="sender">The note text tapped.</param>
+            <param name="e">Event data that describes how the tap was initiated.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CoursingDetail.Home">
+            <summary>
+            可用于自身或导航至 Frame 内部的空白页。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CoursingDetail.Home.#ctor">
+            <summary>
+            Constructor, initilize the components.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CoursingDetail.Home.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            在此页将要在 Frame 中显示时进行调用。
+            </summary>
+            <param name="e">描述如何访问此页的事件数据。Parameter
+            属性通常用于配置页。</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CoursingDetail.Home.OnCategoryComplete(System.IAsyncResult)">
+            <summary>
+            DataServiceQuery callback method to refresh the UI.
+            </summary>
+            <param name="result">Async operation result.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CoursingDetail.Lecture">
+            <summary>
+            可用于自身或导航至 Frame 内部的空白页。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CoursingDetail.Lecture.#ctor">
+            <summary>
+            Constructor, initilize the components.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CoursingDetail.Lecture.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            在此页将要在 Frame 中显示时进行调用。
+            </summary>
+            <param name="e">描述如何访问此页的事件数据。Parameter
+            属性通常用于配置页。</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CoursingDetail.Lecture.ShowMessageDialog(System.String)">
+            <summary>
+            Upload information error MessageDialog.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CoursingDetail.Note">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CoursingDetail.Note.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.Courstore">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Courstore.#ctor">
+            <summary>
+            Constructor, initialize the components
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Courstore.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Courstore.OnCourseAvailComplete(System.IAsyncResult)">
+            <summary>
+            DataServiceQuery callback method to refresh the UI.
+            </summary>
+            <param name="result">Async operation result.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Courstore.ShowMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Courstore.CategoryButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when a category is clicked.
+            </summary>
+            <param name="sender">The Button used as a category for the selected category.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.Courstore.Course_ItemClick(System.Object,Windows.UI.Xaml.Controls.ItemClickEventArgs)">
+            <summary>
+            Invoked when a course within a category is clicked.
+            </summary>
+            <param name="sender">The GridView displaying the course clicked.</param>
+            <param name="e">Event data that describes the course clicked.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.MyCourses">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.MyCourses.#ctor">
+            <summary>
+            Constructor, initialized the components.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.MyCourses.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.MyCourses.BackButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and return the last page.
+            </summary>
+            <param name="sender">The back button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.MyCourses.GridView_ItemClick(System.Object,Windows.UI.Xaml.Controls.ItemClickEventArgs)">
+            <summary>
+            Invoked when a course within attending or teaching column is clicked.
+            </summary>
+            <param name="sender">The GridView displaying the course clicked.</param>
+            <param name="e">Event data that describes the course clicked.</param>
+        </member>
+        <member name="T:CloudEDU.CourseStore.SearchResult">
+            <summary>
+            可用于自身或导航至 Frame 内部的空白页。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.SearchResult.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            在此页将要在 Frame 中显示时进行调用。
+            </summary>
+            <param name="e">描述如何访问此页的事件数据。Parameter
+            属性通常用于配置页。</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.SearchResult.Course_ItemClick(System.Object,Windows.UI.Xaml.Controls.ItemClickEventArgs)">
+            <summary>
+            Invoked when a course within this category is clicked.
+            </summary>
+            <param name="sender">The GridView displaying the course clicked.</param>
+            <param name="e">Event data that describes the course clicked.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.SearchResult.ShowMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <!-- 对于成员“T:CloudEDU.CourseStore.StoreData”忽略有格式错误的 XML 注释 -->
+        <member name="M:CloudEDU.CourseStore.StoreData.AddCourse(CloudEDU.CourseStore.Course)">
+            <summary>
+            Add course to the list used to display.
+            </summary>
+            <param Title="course">The course to be added.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.StoreData.AddCourses(System.Collections.Generic.List{CloudEDU.CourseStore.Course})">
+            <summary>
+            Add a group of courses to the list used to display.
+            </summary>
+            <param Title="courses">The course list to be added.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.StoreData.GetSingleGroupByCategoryTitle(System.String)">
+            <summary>
+            Get the single group classified by the category Title.
+            </summary>
+            <param Title="categoryTitle">The category Title need to be group.</param>
+            <returns>A list only contain a single GroupInfoList, which contain the 
+            elements that had been grouped.</returns>
+        </member>
+        <member name="M:CloudEDU.CourseStore.StoreData.GetGroupsByCategory">
+            <summary>
+            Get the list that has been grouped by the category.
+            </summary>
+            <returns>A list of GroupInfoList, each GroupInfoList contains the data 
+            classified according to the category.</returns>
+        </member>
+        <member name="M:CloudEDU.CourseStore.StoreData.GetGroupsByAttendingOrTeaching">
+            <summary>
+            Get the list that has been grouped by whether user has bought or teached.
+            </summary>
+            <returns>A list contains two GroupInfoList, one is attending list, another 
+            is teaching list.</returns>
+        </member>
+        <member name="T:CloudEDU.CourseStore.CourseOverview">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.#ctor">
+            <summary>
+            Constructor, initialize the components
+            </summary>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.BackButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and return the last page.
+            </summary>
+            <param name="sender">The back button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.OverviewButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when overview button is clicked and navigating to the overview part.
+            </summary>
+            <param name="sender">The overview button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.DetailsButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when detail button is clicked and navigating to the detail part.
+            </summary>
+            <param name="sender">The detail button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.CommentsButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when comment button is clicked and navigating to the comment part.
+            </summary>
+            <param name="sender">The comment button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.SetStarsStackPanel(System.Double)">
+            <summary>
+            Set the rate star according the rate.
+            </summary>
+            <param name="rate">The rate of course.</param>
+        </member>
+        <member name="M:CloudEDU.CourseStore.CourseOverview.ShowMessageDialog(System.String)">
+            <summary>
+            Upload information error MessageDialog.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Login.Login">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Login.Login.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.Login.Login.SignUpButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and navigate to sign up page.
+            </summary>
+            <param name="sender">The sign up button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Login.Login.ShowMessageDialog">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Login.LoginDefault">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+            
+        </member>
+        <member name="M:CloudEDU.Login.LoginDefault.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.Login.LoginDefault.ShowMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Login.LoginSel">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+            
+        </member>
+        <member name="M:CloudEDU.Login.LoginSel.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="T:CloudEDU.Login.PasswordBoxBehavior">
+            <summary>
+            Simple behavior for the PasswordBox to provide a watermark text element
+            </summary>
+        </member>
+        <member name="F:CloudEDU.Login.PasswordBoxBehavior.WatermarkProperty">
+            <summary>
+            Backing storage key for the text property.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.GetWatermark(Windows.UI.Xaml.Controls.PasswordBox)">
+            <summary>
+            Gets the watermark text
+            </summary>
+            <param name="pbox">The target PasswordBox.</param>
+            <returns>The watermark text.</returns>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.SetWatermark(Windows.UI.Xaml.Controls.PasswordBox,System.String)">
+            <summary>
+            Sets the watermark text.
+            </summary>
+            <param name="pbox">The target PasswordBox.</param>
+            <param name="text">The watermark text to be set.</param>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.OnWatermarkChanged(Windows.UI.Xaml.DependencyObject,Windows.UI.Xaml.DependencyPropertyChangedEventArgs)">
+            <summary>
+            Called when the watermark is changed.
+            </summary>
+            <param name="dpo"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.PboxOnLoaded(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Called when the PasswordBox is loaded. This adds the watermark if one is present.
+            </summary>
+            <param name="sender">The target PasswordBox.</param>
+            <param name="routedEventArgs"></param>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.PboxOnLostFocus(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Called when the PasswordBox loses focus - this adds the watermark if necessary.
+            </summary>
+            <param name="sender">The target PasswordBox.</param>
+            <param name="routedEventArgs"></param>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.PboxOnGotFocus(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Called when the PasswordBox gets focus - this removes any watermark.
+            </summary>
+            <param name="sender">The target PasswordBox.</param>
+            <param name="routedEventArgs"></param>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.PboxOnPasswordChanged(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            This is called when the password is changed in the PasswordBox and removes the watermark.
+            </summary>
+            <param name="sender">The target PasswordBox.</param>
+            <param name="routedEventArgs"></param>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.AddWatermarkElement(Windows.UI.Xaml.Controls.PasswordBox,System.String)">
+            <summary>
+            Simple method to add a new TextBlock into the visual tree of the PasswordBox which will present the watermark.
+            </summary>
+            <param name="pbox">The target PasswordBox.</param>
+            <param name="text">The watermark text.</param>
+        </member>
+        <member name="M:CloudEDU.Login.PasswordBoxBehavior.RemoveWatermarkElement(Windows.UI.Xaml.Controls.PasswordBox)">
+            <summary>
+            Simple method to remove the TextBlock from the PasswordBox visual tree.
+            </summary>
+            <param name="pbox">The target PasswordBox.</param>
+        </member>
+        <member name="T:CloudEDU.Login.Profile">
+            <summary>
+            可用于自身或导航至 Frame 内部的空白页。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Login.Profile.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            在此页将要在 Frame 中显示时进行调用。
+            </summary>
+            <param name="e">描述如何访问此页的事件数据。Parameter
+            属性通常用于配置页。</param>
+        </member>
+        <member name="M:CloudEDU.Login.Profile.BackButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and return the last page.
+            </summary>
+            <param name="sender">The back button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Login.Profile.ShowMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Login.SignUp">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Login.SignUp.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.Login.SignUp.ShowMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Login.User">
+            <summary>
+            User model
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.CloudEDUEntities">
+            <summary>
+            架构中不存在 CloudEDUEntities 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.#ctor(System.Uri)">
+            <summary>
+            初始化新的 CloudEDUEntities 对象。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.ResolveTypeFromName(System.String)">
+            <summary>
+            因为在 Visual Studio 中为此服务引用配置的
+            命名空间与在服务器架构中指示的命名空间不同，所以
+            使用类型映射器在这两者之间进行映射。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.ResolveNameFromType(System.Type)">
+            <summary>
+            因为在 Visual Studio 中为此服务引用配置的
+            命名空间与在服务器架构中指示的命名空间不同，所以
+            使用类型映射器在这两者之间进行映射。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCATEGORY(CloudEDU.Service.CATEGORY)">
+            <summary>
+            架构中不存在 CATEGORY 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOMMENT(CloudEDU.Service.COMMENT)">
+            <summary>
+            架构中不存在 COMMENT 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOURSE(CloudEDU.Service.COURSE)">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToDOCUMENT(CloudEDU.Service.DOCUMENT)">
+            <summary>
+            架构中不存在 DOCUMENT 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToLESSON(CloudEDU.Service.LESSON)">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToPARENT_GUIDE(CloudEDU.Service.PARENT_GUIDE)">
+            <summary>
+            架构中不存在 PARENT_GUIDE 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToRECOMMENDATION(CloudEDU.Service.RECOMMENDATION)">
+            <summary>
+            架构中不存在 RECOMMENDATION 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToRES_TYPE(CloudEDU.Service.RES_TYPE)">
+            <summary>
+            架构中不存在 RES_TYPE 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToRESOURCE(CloudEDU.Service.RESOURCE)">
+            <summary>
+            架构中不存在 RESOURCE 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToATTEND(CloudEDU.Service.ATTEND)">
+            <summary>
+            架构中不存在 ATTEND 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCUSTOMER(CloudEDU.Service.CUSTOMER)">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToNOTE(CloudEDU.Service.NOTE)">
+            <summary>
+            架构中不存在 NOTE 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToOPR_LOG(CloudEDU.Service.OPR_LOG)">
+            <summary>
+            架构中不存在 OPR_LOG 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToMANAGER(CloudEDU.Service.MANAGER)">
+            <summary>
+            架构中不存在 MANAGER 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToPERMISSION(CloudEDU.Service.PERMISSION)">
+            <summary>
+            架构中不存在 PERMISSION 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToTYPE(CloudEDU.Service.TYPE)">
+            <summary>
+            架构中不存在 TYPE 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToSALEORDER(CloudEDU.Service.SALEORDER)">
+            <summary>
+            架构中不存在 SALEORDER 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOMMENT_DET(CloudEDU.Service.COMMENT_DET)">
+            <summary>
+            架构中不存在 COMMENT_DET 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOURSE_AVAIL(CloudEDU.Service.COURSE_AVAIL)">
+            <summary>
+            架构中不存在 COURSE_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOURSE_OK(CloudEDU.Service.COURSE_OK)">
+            <summary>
+            架构中不存在 COURSE_OK 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOURSE_PENDING(CloudEDU.Service.COURSE_PENDING)">
+            <summary>
+            架构中不存在 COURSE_PENDING 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOURSE_RECO_AVAIL(CloudEDU.Service.COURSE_RECO_AVAIL)">
+            <summary>
+            架构中不存在 COURSE_RECO_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToNOTE_AVAIL(CloudEDU.Service.NOTE_AVAIL)">
+            <summary>
+            架构中不存在 NOTE_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToNOTE_SHARABLE(CloudEDU.Service.NOTE_SHARABLE)">
+            <summary>
+            架构中不存在 NOTE_SHARABLE 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToNOTE_SHAREABLE_AVAIL(CloudEDU.Service.NOTE_SHAREABLE_AVAIL)">
+            <summary>
+            架构中不存在 NOTE_SHAREABLE_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Service.CloudEDUEntities.AddToCOURSE_CANCEL(CloudEDU.Service.COURSE_CANCEL)">
+            <summary>
+            架构中不存在 COURSE_CANCEL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.CATEGORY">
+            <summary>
+            架构中不存在 CATEGORY 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COMMENT">
+            <summary>
+            架构中不存在 COMMENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.DOCUMENT">
+            <summary>
+            架构中不存在 DOCUMENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.LESSON">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.PARENT_GUIDE">
+            <summary>
+            架构中不存在 PARENT_GUIDE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.RECOMMENDATION">
+            <summary>
+            架构中不存在 RECOMMENDATION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.RES_TYPE">
+            <summary>
+            架构中不存在 RES_TYPE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.RESOURCE">
+            <summary>
+            架构中不存在 RESOURCE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.ATTEND">
+            <summary>
+            架构中不存在 ATTEND 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.CUSTOMER">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.NOTE">
+            <summary>
+            架构中不存在 NOTE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.OPR_LOG">
+            <summary>
+            架构中不存在 OPR_LOG 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.MANAGER">
+            <summary>
+            架构中不存在 MANAGER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.PERMISSION">
+            <summary>
+            架构中不存在 PERMISSION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.TYPE">
+            <summary>
+            架构中不存在 TYPE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.SALEORDER">
+            <summary>
+            架构中不存在 SALEORDER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COMMENT_DET">
+            <summary>
+            架构中不存在 COMMENT_DET 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COURSE_AVAIL">
+            <summary>
+            架构中不存在 COURSE_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COURSE_OK">
+            <summary>
+            架构中不存在 COURSE_OK 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COURSE_PENDING">
+            <summary>
+            架构中不存在 COURSE_PENDING 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COURSE_RECO_AVAIL">
+            <summary>
+            架构中不存在 COURSE_RECO_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.NOTE_AVAIL">
+            <summary>
+            架构中不存在 NOTE_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.NOTE_SHARABLE">
+            <summary>
+            架构中不存在 NOTE_SHARABLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.NOTE_SHAREABLE_AVAIL">
+            <summary>
+            架构中不存在 NOTE_SHAREABLE_AVAIL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CloudEDUEntities.COURSE_CANCEL">
+            <summary>
+            架构中不存在 COURSE_CANCEL 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.CATEGORY">
+            <summary>
+            架构中不存在 CloudEDUModel.CATEGORY 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.CATEGORY.CreateCATEGORY(System.Int32)">
+            <summary>
+            创建新的 CATEGORY 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.CATEGORY.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CATEGORY.CATE_NAME">
+            <summary>
+            架构中不存在属性 CATE_NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CATEGORY.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COMMENT">
+            <summary>
+            架构中不存在 CloudEDUModel.COMMENT 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COMMENT.CreateCOMMENT(System.Int32,System.Int32,System.Int32,System.String,System.DateTime)">
+            <summary>
+            创建新的 COMMENT 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="cUSTOMER_ID">CUSTOMER_ID 的初始值。</param>
+            <param name="cOURSE_ID">COURSE_ID 的初始值。</param>
+            <param name="cONTENT">CONTENT 的初始值。</param>
+            <param name="tIME">TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.CUSTOMER_ID">
+            <summary>
+            架构中不存在属性 CUSTOMER_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.COURSE_ID">
+            <summary>
+            架构中不存在属性 COURSE_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.TIME">
+            <summary>
+            架构中不存在属性 TIME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.CUSTOMER">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COURSE">
+            <summary>
+            架构中不存在 CloudEDUModel.COURSE 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COURSE.CreateCOURSE(System.Int32,System.Decimal,System.String,System.Int32,System.String,System.DateTime)">
+            <summary>
+            创建新的 COURSE 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="pRICE">PRICE 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+            <param name="tEACHER">TEACHER 的初始值。</param>
+            <param name="cOURSE_STATUS">COURSE_STATUS 的初始值。</param>
+            <param name="sTART_TIME">START_TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.PRICE">
+            <summary>
+            架构中不存在属性 PRICE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.INTRO">
+            <summary>
+            架构中不存在属性 INTRO 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.TEACHER">
+            <summary>
+            架构中不存在属性 TEACHER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.CATEGORY">
+            <summary>
+            架构中不存在属性 CATEGORY 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.COURSE_STATUS">
+            <summary>
+            架构中不存在属性 COURSE_STATUS 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.PG">
+            <summary>
+            架构中不存在属性 PG 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.ICON_URL">
+            <summary>
+            架构中不存在属性 ICON_URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.START_TIME">
+            <summary>
+            架构中不存在属性 START_TIME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.CATEGORY1">
+            <summary>
+            架构中不存在 CATEGORY1 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.COMMENT">
+            <summary>
+            架构中不存在 COMMENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.SALEORDER">
+            <summary>
+            架构中不存在 SALEORDER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.ATTEND">
+            <summary>
+            架构中不存在 ATTEND 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.PARENT_GUIDE">
+            <summary>
+            架构中不存在 PARENT_GUIDE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.CUSTOMER">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.LESSON">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.RECOMMENDATION">
+            <summary>
+            架构中不存在 RECOMMENDATION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE.CUSTOMER1">
+            <summary>
+            架构中不存在 CUSTOMER1 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.DOCUMENT">
+            <summary>
+            架构中不存在 CloudEDUModel.DOCUMENT 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.DOCUMENT.CreateDOCUMENT(System.Int32,System.Int32,System.String)">
+            <summary>
+            创建新的 DOCUMENT 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="lESSON_ID">LESSON_ID 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.DOCUMENT.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.DOCUMENT.LESSON_ID">
+            <summary>
+            架构中不存在属性 LESSON_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.DOCUMENT.AUTHOR">
+            <summary>
+            架构中不存在属性 AUTHOR 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.DOCUMENT.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.DOCUMENT.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.DOCUMENT.LESSON">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.LESSON">
+            <summary>
+            架构中不存在 CloudEDUModel.LESSON 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.LESSON.CreateLESSON(System.Int32,System.Int32,System.String,System.Int32)">
+            <summary>
+            创建新的 LESSON 对象。
+            </summary>
+            <param name="cOURSE_ID">COURSE_ID 的初始值。</param>
+            <param name="ID">ID 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+            <param name="nUMBER">NUMBER 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.COURSE_ID">
+            <summary>
+            架构中不存在属性 COURSE_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.NUMBER">
+            <summary>
+            架构中不存在属性 NUMBER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.DOCUMENT">
+            <summary>
+            架构中不存在 DOCUMENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.NOTE">
+            <summary>
+            架构中不存在 NOTE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.ATTEND">
+            <summary>
+            架构中不存在 ATTEND 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.RESOURCE">
+            <summary>
+            架构中不存在 RESOURCE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.LESSON.CUSTOMER">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.PARENT_GUIDE">
+            <summary>
+            架构中不存在 CloudEDUModel.PARENT_GUIDE 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.PARENT_GUIDE.CreatePARENT_GUIDE(System.Int32,System.Int32)">
+            <summary>
+            创建新的 PARENT_GUIDE 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="rESTRICT_AGE">RESTRICT_AGE 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.PARENT_GUIDE.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.PARENT_GUIDE.RESTRICT_AGE">
+            <summary>
+            架构中不存在属性 RESTRICT_AGE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.PARENT_GUIDE.DESCRIPTION">
+            <summary>
+            架构中不存在属性 DESCRIPTION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.PARENT_GUIDE.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.RECOMMENDATION">
+            <summary>
+            架构中不存在 CloudEDUModel.RECOMMENDATION 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.RECOMMENDATION.CreateRECOMMENDATION(System.Int32,System.String)">
+            <summary>
+            创建新的 RECOMMENDATION 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.RECOMMENDATION.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RECOMMENDATION.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RECOMMENDATION.DESCRIPTION">
+            <summary>
+            架构中不存在属性 DESCRIPTION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RECOMMENDATION.ICON_URL">
+            <summary>
+            架构中不存在属性 ICON_URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RECOMMENDATION.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.RES_TYPE">
+            <summary>
+            架构中不存在 CloudEDUModel.RES_TYPE 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.RES_TYPE.CreateRES_TYPE(System.Int32,System.String)">
+            <summary>
+            创建新的 RES_TYPE 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="dESCRIPTION">DESCRIPTION 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.RES_TYPE.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RES_TYPE.DESCRIPTION">
+            <summary>
+            架构中不存在属性 DESCRIPTION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RES_TYPE.RESOURCE">
+            <summary>
+            架构中不存在 RESOURCE 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.RESOURCE">
+            <summary>
+            架构中不存在 CloudEDUModel.RESOURCE 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.RESOURCE.CreateRESOURCE(System.Int32,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            创建新的 RESOURCE 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="lESSON_ID">LESSON_ID 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+            <param name="tYPE">TYPE 的初始值。</param>
+            <param name="uRL">URL 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.LESSON_ID">
+            <summary>
+            架构中不存在属性 LESSON_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.INTRO">
+            <summary>
+            架构中不存在属性 INTRO 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.TYPE">
+            <summary>
+            架构中不存在属性 TYPE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.URL">
+            <summary>
+            架构中不存在属性 URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.LESSON">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.RESOURCE.RES_TYPE">
+            <summary>
+            架构中不存在 RES_TYPE 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.ATTEND">
+            <summary>
+            架构中不存在 CloudEDUModel.ATTEND 的注释。
+            </summary>
+            <KeyProperties>
+            CUSTOMER_ID
+            COURSE_ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.ATTEND.CreateATTEND(System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            创建新的 ATTEND 对象。
+            </summary>
+            <param name="cUSTOMER_ID">CUSTOMER_ID 的初始值。</param>
+            <param name="cOURSE_ID">COURSE_ID 的初始值。</param>
+            <param name="sTART_TIME">START_TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.ATTEND.CUSTOMER_ID">
+            <summary>
+            架构中不存在属性 CUSTOMER_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.ATTEND.COURSE_ID">
+            <summary>
+            架构中不存在属性 COURSE_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.ATTEND.START_TIME">
+            <summary>
+            架构中不存在属性 START_TIME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.ATTEND.CURRENT_LESSON">
+            <summary>
+            架构中不存在属性 CURRENT_LESSON 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.ATTEND.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.ATTEND.LESSON">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.ATTEND.CUSTOMER">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.CUSTOMER">
+            <summary>
+            架构中不存在 CloudEDUModel.CUSTOMER 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.CUSTOMER.CreateCUSTOMER(System.Int32,System.String,System.String,System.Decimal,System.Double,System.Double,System.DateTime,System.Boolean)">
+            <summary>
+            创建新的 CUSTOMER 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="nAME">NAME 的初始值。</param>
+            <param name="pASSWORD">PASSWORD 的初始值。</param>
+            <param name="bALANCE">BALANCE 的初始值。</param>
+            <param name="lEARN_RATE">LEARN_RATE 的初始值。</param>
+            <param name="tEACH_RATE">TEACH_RATE 的初始值。</param>
+            <param name="bIRTHDAY">BIRTHDAY 的初始值。</param>
+            <param name="aLLOW">ALLOW 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.NAME">
+            <summary>
+            架构中不存在属性 NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.PASSWORD">
+            <summary>
+            架构中不存在属性 PASSWORD 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.BALANCE">
+            <summary>
+            架构中不存在属性 BALANCE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.EMAIL">
+            <summary>
+            架构中不存在属性 EMAIL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.DEGREE">
+            <summary>
+            架构中不存在属性 DEGREE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.LEARN_RATE">
+            <summary>
+            架构中不存在属性 LEARN_RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.TEACH_RATE">
+            <summary>
+            架构中不存在属性 TEACH_RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.BIRTHDAY">
+            <summary>
+            架构中不存在属性 BIRTHDAY 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.ALLOW">
+            <summary>
+            架构中不存在属性 ALLOW 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.COMMENT">
+            <summary>
+            架构中不存在 COMMENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.COURSE">
+            <summary>
+            架构中不存在 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.ATTEND">
+            <summary>
+            架构中不存在 ATTEND 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.NOTE">
+            <summary>
+            架构中不存在 NOTE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.SALEORDER">
+            <summary>
+            架构中不存在 SALEORDER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.SALEORDER1">
+            <summary>
+            架构中不存在 SALEORDER1 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.COURSE1">
+            <summary>
+            架构中不存在 COURSE1 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.CUSTOMER.LESSON">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.NOTE">
+            <summary>
+            架构中不存在 CloudEDUModel.NOTE 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.NOTE.CreateNOTE(System.String,System.Int32,System.Int32,System.DateTime,System.Boolean)">
+            <summary>
+            创建新的 NOTE 对象。
+            </summary>
+            <param name="cONTENT">CONTENT 的初始值。</param>
+            <param name="lESSON_ID">LESSON_ID 的初始值。</param>
+            <param name="ID">ID 的初始值。</param>
+            <param name="dATE">DATE 的初始值。</param>
+            <param name="sHARE">SHARE 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.LESSON_ID">
+            <summary>
+            架构中不存在属性 LESSON_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.DATE">
+            <summary>
+            架构中不存在属性 DATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.CUSTOMER_ID">
+            <summary>
+            架构中不存在属性 CUSTOMER_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.SHARE">
+            <summary>
+            架构中不存在属性 SHARE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.LESSON">
+            <summary>
+            架构中不存在 LESSON 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE.CUSTOMER">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.OPR_LOG">
+            <summary>
+            架构中不存在 CloudEDUModel.OPR_LOG 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.OPR_LOG.CreateOPR_LOG(System.Int32,System.String,System.DateTime)">
+            <summary>
+            创建新的 OPR_LOG 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="oPR">OPR 的初始值。</param>
+            <param name="oPR_TIME">OPR_TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.OPR_LOG.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.OPR_LOG.OPR">
+            <summary>
+            架构中不存在属性 OPR 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.OPR_LOG.OPR_TIME">
+            <summary>
+            架构中不存在属性 OPR_TIME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.OPR_LOG.MSG">
+            <summary>
+            架构中不存在属性 MSG 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.MANAGER">
+            <summary>
+            架构中不存在 CloudEDUModel.MANAGER 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.MANAGER.CreateMANAGER(System.Int32,System.String,System.String)">
+            <summary>
+            创建新的 MANAGER 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="nAME">NAME 的初始值。</param>
+            <param name="pASSWORD">PASSWORD 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.MANAGER.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.MANAGER.NAME">
+            <summary>
+            架构中不存在属性 NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.MANAGER.PASSWORD">
+            <summary>
+            架构中不存在属性 PASSWORD 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.MANAGER.MNGR_TYPE">
+            <summary>
+            架构中不存在属性 MNGR_TYPE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.MANAGER.TYPE">
+            <summary>
+            架构中不存在 TYPE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.MANAGER.PERMISSION">
+            <summary>
+            架构中不存在 PERMISSION 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.PERMISSION">
+            <summary>
+            架构中不存在 CloudEDUModel.PERMISSION 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.PERMISSION.CreatePERMISSION(System.Int32,System.String,System.String)">
+            <summary>
+            创建新的 PERMISSION 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="nAME">NAME 的初始值。</param>
+            <param name="tYPE">TYPE 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.PERMISSION.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.PERMISSION.NAME">
+            <summary>
+            架构中不存在属性 NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.PERMISSION.TYPE">
+            <summary>
+            架构中不存在属性 TYPE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.PERMISSION.MANAGER">
+            <summary>
+            架构中不存在 MANAGER 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.TYPE">
+            <summary>
+            架构中不存在 CloudEDUModel.TYPE 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.TYPE.CreateTYPE(System.Int32,System.String)">
+            <summary>
+            创建新的 TYPE 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="dESCRIPTION">DESCRIPTION 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.TYPE.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.TYPE.DESCRIPTION">
+            <summary>
+            架构中不存在属性 DESCRIPTION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.TYPE.MANAGER">
+            <summary>
+            架构中不存在 MANAGER 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.SALEORDER">
+            <summary>
+            架构中不存在 CloudEDUModel.SALEORDER 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.SALEORDER.CreateSALEORDER(System.Int32,System.Int32,System.Decimal,System.Int32,System.Int32,System.DateTime)">
+            <summary>
+            创建新的 SALEORDER 对象。
+            </summary>
+            <param name="bUYER">BUYER 的初始值。</param>
+            <param name="sALER">SALER 的初始值。</param>
+            <param name="pRICE">PRICE 的初始值。</param>
+            <param name="cOURSE">COURSE 的初始值。</param>
+            <param name="ID">ID 的初始值。</param>
+            <param name="tIME">TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.BUYER">
+            <summary>
+            架构中不存在属性 BUYER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.SALER">
+            <summary>
+            架构中不存在属性 SALER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.PRICE">
+            <summary>
+            架构中不存在属性 PRICE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.COURSE">
+            <summary>
+            架构中不存在属性 COURSE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.TIME">
+            <summary>
+            架构中不存在属性 TIME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.COURSE1">
+            <summary>
+            架构中不存在 COURSE1 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.CUSTOMER">
+            <summary>
+            架构中不存在 CUSTOMER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.SALEORDER.CUSTOMER1">
+            <summary>
+            架构中不存在 CUSTOMER1 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COMMENT_DET">
+            <summary>
+            架构中不存在 CloudEDUModel.COMMENT_DET 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            CUSTOMER_ID
+            COURSE_ID
+            CONTENT
+            TIME
+            USERNAME
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COMMENT_DET.CreateCOMMENT_DET(System.Int32,System.Int32,System.Int32,System.String,System.DateTime,System.String)">
+            <summary>
+            创建新的 COMMENT_DET 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="cUSTOMER_ID">CUSTOMER_ID 的初始值。</param>
+            <param name="cOURSE_ID">COURSE_ID 的初始值。</param>
+            <param name="cONTENT">CONTENT 的初始值。</param>
+            <param name="tIME">TIME 的初始值。</param>
+            <param name="uSERNAME">USERNAME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.CUSTOMER_ID">
+            <summary>
+            架构中不存在属性 CUSTOMER_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.COURSE_ID">
+            <summary>
+            架构中不存在属性 COURSE_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.TIME">
+            <summary>
+            架构中不存在属性 TIME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COMMENT_DET.USERNAME">
+            <summary>
+            架构中不存在属性 USERNAME 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COURSE_AVAIL">
+            <summary>
+            架构中不存在 CloudEDUModel.COURSE_AVAIL 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            PRICE
+            TITLE
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COURSE_AVAIL.CreateCOURSE_AVAIL(System.Int32,System.Decimal,System.String)">
+            <summary>
+            创建新的 COURSE_AVAIL 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="pRICE">PRICE 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.PRICE">
+            <summary>
+            架构中不存在属性 PRICE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.INTRO">
+            <summary>
+            架构中不存在属性 INTRO 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.TEACHER_NAME">
+            <summary>
+            架构中不存在属性 TEACHER_NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.CATE_NAME">
+            <summary>
+            架构中不存在属性 CATE_NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.RESTRICT_AGE">
+            <summary>
+            架构中不存在属性 RESTRICT_AGE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.PG_DESCRIPTION">
+            <summary>
+            架构中不存在属性 PG_DESCRIPTION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.ICON_URL">
+            <summary>
+            架构中不存在属性 ICON_URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.RATED_USERS">
+            <summary>
+            架构中不存在属性 RATED_USERS 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_AVAIL.LESSON_NUM">
+            <summary>
+            架构中不存在属性 LESSON_NUM 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COURSE_OK">
+            <summary>
+            架构中不存在 CloudEDUModel.COURSE_OK 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            PRICE
+            TITLE
+            TEACHER
+            COURSE_STATUS
+            START_TIME
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COURSE_OK.CreateCOURSE_OK(System.Int32,System.Decimal,System.String,System.Int32,System.String,System.DateTime)">
+            <summary>
+            创建新的 COURSE_OK 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="pRICE">PRICE 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+            <param name="tEACHER">TEACHER 的初始值。</param>
+            <param name="cOURSE_STATUS">COURSE_STATUS 的初始值。</param>
+            <param name="sTART_TIME">START_TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.PRICE">
+            <summary>
+            架构中不存在属性 PRICE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.INTRO">
+            <summary>
+            架构中不存在属性 INTRO 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.TEACHER">
+            <summary>
+            架构中不存在属性 TEACHER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.CATEGORY">
+            <summary>
+            架构中不存在属性 CATEGORY 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.COURSE_STATUS">
+            <summary>
+            架构中不存在属性 COURSE_STATUS 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.PG">
+            <summary>
+            架构中不存在属性 PG 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.ICON_URL">
+            <summary>
+            架构中不存在属性 ICON_URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_OK.START_TIME">
+            <summary>
+            架构中不存在属性 START_TIME 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COURSE_PENDING">
+            <summary>
+            架构中不存在 CloudEDUModel.COURSE_PENDING 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            PRICE
+            TITLE
+            TEACHER
+            COURSE_STATUS
+            START_TIME
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COURSE_PENDING.CreateCOURSE_PENDING(System.Int32,System.Decimal,System.String,System.Int32,System.String,System.DateTime)">
+            <summary>
+            创建新的 COURSE_PENDING 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="pRICE">PRICE 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+            <param name="tEACHER">TEACHER 的初始值。</param>
+            <param name="cOURSE_STATUS">COURSE_STATUS 的初始值。</param>
+            <param name="sTART_TIME">START_TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.PRICE">
+            <summary>
+            架构中不存在属性 PRICE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.INTRO">
+            <summary>
+            架构中不存在属性 INTRO 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.TEACHER">
+            <summary>
+            架构中不存在属性 TEACHER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.CATEGORY">
+            <summary>
+            架构中不存在属性 CATEGORY 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.COURSE_STATUS">
+            <summary>
+            架构中不存在属性 COURSE_STATUS 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.PG">
+            <summary>
+            架构中不存在属性 PG 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.ICON_URL">
+            <summary>
+            架构中不存在属性 ICON_URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_PENDING.START_TIME">
+            <summary>
+            架构中不存在属性 START_TIME 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COURSE_RECO_AVAIL">
+            <summary>
+            架构中不存在 CloudEDUModel.COURSE_RECO_AVAIL 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            PRICE
+            TITLE
+            RECO_TITLE
+            RECO_ID
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COURSE_RECO_AVAIL.CreateCOURSE_RECO_AVAIL(System.Int32,System.Decimal,System.String,System.String,System.Int32)">
+            <summary>
+            创建新的 COURSE_RECO_AVAIL 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="pRICE">PRICE 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+            <param name="rECO_TITLE">RECO_TITLE 的初始值。</param>
+            <param name="rECO_ID">RECO_ID 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.PRICE">
+            <summary>
+            架构中不存在属性 PRICE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.INTRO">
+            <summary>
+            架构中不存在属性 INTRO 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.TEACHER_NAME">
+            <summary>
+            架构中不存在属性 TEACHER_NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.CATE_NAME">
+            <summary>
+            架构中不存在属性 CATE_NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.RESTRICT_AGE">
+            <summary>
+            架构中不存在属性 RESTRICT_AGE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.PG_DESCRIPTION">
+            <summary>
+            架构中不存在属性 PG_DESCRIPTION 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.ICON_URL">
+            <summary>
+            架构中不存在属性 ICON_URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.RATED_USERS">
+            <summary>
+            架构中不存在属性 RATED_USERS 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.LESSON_NUM">
+            <summary>
+            架构中不存在属性 LESSON_NUM 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.RECO_TITLE">
+            <summary>
+            架构中不存在属性 RECO_TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.RECO_ID">
+            <summary>
+            架构中不存在属性 RECO_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_RECO_AVAIL.Expr1">
+            <summary>
+            架构中不存在属性 Expr1 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.NOTE_AVAIL">
+            <summary>
+            架构中不存在 CloudEDUModel.NOTE_AVAIL 的注释。
+            </summary>
+            <KeyProperties>
+            CONTENT
+            LESSON_ID
+            ID
+            DATE
+            SHARE
+            COURSE_TITLE
+            CUSTOMER_NAME
+            COURSE_ID
+            LESSON_NUMBER
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.NOTE_AVAIL.CreateNOTE_AVAIL(System.String,System.Int32,System.Int32,System.DateTime,System.Boolean,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            创建新的 NOTE_AVAIL 对象。
+            </summary>
+            <param name="cONTENT">CONTENT 的初始值。</param>
+            <param name="lESSON_ID">LESSON_ID 的初始值。</param>
+            <param name="ID">ID 的初始值。</param>
+            <param name="dATE">DATE 的初始值。</param>
+            <param name="sHARE">SHARE 的初始值。</param>
+            <param name="cOURSE_TITLE">COURSE_TITLE 的初始值。</param>
+            <param name="cUSTOMER_NAME">CUSTOMER_NAME 的初始值。</param>
+            <param name="cOURSE_ID">COURSE_ID 的初始值。</param>
+            <param name="lESSON_NUMBER">LESSON_NUMBER 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.LESSON_ID">
+            <summary>
+            架构中不存在属性 LESSON_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.DATE">
+            <summary>
+            架构中不存在属性 DATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.CUSTOMER_ID">
+            <summary>
+            架构中不存在属性 CUSTOMER_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.SHARE">
+            <summary>
+            架构中不存在属性 SHARE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.COURSE_TITLE">
+            <summary>
+            架构中不存在属性 COURSE_TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.CUSTOMER_NAME">
+            <summary>
+            架构中不存在属性 CUSTOMER_NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.COURSE_ID">
+            <summary>
+            架构中不存在属性 COURSE_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_AVAIL.LESSON_NUMBER">
+            <summary>
+            架构中不存在属性 LESSON_NUMBER 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.NOTE_SHARABLE">
+            <summary>
+            架构中不存在 CloudEDUModel.NOTE_SHARABLE 的注释。
+            </summary>
+            <KeyProperties>
+            CONTENT
+            LESSON_ID
+            ID
+            DATE
+            SHARE
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.NOTE_SHARABLE.CreateNOTE_SHARABLE(System.String,System.Int32,System.Int32,System.DateTime,System.Boolean)">
+            <summary>
+            创建新的 NOTE_SHARABLE 对象。
+            </summary>
+            <param name="cONTENT">CONTENT 的初始值。</param>
+            <param name="lESSON_ID">LESSON_ID 的初始值。</param>
+            <param name="ID">ID 的初始值。</param>
+            <param name="dATE">DATE 的初始值。</param>
+            <param name="sHARE">SHARE 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHARABLE.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHARABLE.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHARABLE.LESSON_ID">
+            <summary>
+            架构中不存在属性 LESSON_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHARABLE.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHARABLE.DATE">
+            <summary>
+            架构中不存在属性 DATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHARABLE.CUSTOMER_ID">
+            <summary>
+            架构中不存在属性 CUSTOMER_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHARABLE.SHARE">
+            <summary>
+            架构中不存在属性 SHARE 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.NOTE_SHAREABLE_AVAIL">
+            <summary>
+            架构中不存在 CloudEDUModel.NOTE_SHAREABLE_AVAIL 的注释。
+            </summary>
+            <KeyProperties>
+            CONTENT
+            LESSON_ID
+            ID
+            DATE
+            SHARE
+            COURSE_TITLE
+            CUSTOMER_NAME
+            COURSE_ID
+            LESSON_NUMBER
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.CreateNOTE_SHAREABLE_AVAIL(System.String,System.Int32,System.Int32,System.DateTime,System.Boolean,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            创建新的 NOTE_SHAREABLE_AVAIL 对象。
+            </summary>
+            <param name="cONTENT">CONTENT 的初始值。</param>
+            <param name="lESSON_ID">LESSON_ID 的初始值。</param>
+            <param name="ID">ID 的初始值。</param>
+            <param name="dATE">DATE 的初始值。</param>
+            <param name="sHARE">SHARE 的初始值。</param>
+            <param name="cOURSE_TITLE">COURSE_TITLE 的初始值。</param>
+            <param name="cUSTOMER_NAME">CUSTOMER_NAME 的初始值。</param>
+            <param name="cOURSE_ID">COURSE_ID 的初始值。</param>
+            <param name="lESSON_NUMBER">LESSON_NUMBER 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.CONTENT">
+            <summary>
+            架构中不存在属性 CONTENT 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.LESSON_ID">
+            <summary>
+            架构中不存在属性 LESSON_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.DATE">
+            <summary>
+            架构中不存在属性 DATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.CUSTOMER_ID">
+            <summary>
+            架构中不存在属性 CUSTOMER_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.SHARE">
+            <summary>
+            架构中不存在属性 SHARE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.COURSE_TITLE">
+            <summary>
+            架构中不存在属性 COURSE_TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.CUSTOMER_NAME">
+            <summary>
+            架构中不存在属性 CUSTOMER_NAME 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.COURSE_ID">
+            <summary>
+            架构中不存在属性 COURSE_ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.NOTE_SHAREABLE_AVAIL.LESSON_NUMBER">
+            <summary>
+            架构中不存在属性 LESSON_NUMBER 的注释。
+            </summary>
+        </member>
+        <member name="T:CloudEDU.Service.COURSE_CANCEL">
+            <summary>
+            架构中不存在 CloudEDUModel.COURSE_CANCEL 的注释。
+            </summary>
+            <KeyProperties>
+            ID
+            PRICE
+            TITLE
+            TEACHER
+            COURSE_STATUS
+            START_TIME
+            </KeyProperties>
+        </member>
+        <member name="M:CloudEDU.Service.COURSE_CANCEL.CreateCOURSE_CANCEL(System.Int32,System.Decimal,System.String,System.Int32,System.String,System.DateTime)">
+            <summary>
+            创建新的 COURSE_CANCEL 对象。
+            </summary>
+            <param name="ID">ID 的初始值。</param>
+            <param name="pRICE">PRICE 的初始值。</param>
+            <param name="tITLE">TITLE 的初始值。</param>
+            <param name="tEACHER">TEACHER 的初始值。</param>
+            <param name="cOURSE_STATUS">COURSE_STATUS 的初始值。</param>
+            <param name="sTART_TIME">START_TIME 的初始值。</param>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.ID">
+            <summary>
+            架构中不存在属性 ID 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.PRICE">
+            <summary>
+            架构中不存在属性 PRICE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.RATE">
+            <summary>
+            架构中不存在属性 RATE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.TITLE">
+            <summary>
+            架构中不存在属性 TITLE 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.INTRO">
+            <summary>
+            架构中不存在属性 INTRO 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.TEACHER">
+            <summary>
+            架构中不存在属性 TEACHER 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.CATEGORY">
+            <summary>
+            架构中不存在属性 CATEGORY 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.COURSE_STATUS">
+            <summary>
+            架构中不存在属性 COURSE_STATUS 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.PG">
+            <summary>
+            架构中不存在属性 PG 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.ICON_URL">
+            <summary>
+            架构中不存在属性 ICON_URL 的注释。
+            </summary>
+        </member>
+        <member name="P:CloudEDU.Service.COURSE_CANCEL.START_TIME">
+            <summary>
+            架构中不存在属性 START_TIME 的注释。
+            </summary>
+        </member>
+        <member name="T:SQLite.SQLiteConnection">
+            <summary>
+            Represents an open connection to a SQLite database.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructs a new SQLiteConnection and opens a SQLite database specified by databasePath.
+            </summary>
+            <param name="databasePath">
+            Specifies the path to the database file.
+            </param>
+            <param name="storeDateTimeAsTicks">
+            Specifies whether to store DateTime properties as ticks (true) or strings (false). You
+            absolutely do want to store them as Ticks in all new projects. The default of false is
+            only here for backwards compatibility. There is a *significant* speed advantage, with no
+            down sides, when setting storeDateTimeAsTicks = true.
+            </param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.#ctor(System.String,SQLite.SQLiteOpenFlags,System.Boolean)">
+            <summary>
+            Constructs a new SQLiteConnection and opens a SQLite database specified by databasePath.
+            </summary>
+            <param name="databasePath">
+            Specifies the path to the database file.
+            </param>
+            <param name="storeDateTimeAsTicks">
+            Specifies whether to store DateTime properties as ticks (true) or strings (false). You
+            absolutely do want to store them as Ticks in all new projects. The default of false is
+            only here for backwards compatibility. There is a *significant* speed advantage, with no
+            down sides, when setting storeDateTimeAsTicks = true.
+            </param>
+        </member>
+        <member name="F:SQLite.SQLiteConnection._preserveDuringLinkMagic">
+            <summary>
+            Used to list some code that we want the MonoTouch linker
+            to see, but that we never want to actually execute.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.GetMapping(System.Type)">
+            <summary>
+            Retrieves the mapping that is automatically generated for the given type.
+            </summary>
+            <param name="type">
+            The type whose mapping to the database is returned.
+            </param>
+            <returns>
+            The mapping represents the schema of the columns of the database and contains 
+            methods to set and get properties of objects.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.GetMapping``1">
+            <summary>
+            Retrieves the mapping that is automatically generated for the given type.
+            </summary>
+            <returns>
+            The mapping represents the schema of the columns of the database and contains 
+            methods to set and get properties of objects.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DropTable``1">
+            <summary>
+            Executes a "drop table" on the database.  This is non-recoverable.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateTable``1">
+            <summary>
+            Executes a "create table if not exists" on the database. It also
+            creates any specified indexes on the columns of the table. It uses
+            a schema automatically generated from the specified type. You can
+            later access this schema by calling GetMapping.
+            </summary>
+            <returns>
+            The number of entries added to the database schema.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateTable(System.Type)">
+            <summary>
+            Executes a "create table if not exists" on the database. It also
+            creates any specified indexes on the columns of the table. It uses
+            a schema automatically generated from the specified type. You can
+            later access this schema by calling GetMapping.
+            </summary>
+            <param name="ty">Type to reflect to a database table.</param>
+            <returns>
+            The number of entries added to the database schema.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.NewCommand">
+            <summary>
+            Creates a new SQLiteCommand. Can be overridden to provide a sub-class.
+            </summary>
+            <seealso cref="M:SQLite.SQLiteCommand.OnInstanceCreated(System.Object)"/>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateCommand(System.String,System.Object[])">
+            <summary>
+            Creates a new SQLiteCommand given the command text with arguments. Place a '?'
+            in the command text for each of the arguments.
+            </summary>
+            <param name="cmdText">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the command text.
+            </param>
+            <returns>
+            A <see cref="T:SQLite.SQLiteCommand"/>
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Execute(System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            Use this method instead of Query when you don't expect rows back. Such cases include
+            INSERTs, UPDATEs, and DELETEs.
+            You can set the Trace or TimeExecution properties of the connection
+            to profile execution.
+            </summary>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            The number of rows modified in the database as a result of this execution.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Query``1(System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the mapping automatically generated for
+            the given type.
+            </summary>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DeferredQuery``1(System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the mapping automatically generated for
+            the given type.
+            </summary>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            The enumerator will call sqlite3_step on each call to MoveNext, so the database
+            connection must remain open for the lifetime of the enumerator.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Query(SQLite.TableMapping,System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the specified mapping. This function is
+            only used by libraries in order to query the database via introspection. It is
+            normally not used.
+            </summary>
+            <param name="map">
+            A <see cref="T:SQLite.TableMapping"/> to use to convert the resulting rows
+            into objects.
+            </param>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DeferredQuery(SQLite.TableMapping,System.String,System.Object[])">
+            <summary>
+            Creates a SQLiteCommand given the command text (SQL) with arguments. Place a '?'
+            in the command text for each of the arguments and then executes that command.
+            It returns each row of the result using the specified mapping. This function is
+            only used by libraries in order to query the database via introspection. It is
+            normally not used.
+            </summary>
+            <param name="map">
+            A <see cref="T:SQLite.TableMapping"/> to use to convert the resulting rows
+            into objects.
+            </param>
+            <param name="query">
+            The fully escaped SQL.
+            </param>
+            <param name="args">
+            Arguments to substitute for the occurences of '?' in the query.
+            </param>
+            <returns>
+            An enumerable with one result for each row returned by the query.
+            The enumerator will call sqlite3_step on each call to MoveNext, so the database
+            connection must remain open for the lifetime of the enumerator.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Table``1">
+            <summary>
+            Returns a queryable interface to the table represented by the given type.
+            </summary>
+            <returns>
+            A queryable object that is able to translate Where, OrderBy, and Take
+            queries into native SQL.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Get``1(System.Object)">
+            <summary>
+            Attempts to retrieve an object with the given primary key from the table
+            associated with the specified type. Use of this method requires that
+            the given type have a designated PrimaryKey (using the PrimaryKeyAttribute).
+            </summary>
+            <param name="pk">
+            The primary key.
+            </param>
+            <returns>
+            The object with the given primary key. Throws a not found exception
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Get``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Attempts to retrieve the first object that matches the predicate from the table
+            associated with the specified type. 
+            </summary>
+            <param name="predicate">
+            A predicate for which object to find.
+            </param>
+            <returns>
+            The object that matches the given predicate. Throws a not found exception
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Find``1(System.Object)">
+            <summary>
+            Attempts to retrieve an object with the given primary key from the table
+            associated with the specified type. Use of this method requires that
+            the given type have a designated PrimaryKey (using the PrimaryKeyAttribute).
+            </summary>
+            <param name="pk">
+            The primary key.
+            </param>
+            <returns>
+            The object with the given primary key or null
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Find(System.Object,SQLite.TableMapping)">
+            <summary>
+            Attempts to retrieve an object with the given primary key from the table
+            associated with the specified type. Use of this method requires that
+            the given type have a designated PrimaryKey (using the PrimaryKeyAttribute).
+            </summary>
+            <param name="pk">
+            The primary key.
+            </param>
+            <param name="map">
+            The TableMapping used to identify the object type.
+            </param>
+            <returns>
+            The object with the given primary key or null
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Find``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Attempts to retrieve the first object that matches the predicate from the table
+            associated with the specified type. 
+            </summary>
+            <param name="predicate">
+            A predicate for which object to find.
+            </param>
+            <returns>
+            The object that matches the given predicate or null
+            if the object is not found.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.BeginTransaction">
+            <summary>
+            Begins a new transaction. Call <see cref="M:SQLite.SQLiteConnection.Commit"/> to end the transaction.
+            </summary>
+            <example cref="T:System.InvalidOperationException">Throws if a transaction has already begun.</example>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.SaveTransactionPoint">
+            <summary>
+            Creates a savepoint in the database at the current point in the transaction timeline.
+            Begins a new transaction if one is not in progress.
+            
+            Call <see cref="M:SQLite.SQLiteConnection.RollbackTo(System.String)"/> to undo transactions since the returned savepoint.
+            Call <see cref="M:SQLite.SQLiteConnection.Release(System.String)"/> to commit transactions after the savepoint returned here.
+            Call <see cref="M:SQLite.SQLiteConnection.Commit"/> to end the transaction, committing all changes.
+            </summary>
+            <returns>A string naming the savepoint.</returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Rollback">
+            <summary>
+            Rolls back the transaction that was begun by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/> or <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/>.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.RollbackTo(System.String)">
+            <summary>
+            Rolls back the savepoint created by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/> or SaveTransactionPoint.
+            </summary>
+            <param name="savepoint">The name of the savepoint to roll back to, as returned by <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/>.  If savepoint is null or empty, this method is equivalent to a call to <see cref="M:SQLite.SQLiteConnection.Rollback"/></param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.RollbackTo(System.String,System.Boolean)">
+            <summary>
+            Rolls back the transaction that was begun by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/>.
+            </summary>
+            <param name="noThrow">true to avoid throwing exceptions, false otherwise</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Release(System.String)">
+            <summary>
+            Releases a savepoint returned from <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/>.  Releasing a savepoint 
+               makes changes since that savepoint permanent if the savepoint began the transaction,
+               or otherwise the changes are permanent pending a call to <see cref="M:SQLite.SQLiteConnection.Commit"/>.
+            
+            The RELEASE command is like a COMMIT for a SAVEPOINT.
+            </summary>
+            <param name="savepoint">The name of the savepoint to release.  The string should be the result of a call to <see cref="M:SQLite.SQLiteConnection.SaveTransactionPoint"/></param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Commit">
+            <summary>
+            Commits the transaction that was begun by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/>.
+            </summary>
+        </member>
+        <!-- 对于成员“M:SQLite.SQLiteConnection.RunInTransaction(System.Action)”忽略有格式错误的 XML 注释 -->
+        <member name="M:SQLite.SQLiteConnection.InsertAll(System.Collections.IEnumerable)">
+            <summary>
+            Inserts all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="!:IEnumerable"/> of the objects to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertAll(System.Collections.IEnumerable,System.String)">
+            <summary>
+            Inserts all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="!:IEnumerable"/> of the objects to insert.
+            </param>
+            <param name="extra">
+            Literal SQL code that gets placed into the command. INSERT {extra} INTO ...
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertAll(System.Collections.IEnumerable,System.Type)">
+            <summary>
+            Inserts all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="!:IEnumerable"/> of the objects to insert.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertOrReplace(System.Object)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            If a UNIQUE constraint violation occurs with
+            some pre-existing object, this function deletes
+            the old object.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <returns>
+            The number of rows modified.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object,System.Type)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.InsertOrReplace(System.Object,System.Type)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            If a UNIQUE constraint violation occurs with
+            some pre-existing object, this function deletes
+            the old object.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows modified.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object,System.String)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="extra">
+            Literal SQL code that gets placed into the command. INSERT {extra} INTO ...
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Insert(System.Object,System.String,System.Type)">
+            <summary>
+            Inserts the given object and retrieves its
+            auto incremented primary key if it has one.
+            </summary>
+            <param name="obj">
+            The object to insert.
+            </param>
+            <param name="extra">
+            Literal SQL code that gets placed into the command. INSERT {extra} INTO ...
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows added to the table.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Update(System.Object)">
+            <summary>
+            Updates all of the columns of a table using the specified object
+            except for its primary key.
+            The object is required to have a primary key.
+            </summary>
+            <param name="obj">
+            The object to update. It must have a primary key designated using the PrimaryKeyAttribute.
+            </param>
+            <returns>
+            The number of rows updated.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Update(System.Object,System.Type)">
+            <summary>
+            Updates all of the columns of a table using the specified object
+            except for its primary key.
+            The object is required to have a primary key.
+            </summary>
+            <param name="obj">
+            The object to update. It must have a primary key designated using the PrimaryKeyAttribute.
+            </param>
+            <param name="objType">
+            The type of object to insert.
+            </param>
+            <returns>
+            The number of rows updated.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.UpdateAll(System.Collections.IEnumerable)">
+            <summary>
+            Updates all specified objects.
+            </summary>
+            <param name="objects">
+            An <see cref="!:IEnumerable"/> of the objects to insert.
+            </param>
+            <returns>
+            The number of rows modified.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Delete(System.Object)">
+            <summary>
+            Deletes the given object from the database using its primary key.
+            </summary>
+            <param name="objectToDelete">
+            The object to delete. It must have a primary key designated using the PrimaryKeyAttribute.
+            </param>
+            <returns>
+            The number of rows deleted.
+            </returns>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.Delete``1(System.Object)">
+            <summary>
+            Deletes the object with the specified primary key.
+            </summary>
+            <param name="primaryKey">
+            The primary key of the object to delete.
+            </param>
+            <returns>
+            The number of objects deleted.
+            </returns>
+            <typeparam name='T'>
+            The type of object.
+            </typeparam>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.DeleteAll``1">
+            <summary>
+            Deletes all the objects from the specified table.
+            WARNING WARNING: Let me repeat. It deletes ALL the objects from the
+            specified table. Do you really want to do that?
+            </summary>
+            <returns>
+            The number of objects deleted.
+            </returns>
+            <typeparam name='T'>
+            The type of objects to delete.
+            </typeparam>
+        </member>
+        <member name="P:SQLite.SQLiteConnection.BusyTimeout">
+            <summary>
+            Sets a busy handler to sleep the specified amount of time when a table is locked.
+            The handler will sleep multiple times until a total time of <see cref="P:SQLite.SQLiteConnection.BusyTimeout"/> has accumulated.
+            </summary>
+        </member>
+        <member name="P:SQLite.SQLiteConnection.TableMappings">
+            <summary>
+            Returns the mappings from types to tables that the connection
+            currently understands.
+            </summary>
+        </member>
+        <member name="P:SQLite.SQLiteConnection.IsInTransaction">
+            <summary>
+            Whether <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/> has been called and the database is waiting for a <see cref="M:SQLite.SQLiteConnection.Commit"/>.
+            </summary>
+        </member>
+        <member name="T:SQLite.SQLiteConnectionString">
+            <summary>
+            Represents a parsed connection string.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteCommand.OnInstanceCreated(System.Object)">
+             <summary>
+             Invoked every time an instance is loaded from the database.
+             </summary>
+             <param name="obj">
+             The newly created object.
+             </param>
+             <remarks>
+             This can be overridden in combination with the <see cref="M:SQLite.SQLiteConnection.NewCommand"/>
+             method to hook into the life-cycle of objects.
+            
+             Type safety is not possible because MonoTouch does not support virtual generic methods.
+             </remarks>
+        </member>
+        <member name="T:SQLite.PreparedSqlLiteInsertCommand">
+            <summary>
+            Since the insert never changed, we only need to prepare once.
+            </summary>
+        </member>
+        <member name="M:SQLite.TableQuery`1.CompileNullBinaryExpression(System.Linq.Expressions.BinaryExpression,SQLite.TableQuery{`0}.CompileResult)">
+            <summary>
+            Compiles a BinaryExpression where one of the parameters is null.
+            </summary>
+            <param name="parameter">The non-null parameter</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnectionPool.Reset">
+            <summary>
+            Closes all connections managed by this pool.
+            </summary>
+        </member>
+        <member name="M:SQLite.SQLiteConnectionPool.ApplicationSuspended">
+            <summary>
+            Call this method when the application is suspended.
+            </summary>
+            <remarks>Behaviour here is to close any open connections.</remarks>
+        </member>
+        <member name="P:SQLite.SQLiteConnectionPool.Shared">
+            <summary>
+            Gets the singleton instance of the connection tool.
+            </summary>
+        </member>
+        <member name="T:CloudEDU.StandardStylePreview">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.StandardStylePreview.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="T:CloudEDU.Uploading">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Uploading.#ctor">
+            <summary>
+            Constructor, initialize the components.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Uploading.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Invoked when this page is about to be displayed in a Frame.
+            </summary>
+            <param name="e">Event data that describes how this page was reached.  The Parameter
+            property is typically used to configure the page.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.OnCategoryComplete(System.IAsyncResult)">
+            <summary>
+            DataServiceQuery callback method to refresh the UI.
+            </summary>
+            <param name="result">Async operation result.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.BackButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when back button is clicked and return the last page.
+            </summary>
+            <param name="sender">The back button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.AddLessonButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when add button is clicked and prepare to add new lesson.
+            </summary>
+            <param name="sender">The add button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.UploadLessionButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when upload button in popup is clicked and add new lesson.
+            </summary>
+            <param name="sender">The upload button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.CancelUploadButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when cancel button in popup is clicked and cancel to upload new lesson.
+            </summary>
+            <param name="sender">The cancel button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.ImageUploadButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when image add button is clicked and choose the image.
+            </summary>
+            <param name="sender">The image add button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.DocUploadButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when documentation add button is clicked and choose the documentations.
+            </summary>
+            <param name="sender">The documentation add button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.AudioUploadButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when audio add button is clicked and choose the audios.
+            </summary>
+            <param name="sender">The audio add button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.VideoUploadButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when video add button is clicked and choose the videos.
+            </summary>
+            <param name="sender">The video add button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.allUploadButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when all uplaod button is clicked.
+            </summary>
+            <param name="sender">The all upload button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.resetUploadButton_Click(System.Object,Windows.UI.Xaml.RoutedEventArgs)">
+            <summary>
+            Invoked when reset button is clicked.
+            </summary>
+            <param name="sender">The reset button clicked.</param>
+            <param name="e">Event data that describes how the click was initiated.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.FileTypePicker(System.Collections.Generic.List{System.String})">
+            <summary>
+            Create FileOpenPicker and set file filter.
+            </summary>
+            <param name="typeFilterList">The filter type list.</param>
+            <returns>The FileOpenPicker created.</returns>
+        </member>
+        <member name="M:CloudEDU.Uploading.CreateBackgroundTransferContentPartList(System.Collections.Generic.IReadOnlyList{Windows.Storage.StorageFile})">
+            <summary>
+            Create the BackgroundTransferContentPart list.
+            </summary>
+            <param name="files">The file list.</param>
+            <returns>The BackgroundTransferContentPart list created.</returns>
+        </member>
+        <member name="M:CloudEDU.Uploading.UploadProgress(Windows.Networking.BackgroundTransfer.UploadOperation)">
+            <summary>
+            Event is invoked on a background thread.
+            </summary>
+            <param name="upload">UploadOperation.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.HandleUploadAsync(Windows.Networking.BackgroundTransfer.UploadOperation,System.Boolean)">
+            <summary>
+            Start uplaod and create handler.
+            </summary>
+            <param name="upload">UploadOperation handled.</param>
+            <param name="start">Whether uplaod is started.</param>
+            <returns>Represent the asynchronous operation.</returns>
+        </member>
+        <member name="M:CloudEDU.Uploading.SaveUploadLessonToListAsync(Windows.Networking.BackgroundTransfer.ResponseInformation)">
+            <summary>
+            Save lesson to allLessons list.
+            </summary>
+            <param name="response">The data responed by server.</param>
+        </member>
+        <member name="M:CloudEDU.Uploading.AddLessonInfo">
+            <summary>
+            Add lesson info to page after uploading button clicked.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Uploading.ResetPopup">
+            <summary>
+            Reset the popup.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Uploading.ResetPage">
+            <summary>
+            Reset the page.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Uploading.CheckLessonInfomation">
+            <summary>
+            Check whether lesson information is legal.
+            </summary>
+            <returns>If legal, then true; else false.</returns>
+        </member>
+        <member name="M:CloudEDU.Uploading.CheckCourseInfomation">
+            <summary>
+            Check whether course information is legal.
+            </summary>
+            <returns>If legal, then true; else false.</returns>
+        </member>
+        <member name="M:CloudEDU.Uploading.ShowNetworkMessageDialog(System.String)">
+            <summary>
+            Network Connection error MessageDialog.
+            </summary>
+        </member>
+        <member name="M:CloudEDU.Uploading.ShowMessageDialog(System.String)">
+            <summary>
+            Upload information error MessageDialog.
+            </summary>
+        </member>
+    </members>
+</doc>

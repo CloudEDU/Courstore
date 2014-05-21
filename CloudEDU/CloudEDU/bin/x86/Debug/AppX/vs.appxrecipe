@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-05-21T03:35:47.021</Modified>
+      <Modified>2014-05-21T05:09:09.354</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CloudEDU.exe">
       <PackagePath>CloudEDU.exe</PackagePath>
-      <Modified>2014-05-21T05:01:05.208</Modified>
+      <Modified>2014-05-21T05:52:43.670</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CloudEDU.pdb">
       <PackagePath>CloudEDU.pdb</PackagePath>
-      <Modified>2014-05-21T05:01:05.185</Modified>
+      <Modified>2014-05-21T05:52:43.647</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\packages\MVVMHelpers.Metro.2013.1.09.00\lib\winrt45\JulMar.Metro.Behaviors.dll">
       <PackagePath>JulMar.Metro.Behaviors.dll</PackagePath>
@@ -367,7 +367,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CourseStore\MyCourses.xaml">
       <PackagePath>CourseStore\MyCourses.xaml</PackagePath>
-      <Modified>2014-05-20T11:37:09.548</Modified>
+      <Modified>2014-05-21T05:21:29.186</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\Common\StandardStyles.xaml">
       <PackagePath>Common\StandardStyles.xaml</PackagePath>
@@ -415,7 +415,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-05-20T11:52:24.756</Modified>
+      <Modified>2014-05-21T05:09:07.592</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

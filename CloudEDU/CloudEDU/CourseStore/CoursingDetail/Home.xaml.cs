@@ -64,6 +64,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
             if ((courseInfo[1] as string) == "attending")
             {
                 beginButton.Content = "Start Learning!";
+                getLearnedPercentage();
             }
             else if ((courseInfo[1] as string) == "teaching")
             {
@@ -79,7 +80,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
             pgDsq.BeginExecute(OnPGComplete, null);
 
 
-            getLearnedPercentage();
+           // getLearnedPercentage();
             
         }
 

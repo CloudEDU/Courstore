@@ -23,6 +23,20 @@
                 </StackPanel.Transitions>
             </StackPanel>
         </ScrollViewer>
+
+
+        <Popup x:Name="pop" HorizontalAlignment="Left" VerticalAlignment="Top" Height="600" Width="869" Margin="15,39,0,0" IsOpen="False" IsLightDismissEnabled="True">
+            <Popup.Child>
+                <Grid Background="#FFE5E5E5" Height="503" Width="870">
+                    <WebView x:Name="Html" HorizontalAlignment="Left" Height="462" Margin="10,10,0,0" VerticalAlignment="Top" Width="663"/>
+                    <Button x:ConnectionId='5' Content="Close" HorizontalAlignment="Left" Height="49" Margin="694,423,0,0" VerticalAlignment="Top" Width="136"                             />
+
+                </Grid>
+            </Popup.Child>
+
+        </Popup>
+
+
         <Popup Grid.RowSpan="4" Name="addNotePopup" IsOpen="False" IsLightDismissEnabled="False">
             <Popup.ChildTransitions>
                 <TransitionCollection>

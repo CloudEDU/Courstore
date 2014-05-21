@@ -21,8 +21,8 @@ namespace CloudEDU.Common
         //public static string BaseURI = "http://luyirenmax.oicp.net/BackgroundTransferSample/";
         //public static string DataServiceURI = "http://luyirenmax.oicp.net/DataService/Service.svc/";
 
-        public static string BaseURI = "http://10.0.1.83/BackgroundTransferSample/";
-        public static string DataServiceURI = "http://10.0.1.83/DataService/Service.svc/";
+        public static string BaseURI = "http://218.78.189.144/BackgroundTransferSample/";
+        public static string DataServiceURI = "http://218.78.189.144/DataService/Service.svc/";
 
         public static string FillStar = "\x2605";
         public static string BlankStar = "\x2606";

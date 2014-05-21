@@ -33,7 +33,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
-        <TextBlock Style="{StaticResource SubheaderTextStyle}" x:Name="FinishPercentage" Text="Finish%" FontWeight="Bold" Margin="0, 30, 100, 10" HorizontalAlignment="Right" FontSize="50" Foreground="White" />
+        <TextBlock Style="{StaticResource SubheaderTextStyle}" x:Name="FinishPercentage" Text="" FontWeight="Bold" Margin="0, 30, 100, 10" HorizontalAlignment="Right" FontSize="50" Foreground="White" />
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Right">
             <TextBlock Style="{StaticResource SubheaderTextStyle}" Text="Info" FontWeight="Bold" Margin="0, 30, 0, 10" HorizontalAlignment="Right" FontSize="35" Foreground="White" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

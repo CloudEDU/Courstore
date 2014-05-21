@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Services.Client;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
@@ -350,7 +351,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
         }
 
 
-
+        private void close_button_clicked(object sender, RoutedEventArgs e)
+        {
+            pop.IsOpen = false;
+        }
 
         private async void ResImageTapped(object sender, TappedRoutedEventArgs e)
         {
@@ -392,7 +396,33 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
             if ((await StorageFolderExtension.CheckFileExisted(KnownFolders.VideosLibrary, fileName)))
             {
-                LaunchFileOpenWith(fileName);
+
+                Regex re = new Regex(".*(.c|.cpp|.java|.py|.cs)$");
+                if (re.IsMatch(fileName))
+                {
+                    System.Diagnostics.Debug.WriteLine("Match!");
+                    StorageFolder storageFolder = KnownFolders.VideosLibrary;
+                    StorageFile file = await storageFolder.GetFileAsync(fileName);
+                    string text = await Windows.Storage.FileIO.ReadTextAsync(file);
+
+                    string htmlcontent = text;
+                    string content = "<html><head><link rel=\"stylesheet\" href=\"http://yandex.st/highlightjs/8.0/styles/default.min.css\"><script src=\"http://yandex.st/highlightjs/8.0/highlight.min.js\"></script> <script>hljs.initHighlightingOnLoad();</script></head><body><pre><code>"
+                                +
+                                    htmlcontent
+                                + "</code></pre></body> </html>";
+                    pop.IsOpen = true;
+                    Html.NavigateToString(content);
+
+                }
+                else
+                {
+                    LaunchFileOpenWith(fileName);
+                }
+
+
+
+
+                
                 //System.Diagnostics.Debug.WriteLine("somepath"+KnownFolders.VideosLibrary.Path+"asdfa");
 
                 //ShowMessageDialog("file already exist!!");

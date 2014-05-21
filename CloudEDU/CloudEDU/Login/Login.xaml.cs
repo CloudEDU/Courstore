@@ -224,7 +224,10 @@ namespace CloudEDU.Login
 
         private void InputPassword_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-            //if (e.Key)
+            if (e.Key ==Windows.System.VirtualKey.Enter)
+            {
+                LoginButton_Click(null, null);
+            }
         }
     }
 }

@@ -717,6 +717,14 @@
           <Parameter Name="course_id" Type="Edm.Int32" Nullable="false" />
           <Parameter Name="customer_id" Type="Edm.Int32" Nullable="false" />
         </FunctionImport>
+        <FunctionImport Name="RemoveLearnedLesson" ReturnType="Edm.Int32" m:HttpMethod="GET">
+          <Parameter Name="lesson_id" Type="Edm.Int32" Nullable="false" />
+          <Parameter Name="customer_id" Type="Edm.Int32" Nullable="false" />
+        </FunctionImport>
+        <FunctionImport Name="CoursePercentByCustomer" ReturnType="Edm.Double" m:HttpMethod="GET">
+          <Parameter Name="customer_id" Type="Edm.Int32" Nullable="false" />
+          <Parameter Name="course_id" Type="Edm.Int32" Nullable="false" />
+        </FunctionImport>
         <AssociationSet Name="FK_COURSE_CATEGORY" Association="CloudEDUModel.FK_COURSE_CATEGORY">
           <End Role="CATEGORY" EntitySet="CATEGORY" />
           <End Role="COURSE" EntitySet="COURSE" />

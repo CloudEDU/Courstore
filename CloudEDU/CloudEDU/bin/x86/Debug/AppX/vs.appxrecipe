@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-05-20T12:02:50.578</Modified>
+      <Modified>2014-05-21T03:35:47.021</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CloudEDU.exe">
       <PackagePath>CloudEDU.exe</PackagePath>
-      <Modified>2014-05-20T14:03:21.976</Modified>
+      <Modified>2014-05-21T05:01:05.208</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CloudEDU.pdb">
       <PackagePath>CloudEDU.pdb</PackagePath>
-      <Modified>2014-05-20T14:03:21.954</Modified>
+      <Modified>2014-05-21T05:01:05.185</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\packages\MVVMHelpers.Metro.2013.1.09.00\lib\winrt45\JulMar.Metro.Behaviors.dll">
       <PackagePath>JulMar.Metro.Behaviors.dll</PackagePath>
@@ -351,11 +351,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CourseStore\CoursingDetail\Home.xaml">
       <PackagePath>CourseStore\CoursingDetail\Home.xaml</PackagePath>
-      <Modified>2014-05-20T13:36:32.889</Modified>
+      <Modified>2014-05-21T03:39:03.750</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CourseStore\CoursingDetail\Lecture.xaml">
       <PackagePath>CourseStore\CoursingDetail\Lecture.xaml</PackagePath>
-      <Modified>2014-05-20T11:37:09.501</Modified>
+      <Modified>2014-05-21T05:01:02.631</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\CourseStore\CoursingDetail\Note.xaml">
       <PackagePath>CourseStore\CoursingDetail\Note.xaml</PackagePath>
@@ -383,7 +383,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\Login\Login.xaml">
       <PackagePath>Login\Login.xaml</PackagePath>
-      <Modified>2014-05-20T11:37:09.645</Modified>
+      <Modified>2014-05-21T04:33:38.568</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\k\Documents\GitHub\Courstore\CloudEDU\CloudEDU\bin\x86\Debug\Login\LoginDefault.xaml">
       <PackagePath>Login\LoginDefault.xaml</PackagePath>

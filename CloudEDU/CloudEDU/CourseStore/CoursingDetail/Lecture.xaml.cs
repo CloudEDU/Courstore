@@ -386,7 +386,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
 
             System.Diagnostics.Debug.WriteLine(url);
-            Uri uri = new Uri(Constants.BaseURI+url);
+            Uri uri = new Uri(Constants.DataCenterURI+url);
             string[] fileArray = url.Split('\\');
             
 

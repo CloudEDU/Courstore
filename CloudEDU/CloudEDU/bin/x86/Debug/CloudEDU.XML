@@ -485,7 +485,7 @@
             Network Connection error MessageDialog.
             </summary>
         </member>
-        <!-- 对于成员“T:CloudEDU.CourseStore.StoreData”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "T:CloudEDU.CourseStore.StoreData" -->
         <member name="M:CloudEDU.CourseStore.StoreData.AddCourse(CloudEDU.CourseStore.Course)">
             <summary>
             Add course to the list used to display.
@@ -2705,13 +2705,16 @@
             to see, but that we never want to actually execute.
             </summary>
         </member>
-        <member name="M:SQLite.SQLiteConnection.GetMapping(System.Type)">
+        <member name="M:SQLite.SQLiteConnection.GetMapping(System.Type,SQLite.CreateFlags)">
             <summary>
             Retrieves the mapping that is automatically generated for the given type.
             </summary>
             <param name="type">
             The type whose mapping to the database is returned.
-            </param>
+            </param>         
+            <param name="createFlags">
+            Optional flags allowing implicit PK and indexes based on naming conventions
+            </param>     
             <returns>
             The mapping represents the schema of the columns of the database and contains 
             methods to set and get properties of objects.
@@ -2731,7 +2734,7 @@
             Executes a "drop table" on the database.  This is non-recoverable.
             </summary>
         </member>
-        <member name="M:SQLite.SQLiteConnection.CreateTable``1">
+        <member name="M:SQLite.SQLiteConnection.CreateTable``1(SQLite.CreateFlags)">
             <summary>
             Executes a "create table if not exists" on the database. It also
             creates any specified indexes on the columns of the table. It uses
@@ -2742,7 +2745,7 @@
             The number of entries added to the database schema.
             </returns>
         </member>
-        <member name="M:SQLite.SQLiteConnection.CreateTable(System.Type)">
+        <member name="M:SQLite.SQLiteConnection.CreateTable(System.Type,SQLite.CreateFlags)">
             <summary>
             Executes a "create table if not exists" on the database. It also
             creates any specified indexes on the columns of the table. It uses
@@ -2750,10 +2753,46 @@
             later access this schema by calling GetMapping.
             </summary>
             <param name="ty">Type to reflect to a database table.</param>
+            <param name="createFlags">Optional flags allowing implicit PK and indexes based on naming conventions.</param>  
             <returns>
             The number of entries added to the database schema.
             </returns>
         </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String,System.String[],System.Boolean)">
+            <summary>
+            Creates an index for the specified table and columns.
+            </summary>
+            <param name="indexName">Name of the index to create</param>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnNames">An array of column names to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates an index for the specified table and column.
+            </summary>
+            <param name="indexName">Name of the index to create</param>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnName">Name of the column to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates an index for the specified table and column.
+            </summary>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnName">Name of the column to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <member name="M:SQLite.SQLiteConnection.CreateIndex(System.String,System.String[],System.Boolean)">
+            <summary>
+            Creates an index for the specified table and columns.
+            </summary>
+            <param name="tableName">Name of the database table</param>
+            <param name="columnNames">An array of column names to index</param>
+            <param name="unique">Whether the index should be unique</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SQLite.SQLiteConnection.CreateIndex``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}},System.Boolean)" -->
         <member name="M:SQLite.SQLiteConnection.NewCommand">
             <summary>
             Creates a new SQLiteCommand. Can be overridden to provide a sub-class.
@@ -3005,7 +3044,7 @@
             Commits the transaction that was begun by <see cref="M:SQLite.SQLiteConnection.BeginTransaction"/>.
             </summary>
         </member>
-        <!-- 对于成员“M:SQLite.SQLiteConnection.RunInTransaction(System.Action)”忽略有格式错误的 XML 注释 -->
+        <!-- Badly formed XML comment ignored for member "M:SQLite.SQLiteConnection.RunInTransaction(System.Action)" -->
         <member name="M:SQLite.SQLiteConnection.InsertAll(System.Collections.IEnumerable)">
             <summary>
             Inserts all specified objects.

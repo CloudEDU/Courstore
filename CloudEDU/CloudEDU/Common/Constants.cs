@@ -16,11 +16,10 @@ namespace CloudEDU.Common
 {
     public class Constants
     {
-        //public static string BaseURI = "http://luyirenmax.oicp.net/BackgroundTransferSample/";
-        //public static string DataServiceURI = "http://luyirenmax.oicp.net/DataService/Service.svc/";
-
-        public static string BaseURI = "http://218.78.189.144/BackgroundTransferSample/";
-        public static string DataServiceURI = "http://218.78.189.144/DataService/Service.svc/";
+        public static string BaseURL = "http://180.160.40.61";
+        //public static string BaseURL = "http://luyirenmax.oicp.net";
+        public static string DataCenterURI = BaseURL + "/BackgroundTransferSample/";
+        public static string DataServiceURI = BaseURL + "/DataService/Service.svc/";
 
         public static string FillStar = "\x2605";
         public static string BlankStar = "\x2606";
@@ -250,7 +249,7 @@ namespace CloudEDU.Common
             course.PG = c.RESTRICT_AGE;
             course.LessonNum = c.LESSON_NUM;
             course.RatedUser = c.RATED_USERS;
-            course.ImageUri = BaseURI + c.ICON_URL.Replace('\\', '/');
+            course.ImageUri = DataCenterURI + c.ICON_URL.Replace('\\', '/');
             course.IsBuy = false;
             course.IsTeach = false;
 
@@ -274,7 +273,7 @@ namespace CloudEDU.Common
             course.PG = c.RESTRICT_AGE;
             course.LessonNum = c.LESSON_NUM;
             course.RatedUser = c.RATED_USERS;
-            course.ImageUri = BaseURI + c.ICON_URL.Replace('\\', '/');
+            course.ImageUri = DataCenterURI + c.ICON_URL.Replace('\\', '/');
             course.IsBuy = false;
             course.IsTeach = false;
 
@@ -295,7 +294,7 @@ namespace CloudEDU.Common
             course.PG = c.RESTRICT_AGE;
             course.LessonNum = c.LESSON_NUM;
             course.RatedUser = c.RATED_USERS;
-            course.ImageUri = BaseURI + c.ICON_URL.Replace('\\', '/');
+            course.ImageUri = DataCenterURI + c.ICON_URL.Replace('\\', '/');
             course.IsBuy = false;
             course.IsTeach = false;
 

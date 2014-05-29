@@ -193,7 +193,7 @@ namespace CloudEDU
             if (audioParts != null) allParts.AddRange(audioParts);
             if (videoParts != null) allParts.AddRange(videoParts);
 
-            Uri uploadUri = new Uri(Constants.BaseURI + "Upload.aspx?username=" + Constants.User.NAME);
+            Uri uploadUri = new Uri(Constants.DataCenterURI + "Upload.aspx?username=" + Constants.User.NAME);
 
             BackgroundUploader uploader = new BackgroundUploader();
             try
@@ -262,7 +262,7 @@ namespace CloudEDU
 
             List<BackgroundTransferContentPart> imageParts = CreateBackgroundTransferContentPartList(images);
 
-            Uri uploadUri = new Uri(Constants.BaseURI + "Upload.aspx?username=" + Constants.User.NAME);
+            Uri uploadUri = new Uri(Constants.DataCenterURI + "Upload.aspx?username=" + Constants.User.NAME);
 
             try
             {

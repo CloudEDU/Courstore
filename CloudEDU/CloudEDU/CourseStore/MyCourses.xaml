@@ -84,7 +84,7 @@
                 <Grid x:Name="topograph">
                     <Image Visibility="Visible" Source="ms-appx:///Images/background.png" Height="800" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="249,-9,317,9">
                     </Image>
-                    <Border Margin="345,118,0,0">
+                    <Border Margin="345,118,0,0" CornerRadius="15">
                         <TextBlock Text="Data&#10;Mathematics" />
                     </Border>
                     <Border  Margin="523,100,0,0">

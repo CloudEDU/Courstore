@@ -999,3 +999,4 @@ C:\Users\Boy\Documents\Visual Studio 2013\Projects\Courstore\CloudEDU\CloudEDU\o
 C:\Users\Boy\Documents\Visual Studio 2013\Projects\Courstore\CloudEDU\CloudEDU\obj\x86\Debug\System.Spatial.WindowsStore.pri.xml
 C:\Users\Boy\Documents\Visual Studio 2013\Projects\Courstore\CloudEDU\CloudEDU\obj\x86\Debug\SQLitePCL.Ext.pri.xml
 C:\Users\Boy\Documents\Visual Studio 2013\Projects\Courstore\CloudEDU\CloudEDU\obj\x86\Debug\ProjectArchitectures.txt
+C:\Users\Boy\Documents\Visual Studio 2013\Projects\Courstore\CloudEDU\CloudEDU\obj\x86\Debug\CloudEDU.csprojResolveAssemblyReference.cache

@@ -3,19 +3,13 @@ using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -39,6 +33,10 @@ namespace CloudEDU.CourseStore
         {
             this.InitializeComponent();
             ctx = new CloudEDUEntities(new Uri(Constants.DataServiceURI));
+
+            var appBarContent = globalAppBar.Content as AppbarContent;
+            appBarContent.advanceSearchButton.Visibility = Visibility;
+            appBarContent.advanceSearchButton.Click += AdvanceSearchButton_Click;
         }
 
         /// <summary>
@@ -48,7 +46,7 @@ namespace CloudEDU.CourseStore
         /// property is typically used to configure the page.</param>
         protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            InitializePopupStyle();
 
 
             //Constants.DepCourse.GetAllLearned();
@@ -108,12 +106,12 @@ namespace CloudEDU.CourseStore
                     {
                         ShowMessageDialog("recommedations!");
                     }
-                    
 
 
-                    
 
-                    
+
+
+
                 }
             }
             catch
@@ -128,6 +126,31 @@ namespace CloudEDU.CourseStore
 
 
             Constants.DepCourse.GetAllLearned();
+        }
+
+        private void InitializePopupStyle()
+        {
+            var grids = from g in AdvanceSearchStackPanel.Children.OfType<Grid>()
+                        where !g.Name.Equals(searchButtonsGrid.Name)
+                        select g;
+
+            foreach (var grid in grids)
+            {
+                grid.Margin = new Thickness(10);
+                grid.Height = 70;
+
+                var filterTitles = from c in grid.Children.OfType<TextBlock>()
+                                   select c;
+                filterTitles.FirstOrDefault().FontSize = 50;
+
+                var filterContent = from c in grid.Children.OfType<TextBox>()
+                                    select c;
+                if (filterContent != null && filterContent.Count() != 0)
+                {
+                    filterContent.FirstOrDefault().FontSize = 40;
+                    filterContent.FirstOrDefault().Text = "";
+                }
+            }
         }
 
         /// <summary>
@@ -162,9 +185,10 @@ namespace CloudEDU.CourseStore
             {
                 coursesData = new StoreData();
             }
-            
-            
-            try{
+
+
+            try
+            {
                 DataServiceQuery<COURSE_RECO_AVAIL> craDsq = (DataServiceQuery<COURSE_RECO_AVAIL>)(from re in ctx.COURSE_RECO_AVAIL
                                                                                                    select re);
                 TaskFactory<IEnumerable<COURSE_RECO_AVAIL>> tf = new TaskFactory<IEnumerable<COURSE_RECO_AVAIL>>();
@@ -178,7 +202,7 @@ namespace CloudEDU.CourseStore
                 {
                     coursesData.AddCourse(Constants.CourseAvail2Course(c));
                 }
-                
+
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {
                     dataCategory = coursesData.GetGroupsByCategory();
@@ -246,8 +270,6 @@ namespace CloudEDU.CourseStore
             Frame.Navigate(typeof(CourseOverview), course);
         }
 
-
-
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));
@@ -290,6 +312,21 @@ namespace CloudEDU.CourseStore
                 courstoreSearchBox.Visibility = Windows.UI.Xaml.Visibility.Visible;
                 courstoreSearchBox.Focus(Windows.UI.Xaml.FocusState.Programmatic);
             }
+        }
+
+        private void AdvanceSearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdvanceSearchPopup.IsOpen = true;
+        }
+
+        private void SearchCancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdvanceSearchPopup.IsOpen = false;
+        }
+
+        private void AdvanceSearchSubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

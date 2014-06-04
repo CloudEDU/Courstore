@@ -16,7 +16,7 @@ namespace CloudEDU.Common
 {
     public class Constants
     {
-        public static string BaseURL = "http://180.160.40.61";
+        public static string BaseURL = "http://221.239.197.132";
         //public static string BaseURL = "http://luyirenmax.oicp.net";
         public static string DataCenterURI = BaseURL + "/BackgroundTransferSample/";
         public static string DataServiceURI = BaseURL + "/DataService/Service.svc/";

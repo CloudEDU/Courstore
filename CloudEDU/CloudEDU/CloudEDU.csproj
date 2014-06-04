@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.props" Condition="Exists('..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.props')" />
+  <Import Project="..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.props" Condition="Exists('..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.props')" />
+  <Import Project="..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.props" Condition="Exists('..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -384,9 +385,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Data.Services.Client.WindowsStore.5.0.0\lib\.NETCore\Microsoft.Data.Services.Client.WindowsStore.dll</HintPath>
     </Reference>
-    <Reference Include="SQLitePCL, Version=3.8.4.2, Culture=neutral, PublicKeyToken=bddade01e9c850c5, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Synchronization.ClientServices.Win8">
+      <HintPath>..\packages\SyncClient.SQLite.3.8.4.3\lib\netcore45\Microsoft.Synchronization.ClientServices.Win8.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCL, Version=3.8.4.4, Culture=neutral, PublicKeyToken=bddade01e9c850c5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\SQLitePCL.3.8.4.3\lib\netcore45\SQLitePCL.dll</HintPath>
+      <HintPath>..\packages\SQLitePCL.3.8.4.4\lib\netcore45\SQLitePCL.dll</HintPath>
     </Reference>
     <Reference Include="System.Composition.AttributedModel, Version=1.0.16.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -417,7 +421,7 @@
     <SDKReference Include="Microsoft.VCLibs, Version=11.0">
       <Name>Microsoft Visual C++ Runtime Package</Name>
     </SDKReference>
-    <SDKReference Include="SQLite.WinRT, Version=3.8.4.3">
+    <SDKReference Include="SQLite.WinRT, version=3.8.4.3">
       <Name>SQLite for Windows Runtime</Name>
     </SDKReference>
   </ItemGroup>
@@ -434,12 +438,13 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SyncClient.SQLite.3.8.4.2\build\netcore45\SyncClient.SQLite.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SyncClient.SQLite.3.8.4.2\build\netcore45\SyncClient.SQLite.targets'))" />
-    <Error Condition="!Exists('..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.props'))" />
-    <Error Condition="!Exists('..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.targets'))" />
+    <Error Condition="!Exists('..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.props'))" />
+    <Error Condition="!Exists('..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.targets'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.props'))" />
+    <Error Condition="!Exists('..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.targets'))" />
   </Target>
-  <Import Project="..\packages\SyncClient.SQLite.3.8.4.2\build\netcore45\SyncClient.SQLite.targets" Condition="Exists('..\packages\SyncClient.SQLite.3.8.4.2\build\netcore45\SyncClient.SQLite.targets')" />
-  <Import Project="..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.targets" Condition="Exists('..\packages\SQLitePCL.3.8.4.3\build\netcore45\SQLitePCL.targets')" />
+  <Import Project="..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.targets" Condition="Exists('..\packages\SyncClient.SQLite.3.8.4.3\build\netcore45\SyncClient.SQLite.targets')" />
+  <Import Project="..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.targets" Condition="Exists('..\packages\SQLitePCL.3.8.4.4\build\netcore45\SQLitePCL.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,18 +1,10 @@
 ﻿using CloudEDU.Common;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
@@ -24,13 +16,34 @@ namespace CloudEDU.CourseStore
     /// </summary>
     public sealed partial class Coursing : GlobalPage
     {
+        /// <summary>
+        /// The course
+        /// </summary>
         Course course;
+        /// <summary>
+        /// The c information
+        /// </summary>
         List<object> cInfo = null;
 
+        /// <summary>
+        /// The page red
+        /// </summary>
         SolidColorBrush pageRed;
+        /// <summary>
+        /// The page blue
+        /// </summary>
         SolidColorBrush pageBlue;
+        /// <summary>
+        /// The page green
+        /// </summary>
         SolidColorBrush pageGreen;
+        /// <summary>
+        /// The page white
+        /// </summary>
         SolidColorBrush pageWhite;
+        /// <summary>
+        /// The page black
+        /// </summary>
         SolidColorBrush pageBlack;
 
         /// <summary>
@@ -132,12 +145,20 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the UserProfileButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             //Frame.Navigate(typeof());
         }
 
 
+        /// <summary>
+        /// Navigates to note.
+        /// </summary>
         public void NavigateToNote()
         {
             HomeBorder.Background = pageWhite;
@@ -152,6 +173,9 @@ namespace CloudEDU.CourseStore
             detailFrame.Navigate(typeof(CoursingDetail.Note), course);
         }
 
+        /// <summary>
+        /// Navigates to lecture.
+        /// </summary>
         public void NavigateToLecture()
         {
             HomeBorder.Background = pageWhite;
@@ -167,6 +191,9 @@ namespace CloudEDU.CourseStore
             detailFrame.Navigate(typeof(CoursingDetail.Lecture), course);
         }
 
+        /// <summary>
+        /// Navigates to home.
+        /// </summary>
         public void NavigateToHome()
         {
             HomeBorder.Background = pageRed;

@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using CloudEDU.Common;
+﻿using CloudEDU.Common;
 using CloudEDU.Service;
+using System;
+using System.Collections.Generic;
+using System.Data.Services.Client;
+using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Popups;
-using System.Data.Services.Client;
-using System.Threading.Tasks;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
 
@@ -27,11 +21,26 @@ namespace CloudEDU.Login
     /// </summary>
     public sealed partial class Profile : Page
     {
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The customer DSQ
+        /// </summary>
         private DataServiceQuery<CUSTOMER> customerDsq = null;
 
+        /// <summary>
+        /// The CSL
+        /// </summary>
         private List<CUSTOMER> csl;
+        /// <summary>
+        /// The changed customer
+        /// </summary>
         private CUSTOMER changedCustomer = null;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Profile"/> class.
+        /// </summary>
         public Profile()
         {
             this.InitializeComponent();
@@ -54,6 +63,10 @@ namespace CloudEDU.Login
             customerDsq.BeginExecute(OnCustomerComplete, null);
         }
 
+        /// <summary>
+        /// Called when [customer complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void OnCustomerComplete(IAsyncResult result)
         {
             csl = customerDsq.EndExecute(result).ToList();
@@ -77,11 +90,21 @@ namespace CloudEDU.Login
             }
         }
 
+        /// <summary>
+        /// Handles the PasswordChanged event of the Password control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Password_PasswordChanged(object sender, RoutedEventArgs e)
         {
             retypePasswordStackPanel.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Handles the Tapped event of the SaveImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private async void SaveImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
             if (passwordBox.Password.Equals(string.Empty) || retypePasswordBox.Password.Equals(string.Empty))
@@ -104,12 +127,12 @@ namespace CloudEDU.Login
                 await dialog.ShowAsync();
                 return;
             }
-            
+
             foreach (CUSTOMER c in csl)
             {
                 if (c.NAME == Constants.User.NAME)
                 {
-                    
+
                     c.DEGREE = (string)degreeBox.SelectedItem;
                     c.PASSWORD = Constants.ComputeMD5(passwordBox.Password);
                     c.EMAIL = email.Text;
@@ -117,11 +140,15 @@ namespace CloudEDU.Login
                     changedCustomer = c;
                     ctx.UpdateObject(c);
                     ctx.BeginSaveChanges(OnCustomerSaveChange, null);
-                    
+
                 }
             }
         }
 
+        /// <summary>
+        /// Called when [customer save change].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnCustomerSaveChange(IAsyncResult result)
         {
             try
@@ -150,9 +177,14 @@ namespace CloudEDU.Login
                 ShowMessageDialog("On customer save change");
                 //Network Connection error.
             }
-           
+
         }
 
+        /// <summary>
+        /// Handles the Tapped event of the ResetImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private void ResetImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
             retypePasswordStackPanel.Visibility = Visibility.Collapsed;
@@ -163,6 +195,11 @@ namespace CloudEDU.Login
             birthday.Text = Constants.User.BIRTHDAY.ToString();
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the degreeBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="SelectionChangedEventArgs"/> instance containing the event data.</param>
         private void degreeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(degreeBox.SelectedItem);
@@ -170,6 +207,7 @@ namespace CloudEDU.Login
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(String msg = "No Network has been found!")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>

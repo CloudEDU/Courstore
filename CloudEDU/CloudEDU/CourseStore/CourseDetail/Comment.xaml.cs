@@ -3,19 +3,14 @@ using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Text;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -29,12 +24,30 @@ namespace CloudEDU.CourseStore.CourseDetail
     /// </summary>
     public sealed partial class Comment : Page
     {
+        /// <summary>
+        /// The course
+        /// </summary>
         private Course course;
+        /// <summary>
+        /// The global rate
+        /// </summary>
         private int globalRate;
+        /// <summary>
+        /// All comments
+        /// </summary>
         private List<COMMENT_DET> allComments;
 
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The comment DSQ
+        /// </summary>
         private DataServiceQuery<COMMENT_DET> commentDsq = null;
+        /// <summary>
+        /// The attend DSQ
+        /// </summary>
         private DataServiceQuery<ATTEND> attendDsq = null;
 
         /// <summary>
@@ -82,6 +95,10 @@ namespace CloudEDU.CourseStore.CourseDetail
             commentDsq.BeginExecute(OnCommentComplete, null);
         }
 
+        /// <summary>
+        /// Called when [comment complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnCommentComplete(IAsyncResult result)
         {
             try
@@ -106,6 +123,7 @@ namespace CloudEDU.CourseStore.CourseDetail
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(String msg = "No network has beennnn found !")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -131,7 +149,7 @@ namespace CloudEDU.CourseStore.CourseDetail
         /// Invoked when Add Comment button clicked and add comment.
         /// </summary>
         /// <param name="sender">The Add Comment button clicked.</param>
-        /// <param name="e"></param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void AddCommentButton_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(newTitleTextBox.Text);
@@ -140,7 +158,7 @@ namespace CloudEDU.CourseStore.CourseDetail
                 WarningTextBlock.Visibility = Visibility.Visible;
                 return;
             }
-            
+
 
             COMMENT commentEntity = new COMMENT();
             commentEntity.COURSE_ID = course.ID.Value;
@@ -150,9 +168,13 @@ namespace CloudEDU.CourseStore.CourseDetail
             commentEntity.TIME = DateTime.Now;
             commentEntity.CONTENT = newContentTextBox.Text;
             ctx.AddToCOMMENT(commentEntity);
-            ctx.BeginSaveChanges(OnAddCommentComplete, null); 
+            ctx.BeginSaveChanges(OnAddCommentComplete, null);
         }
 
+        /// <summary>
+        /// Called when [add comment complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnAddCommentComplete(IAsyncResult result)
         {
             try
@@ -168,7 +190,7 @@ namespace CloudEDU.CourseStore.CourseDetail
                         WarningTextBlock.Visibility = Visibility.Collapsed;
                     });
             }
-            catch (DataServiceRequestException e)
+            catch (DataServiceRequestException)
             {
                 ShowMessageDialog("One user can only comment once.");
                 ResetAfterComment();
@@ -179,6 +201,9 @@ namespace CloudEDU.CourseStore.CourseDetail
             }
         }
 
+        /// <summary>
+        /// Resets the after comment.
+        /// </summary>
         private async void ResetAfterComment()
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
@@ -203,10 +228,13 @@ namespace CloudEDU.CourseStore.CourseDetail
         /// <summary>
         /// Create a stackpanel representing a comment.
         /// </summary>
+        /// <param name="username">The username.</param>
         /// <param name="title">Comment title.</param>
         /// <param name="rate">Comment rate.</param>
         /// <param name="content">Comment content.</param>
-        /// <returns>Comment Stackpanel created.</returns>
+        /// <returns>
+        /// Comment Stackpanel created.
+        /// </returns>
         private StackPanel GenerateACommentBox(string username, string title, int rate, string content)
         {
             TextBlock userTextBlock = new TextBlock
@@ -282,6 +310,11 @@ namespace CloudEDU.CourseStore.CourseDetail
         }
 
         #region Deal with star
+        /// <summary>
+        /// Handles the PointerEntered event of the star control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PointerRoutedEventArgs"/> instance containing the event data.</param>
         private void star_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             TextBlock targetTextBlock = sender as TextBlock;
@@ -307,11 +340,21 @@ namespace CloudEDU.CourseStore.CourseDetail
             }
         }
 
+        /// <summary>
+        /// Handles the PointerExited event of the star control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="PointerRoutedEventArgs"/> instance containing the event data.</param>
         private void star_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             SetStarTextBlock(globalRate);
         }
 
+        /// <summary>
+        /// Handles the Tapped event of the star control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private void star_Tapped(object sender, TappedRoutedEventArgs e)
         {
             TextBlock targetTextBlock = sender as TextBlock;
@@ -319,6 +362,10 @@ namespace CloudEDU.CourseStore.CourseDetail
             System.Diagnostics.Debug.WriteLine(globalRate);
         }
 
+        /// <summary>
+        /// Sets the star text block.
+        /// </summary>
+        /// <param name="num">The number.</param>
         private void SetStarTextBlock(int num)
         {
             if (num == 0)

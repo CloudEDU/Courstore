@@ -14,26 +14,72 @@ using Windows.Storage.Streams;
 
 namespace CloudEDU.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Constants
     {
+        /// <summary>
+        /// The base URL
+        /// </summary>
         public static string BaseURL = "http://221.239.197.132";
         //public static string BaseURL = "http://luyirenmax.oicp.net";
+        /// <summary>
+        /// The data center URI
+        /// </summary>
         public static string DataCenterURI = BaseURL + "/BackgroundTransferSample/";
+        /// <summary>
+        /// The data service URI
+        /// </summary>
         public static string DataServiceURI = BaseURL + "/DataService/Service.svc/";
 
+        /// <summary>
+        /// The fill star
+        /// </summary>
         public static string FillStar = "\x2605";
+        /// <summary>
+        /// The blank star
+        /// </summary>
         public static string BlankStar = "\x2606";
+        /// <summary>
+        /// The star width
+        /// </summary>
         public static double StarWidth = 22.2133331298828;
 
+        /// <summary>
+        /// The resource type
+        /// </summary>
         public static List<string> ResourceType = new List<string> { "DOCUMENT", "VIDEO", "AUDIO" };
+        /// <summary>
+        /// The coursing
+        /// </summary>
         public static Coursing coursing;
+        /// <summary>
+        /// The user entity
+        /// </summary>
         public static CUSTOMER UserEntity;
+        /// <summary>
+        /// The user
+        /// </summary>
         public static User User;
 
+        /// <summary>
+        /// The category name list
+        /// </summary>
         public static List<string> CategoryNameList = new List<string>();
+        /// <summary>
+        /// The record URI dic
+        /// </summary>
         public static Dictionary<string, string> RecUriDic = new Dictionary<string, string>();
+        /// <summary>
+        /// The CSL
+        /// </summary>
         public static List<CUSTOMER> csl;
 
+        /// <summary>
+        /// Determines whether this instance is internet.
+        /// </summary>
+        /// <returns></returns>
         public static bool IsInternet()
         {
             ConnectionProfile connections = NetworkInformation.GetInternetConnectionProfile();
@@ -45,7 +91,9 @@ namespace CloudEDU.Common
         /// Cast the first character of every word in a string from lower to upper.
         /// </summary>
         /// <param name="v">The string to be transformed.</param>
-        /// <returns>The string after transformed.</returns>
+        /// <returns>
+        /// The string after transformed.
+        /// </returns>
         public static string UpperInitialChar(string v)
         {
             string[] words = null;
@@ -67,11 +115,24 @@ namespace CloudEDU.Common
 
 
 
+        /// <summary>
+        /// 
+        /// </summary>
         public class DepCourse
         {
+            /// <summary>
+            /// The course name
+            /// </summary>
             public string CourseName = null;
+            /// <summary>
+            /// The learned
+            /// </summary>
             public bool Learned = false;
 
+            /// <summary>
+            /// Initializes a new instance of the <see cref="DepCourse"/> class.
+            /// </summary>
+            /// <param name="_CourseName">Name of the _ course.</param>
             public DepCourse(string _CourseName)
             {
                 this.CourseName = _CourseName;
@@ -83,7 +144,14 @@ namespace CloudEDU.Common
 
 
             }
+            /// <summary>
+            /// All dep courses
+            /// </summary>
             private static List<DepCourse> AllDepCourses = null;
+            /// <summary>
+            /// Gets all dep course.
+            /// </summary>
+            /// <returns></returns>
             public static List<DepCourse> GetAllDepCourse()
             {
                 if (AllDepCourses == null)
@@ -92,9 +160,18 @@ namespace CloudEDU.Common
                 }
                 return AllDepCourses;
             }
+            /// <summary>
+            /// The dep courses
+            /// </summary>
             public List<DepCourse> DepCourses;
 
 
+            /// <summary>
+            /// Gets the dep courses.
+            /// </summary>
+            /// <param name="courseName">Name of the course.</param>
+            /// <param name="list">The list.</param>
+            /// <returns></returns>
             public static List<DepCourse> GetDepCourses(String courseName, List<DepCourse> list = null)
             {
                 if (list == null)
@@ -129,9 +206,17 @@ namespace CloudEDU.Common
 
             }
 
+            /// <summary>
+            /// The learned courses
+            /// </summary>
             private static List<COURSE_AVAIL> LearnedCourses = null;
 
 
+            /// <summary>
+            /// Ifs the learned.
+            /// </summary>
+            /// <param name="courseName">Name of the course.</param>
+            /// <returns></returns>
             public static bool IfLearned(string courseName)
             {
                 if (LearnedCourses == null)
@@ -147,6 +232,9 @@ namespace CloudEDU.Common
                 }
                 return false;
             }
+            /// <summary>
+            /// Gets all learned.
+            /// </summary>
             public async static void GetAllLearned()
             {
                 if (LearnedCourses == null)
@@ -173,6 +261,9 @@ namespace CloudEDU.Common
 
 
 
+        /// <summary>
+        /// Constructs the dependent courses.
+        /// </summary>
         public static void ConstructDependentCourses()
         {
             DepCourse datamining = new DepCourse("DataMining");
@@ -223,6 +314,10 @@ namespace CloudEDU.Common
         }
 
 
+        /// <summary>
+        /// Haves the dependent.
+        /// </summary>
+        /// <returns></returns>
         public static List<string> HaveDependent()
         {
             List<string> dependent = new List<string>();
@@ -234,7 +329,9 @@ namespace CloudEDU.Common
         /// Convert a dataservice COURSE_AVAIL view to Course model.
         /// </summary>
         /// <param name="c">COURSE_AVAIL to be converted.</param>
-        /// <returns>Course after converted.</returns>
+        /// <returns>
+        /// Course after converted.
+        /// </returns>
         public static Course CourseAvail2Course(COURSE_AVAIL c)
         {
             Course course = new Course();
@@ -259,6 +356,11 @@ namespace CloudEDU.Common
 
 
 
+        /// <summary>
+        /// Courses the record avail2 course.
+        /// </summary>
+        /// <param name="c">The c.</param>
+        /// <returns></returns>
         public static Course CourseRecAvail2Course(COURSE_RECO_AVAIL c)
         {
             Course course = new Course();
@@ -280,6 +382,11 @@ namespace CloudEDU.Common
             return course;
         }
 
+        /// <summary>
+        /// Courses the rec2 course.
+        /// </summary>
+        /// <param name="c">The c.</param>
+        /// <returns></returns>
         public static Course CourseRec2Course(COURSE_AVAIL c)
         {
             Course course = new Course();
@@ -301,6 +408,11 @@ namespace CloudEDU.Common
             return course;
         }
 
+        /// <summary>
+        /// Computes the m d5.
+        /// </summary>
+        /// <param name="str">The string.</param>
+        /// <returns></returns>
         public static string ComputeMD5(string str)
         {
             var alg = HashAlgorithmProvider.OpenAlgorithm("MD5");
@@ -325,7 +437,9 @@ namespace CloudEDU.Common
         /// </summary>
         /// <typeparam name="T">数据类型</typeparam>
         /// <param name="key">键</param>
-        /// <returns>值</returns>
+        /// <returns>
+        /// 值
+        /// </returns>
         public static T Read<T>(string key)
         {
             if (ApplicationData.Current.LocalSettings.Values.ContainsKey(key))
@@ -342,18 +456,30 @@ namespace CloudEDU.Common
         /// 移除数据
         /// </summary>
         /// <param name="key">键</param>
-        /// <returns>成功true/失败false</returns>
+        /// <returns>
+        /// 成功true/失败false
+        /// </returns>
         public static bool Remove(string key)
         {
             return ApplicationData.Current.LocalSettings.Values.Remove(key);
         }
 
+        /// <summary>
+        /// Determines whether [is user name available] [the specified un].
+        /// </summary>
+        /// <param name="un">The un.</param>
+        /// <returns></returns>
         public static bool isUserNameAvailable(string un)
         {
             string Regextest = "^[a-zA-Z_][a-zA-Z0-9_]{2,14}$";
             return Regex.IsMatch(un, Regextest);
         }
 
+        /// <summary>
+        /// Determines whether [is email available] [the specified em].
+        /// </summary>
+        /// <param name="em">The em.</param>
+        /// <returns></returns>
         public static bool isEmailAvailable(string em)
         {
             string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
@@ -367,9 +493,21 @@ namespace CloudEDU.Common
     /// </summary>
     public enum GridViewItemContainerType
     {
+        /// <summary>
+        /// The default grid view item container size
+        /// </summary>
         DefaultGridViewItemContainerSize = 0,
+        /// <summary>
+        /// The double height grid view item container size
+        /// </summary>
         DoubleHeightGridViewItemContainerSize = 1,
+        /// <summary>
+        /// The double width grid view item contsiner size
+        /// </summary>
         DoubleWidthGridViewItemContsinerSize = 2,
+        /// <summary>
+        /// The square grid view item container size
+        /// </summary>
         SquareGridViewItemContainerSize = 3,
     }
 }

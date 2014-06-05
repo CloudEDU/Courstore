@@ -3,19 +3,13 @@ using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -28,15 +22,36 @@ namespace CloudEDU.CourseStore.CoursingDetail
     /// </summary>
     public sealed partial class Home : Page
     {
+        /// <summary>
+        /// The course
+        /// </summary>
         Course course;
 
+        /// <summary>
+        /// The categories
+        /// </summary>
         private List<CATEGORY> categories;
+        /// <summary>
+        /// The PGS
+        /// </summary>
         private List<PARENT_GUIDE> pgs;
 
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The category DSQ
+        /// </summary>
         private DataServiceQuery<CATEGORY> categoryDsq = null;
+        /// <summary>
+        /// The pg DSQ
+        /// </summary>
         private DataServiceQuery<PARENT_GUIDE> pgDsq = null;
 
+        /// <summary>
+        /// The edit course
+        /// </summary>
         COURSE editCourse = null;
 
         /// <summary>
@@ -80,14 +95,17 @@ namespace CloudEDU.CourseStore.CoursingDetail
             pgDsq.BeginExecute(OnPGComplete, null);
 
 
-           // getLearnedPercentage();
-            
+            // getLearnedPercentage();
+
         }
 
-        
 
 
 
+
+        /// <summary>
+        /// Gets the learned percentage.
+        /// </summary>
         private async void getLearnedPercentage()
         {
             double percent;
@@ -97,9 +115,13 @@ namespace CloudEDU.CourseStore.CoursingDetail
             IEnumerable<double> percentages = await tf.FromAsync(ctx.BeginExecute<double>(new Uri(uri2, UriKind.Relative), null, null), iar => ctx.EndExecute<double>(iar));
             percent = percentages.FirstOrDefault();
 
-            FinishPercentage.Text = "Finished " + percent*100 + "%";
+            FinishPercentage.Text = "Finished " + percent * 100 + "%";
         }
 
+        /// <summary>
+        /// Sets the stars stack panel.
+        /// </summary>
+        /// <param name="rate">The rate.</param>
         private void SetStarsStackPanel(double rate)
         {
             int fillInt = (int)rate;
@@ -146,6 +168,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Handles the 1 event of the beginButton_Click control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void beginButton_Click_1(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
@@ -199,6 +226,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Called when [pg complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnPGComplete(IAsyncResult result)
         {
             try
@@ -217,6 +248,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Shows the message dialog.
+        /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(string msg)
         {
             var messageDialog = new MessageDialog(msg);
@@ -224,6 +259,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             await messageDialog.ShowAsync();
         }
 
+        /// <summary>
+        /// Handles the Click event of the CancelUploadButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void CancelUploadButton_Click(object sender, RoutedEventArgs e)
         {
             EditCoursePopup.IsOpen = false;
@@ -234,6 +274,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             pgComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Handles the Click event of the SaveNoteButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void SaveNoteButton_Click(object sender, RoutedEventArgs e)
         {
             try

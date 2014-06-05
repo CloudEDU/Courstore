@@ -23,20 +23,47 @@ namespace CloudEDU.CourseStore
     /// </summary>
     public sealed partial class MyCourses : GlobalPage
     {
-        private static int TopoElementWidth = 140;
-        private static int TopoElementHeight = 60;
+        //private static int TopoElementWidth = 140;
+        //private static int TopoElementHeight = 60;
 
+        /// <summary>
+        /// The course data
+        /// </summary>
         private StoreData courseData;
+        /// <summary>
+        /// The data category
+        /// </summary>
         private List<GroupInfoList<Object>> dataCategory;
+        /// <summary>
+        /// All courses
+        /// </summary>
         private List<Course> allCourses;
 
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The teach DSQ
+        /// </summary>
         private DataServiceQuery<COURSE_AVAIL> teachDsq = null;
 
+        /// <summary>
+        /// 
+        /// </summary>
         enum CourseAvaiStates
         {
+            /// <summary>
+            /// The finished
+            /// </summary>
             Finished,
+            /// <summary>
+            /// The learning
+            /// </summary>
             Learning,
+            /// <summary>
+            /// The disable
+            /// </summary>
             Disable,
         }
 
@@ -104,6 +131,9 @@ namespace CloudEDU.CourseStore
 
         }
 
+        /// <summary>
+        /// Sets all text block.
+        /// </summary>
         private void SetAllTextBlock()
         {
             var borders = from b in topograph.Children.OfType<Border>()
@@ -130,6 +160,10 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Shows the message dialog.
+        /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(String msg = "No Network has been found!")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -145,6 +179,10 @@ namespace CloudEDU.CourseStore
             });
         }
 
+        /// <summary>
+        /// Called when [course seach complete].
+        /// </summary>
+        /// <param name="ar">The ar.</param>
         private void OnCourseSeachComplete(IAsyncResult ar)
         {
             IEnumerable<COURSE_AVAIL> courses = ctx.EndExecute<COURSE_AVAIL>(ar);
@@ -194,11 +232,21 @@ namespace CloudEDU.CourseStore
             Frame.Navigate(typeof(Coursing), courseInfo);
         }
 
+        /// <summary>
+        /// Handles the Click event of the UserProfileButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));
         }
 
+        /// <summary>
+        /// Handles the Tapped event of the CourseTextBlock control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private void CourseTextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         {
             TextBlock courseNameBlock = sender as TextBlock;
@@ -217,16 +265,31 @@ namespace CloudEDU.CourseStore
 
         }
 
+        /// <summary>
+        /// Handles the Tapped event of the Close control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private void Close_Tapped(object sender, TappedRoutedEventArgs e)
         {
             CourseTopoPopup.IsOpen = false;
         }
 
+        /// <summary>
+        /// Handles the Click event of the Open_Popup control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Open_Popup_Click(object sender, RoutedEventArgs e)
         {
             CourseTopoPopup.IsOpen = true;
         }
 
+        /// <summary>
+        /// Sets the state of the course.
+        /// </summary>
+        /// <param name="courseName">Name of the course.</param>
+        /// <param name="state">The state.</param>
         private void SetCourseState(string courseName, CourseAvaiStates state)
         {
             var borders = from b in topograph.Children.OfType<Border>()
@@ -250,6 +313,11 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Sets all courses states.
+        /// </summary>
+        /// <param name="courses">The courses.</param>
+        /// <param name="states">The states.</param>
         private void SetAllCoursesStates(IEnumerable<string> courses, IEnumerable<CourseAvaiStates> states)
         {
             for (int i = 0; i < courses.Count(); ++i)

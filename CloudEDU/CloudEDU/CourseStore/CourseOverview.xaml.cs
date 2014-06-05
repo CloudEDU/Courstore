@@ -22,14 +22,35 @@ namespace CloudEDU.CourseStore
     /// </summary>
     public sealed partial class CourseOverview : GlobalPage
     {
+        /// <summary>
+        /// The course
+        /// </summary>
         Course course;
+        /// <summary>
+        /// The CTX
+        /// </summary>
         CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The teach courses
+        /// </summary>
         DataServiceQuery<COURSE_AVAIL> teachCourses;
+        /// <summary>
+        /// The buy courses
+        /// </summary>
         DataServiceQuery<ATTEND> buyCourses;
 
+        /// <summary>
+        /// The is teach
+        /// </summary>
         bool isTeach;
+        /// <summary>
+        /// The is buy
+        /// </summary>
         bool isBuy;
 
+        /// <summary>
+        /// The dba
+        /// </summary>
         DBAccessAPIs dba;
         /// <summary>
         /// Constructor, initialize the components
@@ -182,7 +203,14 @@ namespace CloudEDU.CourseStore
         }
 
 
+        /// <summary>
+        /// The number prerequisite
+        /// </summary>
         private int numPrerequisite = 0;
+        /// <summary>
+        /// Adds to pre request courses panel.
+        /// </summary>
+        /// <param name="courseName">Name of the course.</param>
         private void AddToPreRequestCoursesPanel(string courseName)
         {
 
@@ -350,6 +378,11 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the UserProfileButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));
@@ -359,6 +392,11 @@ namespace CloudEDU.CourseStore
 
 
 
+        /// <summary>
+        /// Buys the course.
+        /// </summary>
+        /// <param name="bt">The bt.</param>
+        /// <param name="courseInfo">The course information.</param>
         private async void BuyCourse(Button bt, List<Object> courseInfo)
         {
 
@@ -422,9 +460,17 @@ namespace CloudEDU.CourseStore
 
 
 
+        /// <summary>
+        /// The temporary button
+        /// </summary>
         private Button tmpButton;
 
-        private async void AttendButton_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Handles the Click event of the AttendButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void AttendButton_Click(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
             tmpButton = bt;
@@ -544,6 +590,7 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Upload information error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(string msg)
         {
             var messageDialog = new MessageDialog(msg);
@@ -551,6 +598,11 @@ namespace CloudEDU.CourseStore
             await messageDialog.ShowAsync();
         }
 
+        /// <summary>
+        /// Handles the Clicked event of the OverPreRequest control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private async void OverPreRequest_Clicked(object sender, TappedRoutedEventArgs e)
         {
             TextBlock tappedText = sender as TextBlock;
@@ -571,11 +623,21 @@ namespace CloudEDU.CourseStore
             Frame.Navigate(typeof(CourseOverview), navigateToCourse);
         }
 
+        /// <summary>
+        /// Handles the Click event of the ClosePopupButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void ClosePopupButton_Click(object sender, RoutedEventArgs e)
         {
             prerequestCoursePopup.IsOpen = false;
         }
 
+        /// <summary>
+        /// Handles the Click event of the ClosePopupContinueButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void ClosePopupContinueButton_Click(object sender, RoutedEventArgs e)
         {
             if (tmpButton.Content.ToString() == "Attend")

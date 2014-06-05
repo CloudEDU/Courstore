@@ -1,16 +1,6 @@
 using CloudEDU.Common;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -22,9 +12,12 @@ namespace CloudEDU.CourseStore
     /// </summary>
     public sealed partial class CategoryForNewest : GlobalPage
     {
-        private StoreData storeSampleData;
-        private List<GroupInfoList<Object>> dataCategory;
+        //private StoreData storeSampleData;
+        //private List<GroupInfoList<Object>> dataCategory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CategoryForNewest"/> class.
+        /// </summary>
         public CategoryForNewest()
         {
             this.InitializeComponent();
@@ -37,7 +30,7 @@ namespace CloudEDU.CourseStore
         /// property is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            
+
         }
 
         /// <summary>
@@ -68,6 +61,11 @@ namespace CloudEDU.CourseStore
 
             Frame.Navigate(typeof(CourseOverview), courseName);
         }
+        /// <summary>
+        /// Handles the Click event of the UserProfileButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));

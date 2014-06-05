@@ -21,10 +21,25 @@ namespace CloudEDU.CourseStore
     /// </summary>
     public sealed partial class Courstore : GlobalPage
     {
+        /// <summary>
+        /// The courses data
+        /// </summary>
         private StoreData coursesData;
+        /// <summary>
+        /// The data category
+        /// </summary>
         private List<GroupInfoList<object>> dataCategory;
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The course DSQ
+        /// </summary>
         private DataServiceQuery<COURSE_AVAIL> courseDsq = null;
+        /// <summary>
+        /// The category DSQ
+        /// </summary>
         private DataServiceQuery<CATEGORY> categoryDsq = null;
 
         /// <summary>
@@ -62,10 +77,6 @@ namespace CloudEDU.CourseStore
             //{
             //    System.Diagnostics.Debug.WriteLine("YESYESYES");
             //}
-
-
-
-
             loadingProgressRing.IsActive = true;
 
             try
@@ -129,6 +140,9 @@ namespace CloudEDU.CourseStore
             Constants.DepCourse.GetAllLearned();
         }
 
+        /// <summary>
+        /// Initializes the popup style.
+        /// </summary>
         private void InitializePopupStyle()
         {
             // 样式设置
@@ -163,6 +177,10 @@ namespace CloudEDU.CourseStore
             SearchPopDescriptionText.KeyDown += AdvanceSearch_KeyDown;
         }
 
+        /// <summary>
+        /// Called when [category complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnCategoryComplete(IAsyncResult result)
         {
             try
@@ -253,6 +271,7 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(String msg = "No Network has been found!")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -302,11 +321,21 @@ namespace CloudEDU.CourseStore
             Frame.Navigate(typeof(CourseOverview), course);
         }
 
+        /// <summary>
+        /// Handles the Click event of the UserProfileButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));
         }
 
+        /// <summary>
+        /// Handles the KeyUp event of the SearchKey control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyRoutedEventArgs" /> instance containing the event data.</param>
         private void SearchKey_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Escape)
@@ -330,17 +359,32 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Handles the LostFocus event of the SearchBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
         {
             courstoreSearchBox.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
             courstoreSearchBox.Text = "";
         }
 
+        /// <summary>
+        /// Handles the GotFocus event of the SearchBox control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
         {
             courstoreSearchBox.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 
+        /// <summary>
+        /// Handles the KeyUp event of the CourstoreGrid control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyRoutedEventArgs" /> instance containing the event data.</param>
         private void CourstoreGrid_KeyUp(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key != Windows.System.VirtualKey.Enter)
@@ -350,16 +394,31 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the AdvanceSearchButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void AdvanceSearchButton_Click(object sender, RoutedEventArgs e)
         {
             AdvanceSearchPopup.IsOpen = true;
         }
 
+        /// <summary>
+        /// Handles the Click event of the SearchCancelButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void SearchCancelButton_Click(object sender, RoutedEventArgs e)
         {
             AdvanceSearchPopup.IsOpen = false;
         }
 
+        /// <summary>
+        /// Handles the KeyDown event of the AdvanceSearch control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyRoutedEventArgs" /> instance containing the event data.</param>
         private void AdvanceSearch_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
@@ -369,6 +428,11 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the AdvanceSearchSubmitButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void AdvanceSearchSubmitButton_Click(object sender, RoutedEventArgs e)
         {
             List<string> SearchOption = new List<string>

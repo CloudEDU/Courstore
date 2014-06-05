@@ -3,18 +3,13 @@ using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -29,15 +24,42 @@ namespace CloudEDU.CourseStore.CoursingDetail
     /// </summary>
     public sealed partial class Note : Page
     {
+        /// <summary>
+        /// The course
+        /// </summary>
         Course course;
+        /// <summary>
+        /// The CTX
+        /// </summary>
         CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The shared note DSQ
+        /// </summary>
         DataServiceQuery<NOTE_AVAIL> sharedNoteDsq = null;
+        /// <summary>
+        /// My note DSQ
+        /// </summary>
         DataServiceQuery<NOTE_AVAIL> myNoteDsq = null;
+        /// <summary>
+        /// The shared notes list
+        /// </summary>
         List<NOTE_AVAIL> sharedNotesList;
+        /// <summary>
+        /// My shared notes list
+        /// </summary>
         List<NOTE_AVAIL> mySharedNotesList;
+        /// <summary>
+        /// The changed note
+        /// </summary>
         NOTE_AVAIL changedNote = null;
+        /// <summary>
+        /// The changed lesson identifier
+        /// </summary>
         int changedLessonID;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Note"/> class.
+        /// </summary>
         public Note()
         {
             this.InitializeComponent();
@@ -69,6 +91,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Called when [shared note complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnSharedNoteComplete(IAsyncResult result)
         {
             try
@@ -89,6 +115,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Called when [my note complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnMyNoteComplete(IAsyncResult result)
         {
             try
@@ -109,6 +139,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Shows the message dialog.
+        /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(string msg)
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -119,6 +153,17 @@ namespace CloudEDU.CourseStore.CoursingDetail
                  });
         }
 
+        /// <summary>
+        /// Generates the shared note item.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="user">The user.</param>
+        /// <param name="time">The time.</param>
+        /// <param name="lessonNum">The lesson number.</param>
+        /// <param name="customerID">The customer identifier.</param>
+        /// <returns></returns>
         private Grid GenerateSharedNoteItem(int id, string title, string content, string user, DateTime time, int lessonNum, int customerID)
         {
             TextBlock noteInfo = new TextBlock
@@ -171,6 +216,16 @@ namespace CloudEDU.CourseStore.CoursingDetail
             return newNote;
         }
 
+        /// <summary>
+        /// Generates my shared note item.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="content">The content.</param>
+        /// <param name="user">The user.</param>
+        /// <param name="time">The time.</param>
+        /// <param name="lessonNum">The lesson number.</param>
+        /// <returns></returns>
         public Grid GenerateMySharedNoteItem(int id, string title, string content, string user, DateTime time, int lessonNum)
         {
             TextBlock noteInfo = new TextBlock
@@ -228,6 +283,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
         }
 
 
+        /// <summary>
+        /// Handles the Tapped event of the deleteImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         void deleteImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
             Image toDelImage = sender as Image;
@@ -238,6 +298,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
             myNotesStackPanel.Children.Remove(toDelGrid);
         }
 
+        /// <summary>
+        /// Called when [delete note complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void OnDeleteNoteComplete(IAsyncResult result)
         {
             try
@@ -260,6 +324,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the SwitchButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void SwitchButton_Click(object sender, RoutedEventArgs e)
         {
             Button bt = sender as Button;
@@ -309,6 +378,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the CancelUploadButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void CancelUploadButton_Click(object sender, RoutedEventArgs e)
         {
             addNotePopup.IsOpen = false;
@@ -318,6 +392,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             sharableCheckBox.IsChecked = false;
         }
 
+        /// <summary>
+        /// Handles the Click event of the SaveNoteButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void SaveNoteButton_Click(object sender, RoutedEventArgs e)
         {
             NOTE updatedNote = null;
@@ -359,11 +438,16 @@ namespace CloudEDU.CourseStore.CoursingDetail
             addNotePopup.IsOpen = false;
         }
 
+        /// <summary>
+        /// Handles the Tapped event of the noteInfo control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private async void noteInfo_Tapped(object sender, TappedRoutedEventArgs e)
         {
             TextBlock tb = sender as TextBlock;
             int noteId = (int)tb.Tag;
-           
+
             IEnumerable<LESSON> allLessons = null;
             try
             {

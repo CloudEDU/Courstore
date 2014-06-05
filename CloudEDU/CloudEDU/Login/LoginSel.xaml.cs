@@ -1,19 +1,10 @@
-﻿using System;
+﻿using CloudEDU.Common;
+using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.Media;
 using Windows.UI.Xaml.Media.Animation;
-using CloudEDU.Common;
+using Windows.UI.Xaml.Navigation;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -23,21 +14,36 @@ namespace CloudEDU.Login
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    /// 
 
     public sealed partial class LoginSel : Page
     {
         //static int WidthOfScreen = 1366;
-        int ClickSameButtonTime = 0;
+        //int ClickSameButtonTime = 0;
+
+        /// <summary>
+        /// The last selected user
+        /// </summary>
         UserSelButtonControl LastSelectedUser;
+        /// <summary>
+        /// The selected user
+        /// </summary>
         UserSelButtonControl SelectedUser;
+        /// <summary>
+        /// The users
+        /// </summary>
         List<User> users;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginSel"/> class.
+        /// </summary>
         public LoginSel()
         {
             this.InitializeComponent();
             Setup();
         }
 
+        /// <summary>
+        /// Setups this instance.
+        /// </summary>
         private void Setup()
         {
             SetUsers();
@@ -48,12 +54,15 @@ namespace CloudEDU.Login
                 bt.user = user;
                 bt.Click += Button_Click;
                 //bt.UserName = user.NAME;
-                UsersStack.Children.Insert(0,bt);
+                UsersStack.Children.Insert(0, bt);
             }
             //test.user = new User("Fox", "http://www.gravatar.com/avatar/3c2986ad7ac1f2230ea3596f44563328");
             //test.UserName = test.user.NAME;
         }
 
+        /// <summary>
+        /// Sets the users.
+        /// </summary>
         private void SetUsers()
         {
             //string imageSource = Constants.ComputeMD5("yougmark94@gmail.com");
@@ -71,9 +80,14 @@ namespace CloudEDU.Login
         {
         }
 
+        /// <summary>
+        /// Handles the Click event of the Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
             LastSelectedUser = SelectedUser;
             SelectedUser = sender as UserSelButtonControl;
             if (LastSelectedUser != null && SelectedUser.Equals(LastSelectedUser))
@@ -82,12 +96,12 @@ namespace CloudEDU.Login
                 Frame.Navigate(typeof(LoginDefault));
                 return;
             }
-            
+
             System.Diagnostics.Debug.WriteLine("tap on image in logintmp");
 
             SelectedUser.Margin = new Thickness(50, 0, 50, 0);
 
-            TimeSpan span = new TimeSpan(0,0,0,0,200);
+            TimeSpan span = new TimeSpan(0, 0, 0, 0, 200);
             Grid grid = SelectedUser.grid;
             DoubleAnimation scaleY = new DoubleAnimation();
             scaleY.To = 1.5;
@@ -148,15 +162,30 @@ namespace CloudEDU.Login
             }
 
         }
+        /// <summary>
+        /// Handles the Click event of the SignUpButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(SignUp));
         }
+        /// <summary>
+        /// Handles the Click event of the LoginButton control.
+        /// </summary>
+        /// <param name="sende">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void LoginButton_Click(object sende, RoutedEventArgs e)
         {
- 
+
         }
 
+        /// <summary>
+        /// Handles the Click event of the addUserButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void addUserButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));

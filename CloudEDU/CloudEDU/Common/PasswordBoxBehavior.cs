@@ -1,9 +1,5 @@
 ﻿using JulMar.Windows.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -16,9 +12,12 @@ namespace CloudEDU.Login
     /// </summary>
     public static class PasswordBoxBehavior
     {
+        /// <summary>
+        /// The watermark identifier
+        /// </summary>
         private const string WatermarkId = "_pboxWatermark";
-       // private string specialId;
-      // private static int countOfPBox;
+        // private string specialId;
+        // private static int countOfPBox;
         /// <summary>
         /// Backing storage key for the text property.
         /// </summary>
@@ -30,7 +29,9 @@ namespace CloudEDU.Login
         /// Gets the watermark text
         /// </summary>
         /// <param name="pbox">The target PasswordBox.</param>
-        /// <returns>The watermark text.</returns>
+        /// <returns>
+        /// The watermark text.
+        /// </returns>
         public static string GetWatermark(PasswordBox pbox)
         {
             return (string)pbox.GetValue(WatermarkProperty);
@@ -49,8 +50,8 @@ namespace CloudEDU.Login
         /// <summary>
         /// Called when the watermark is changed.
         /// </summary>
-        /// <param name="dpo"></param>
-        /// <param name="e"></param>
+        /// <param name="dpo">The dpo.</param>
+        /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> instance containing the event data.</param>
         private static void OnWatermarkChanged(DependencyObject dpo, DependencyPropertyChangedEventArgs e)
         {
             var pbox = dpo as PasswordBox;
@@ -79,7 +80,7 @@ namespace CloudEDU.Login
         /// Called when the PasswordBox is loaded. This adds the watermark if one is present.
         /// </summary>
         /// <param name="sender">The target PasswordBox.</param>
-        /// <param name="routedEventArgs"></param>
+        /// <param name="routedEventArgs">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private static void PboxOnLoaded(object sender, RoutedEventArgs routedEventArgs)
         {
             var pbox = sender as PasswordBox;
@@ -99,7 +100,7 @@ namespace CloudEDU.Login
         /// Called when the PasswordBox loses focus - this adds the watermark if necessary.
         /// </summary>
         /// <param name="sender">The target PasswordBox.</param>
-        /// <param name="routedEventArgs"></param>
+        /// <param name="routedEventArgs">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private static void PboxOnLostFocus(object sender, RoutedEventArgs routedEventArgs)
         {
             var pbox = sender as PasswordBox;
@@ -114,7 +115,7 @@ namespace CloudEDU.Login
         /// Called when the PasswordBox gets focus - this removes any watermark.
         /// </summary>
         /// <param name="sender">The target PasswordBox.</param>
-        /// <param name="routedEventArgs"></param>
+        /// <param name="routedEventArgs">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private static void PboxOnGotFocus(object sender, RoutedEventArgs routedEventArgs)
         {
             var pbox = sender as PasswordBox;
@@ -126,7 +127,7 @@ namespace CloudEDU.Login
         /// This is called when the password is changed in the PasswordBox and removes the watermark.
         /// </summary>
         /// <param name="sender">The target PasswordBox.</param>
-        /// <param name="routedEventArgs"></param>
+        /// <param name="routedEventArgs">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private static void PboxOnPasswordChanged(object sender, RoutedEventArgs routedEventArgs)
         {
             var pbox = sender as PasswordBox;
@@ -144,7 +145,7 @@ namespace CloudEDU.Login
         /// <param name="text">The watermark text.</param>
         private static void AddWatermarkElement(PasswordBox pbox, string text)
         {
-            var watermarkTextBlock = pbox.FindVisualChildByName<TextBlock>(pbox.Name+pbox.Name+WatermarkId);
+            var watermarkTextBlock = pbox.FindVisualChildByName<TextBlock>(pbox.Name + pbox.Name + WatermarkId);
 
             if (watermarkTextBlock == null)
             {
@@ -178,7 +179,7 @@ namespace CloudEDU.Login
         /// <param name="pbox">The target PasswordBox.</param>
         private static void RemoveWatermarkElement(PasswordBox pbox)
         {
-            var watermarkTextBlock = pbox.FindVisualChildByName<TextBlock>(pbox.Name+WatermarkId);
+            var watermarkTextBlock = pbox.FindVisualChildByName<TextBlock>(pbox.Name + WatermarkId);
             if (watermarkTextBlock != null)
             {
                 var panelOwner = watermarkTextBlock.FindVisualParent<Panel>();

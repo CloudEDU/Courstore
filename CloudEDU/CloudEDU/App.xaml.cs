@@ -25,8 +25,17 @@ namespace CloudEDU
         //CloudEDUEntities ctx = null;
 
 
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The customer DSQ
+        /// </summary>
         private DataServiceQuery<CUSTOMER> customerDsq = null;
+        /// <summary>
+        /// The CSL
+        /// </summary>
         private List<CUSTOMER> csl;
 
 
@@ -44,6 +53,10 @@ namespace CloudEDU
 
 
 
+        /// <summary>
+        /// Called when [customer complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void OnCustomerComplete(IAsyncResult result)
         {
             csl = customerDsq.EndExecute(result).ToList();
@@ -58,6 +71,7 @@ namespace CloudEDU
         /// search results, and so forth.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
+        /// <exception cref="System.Exception">Failed to create initial page</exception>
         protected async override void OnLaunched(LaunchActivatedEventArgs args)
         {
             if (!Constants.IsInternet())
@@ -196,9 +210,33 @@ namespace CloudEDU
     /// </summary>
     public class VariableSizedStyleSelector : StyleSelector
     {
+        /// <summary>
+        /// Gets or sets the normal style.
+        /// </summary>
+        /// <value>
+        /// The normal style.
+        /// </value>
         public Style NormalStyle { get; set; }
+        /// <summary>
+        /// Gets or sets the double height style.
+        /// </summary>
+        /// <value>
+        /// The double height style.
+        /// </value>
         public Style DoubleHeightStyle { get; set; }
+        /// <summary>
+        /// Gets or sets the double width style.
+        /// </summary>
+        /// <value>
+        /// The double width style.
+        /// </value>
         public Style DoubleWidthStyle { get; set; }
+        /// <summary>
+        /// Gets or sets the square style.
+        /// </summary>
+        /// <value>
+        /// The square style.
+        /// </value>
         public Style SquareStyle { get; set; }
 
         /// <summary>
@@ -206,7 +244,9 @@ namespace CloudEDU
         /// </summary>
         /// <param name="item">The content</param>
         /// <param name="container">The element to which the style is applied</param>
-        /// <returns>An application-specific style to apply</returns>
+        /// <returns>
+        /// An application-specific style to apply
+        /// </returns>
         protected override Style SelectStyleCore(object item, DependencyObject container)
         {
             GridViewItemContainerType containerType = ((Course)item).ItemContainerType;

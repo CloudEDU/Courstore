@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using CloudEDU.Common;
+﻿using CloudEDU.Common;
 using CloudEDU.Service;
+using System;
+using System.Collections.Generic;
+using System.Data.Services.Client;
+using System.Linq;
+using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Popups;
-using SQLite;
-using System.Threading.Tasks;
-using System.Data.Services.Client;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -28,10 +20,25 @@ namespace CloudEDU.Login
     /// </summary>
     public sealed partial class SignUp : Page
     {
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The customer DSQ
+        /// </summary>
         private DataServiceQuery<CUSTOMER> customerDsq = null;
+        /// <summary>
+        /// The CSL
+        /// </summary>
         private List<CUSTOMER> csl;
+        /// <summary>
+        /// The c
+        /// </summary>
         CUSTOMER c;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SignUp"/> class.
+        /// </summary>
         public SignUp()
         {
             this.InitializeComponent();
@@ -49,12 +56,21 @@ namespace CloudEDU.Login
             customerDsq.BeginExecute(OnCustomerComplete, null);
         }
 
+        /// <summary>
+        /// Called when [customer complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void OnCustomerComplete(IAsyncResult result)
         {
             csl = customerDsq.EndExecute(result).ToList();
             System.Diagnostics.Debug.WriteLine(csl[0].NAME);
         }
 
+        /// <summary>
+        /// Handles the Click event of the Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (InputUsername.Text.Equals(string.Empty) || InputPassword.Password.Equals(string.Empty))
@@ -97,6 +113,10 @@ namespace CloudEDU.Login
             ctx.BeginSaveChanges(OnCustomerSaveChange, null);
         }
 
+        /// <summary>
+        /// Called when [customer save change].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnCustomerSaveChange(IAsyncResult result)
         {
             try
@@ -121,12 +141,16 @@ namespace CloudEDU.Login
             catch (Exception e)
             {
                 System.Diagnostics.Debug.WriteLine("Msg: {0}\nInnerExp:{1}\nStackTrace: {2} ",
-                    e.Message ,  e.InnerException, e.StackTrace);
-                 ShowMessageDialog();
-                 //Network Connection error.
+                    e.Message, e.InnerException, e.StackTrace);
+                ShowMessageDialog();
+                //Network Connection error.
             }
         }
 
+        /// <summary>
+        /// Determines whether [is user already there].
+        /// </summary>
+        /// <returns></returns>
         private bool isUserAlreadyThere()
         {
             foreach (CUSTOMER c in csl)
@@ -142,7 +166,8 @@ namespace CloudEDU.Login
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
-        private async void ShowMessageDialog(String msg ="No network has been founddddddd!")
+        /// <param name="msg">The MSG.</param>
+        private async void ShowMessageDialog(String msg = "No network has been founddddddd!")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
@@ -164,6 +189,11 @@ namespace CloudEDU.Login
             });
         }
 
+        /// <summary>
+        /// Handles the Click event of the LoginButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));

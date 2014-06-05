@@ -4,10 +4,19 @@ using Windows.UI.Xaml.Media;
 
 namespace CloudEDU.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class GlobalPage : Page
     {
+        /// <summary>
+        /// The global application bar
+        /// </summary>
         public static AppBar globalAppBar = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GlobalPage"/> class.
+        /// </summary>
         public GlobalPage()
         {
             // Create the global appbar
@@ -19,11 +28,21 @@ namespace CloudEDU.Common
             this.BottomAppBar = globalAppBar;
         }
 
+        /// <summary>
+        /// Handles the Loaded event of the globalAppBar control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         void globalAppBar_Loaded(object sender, RoutedEventArgs e)
         {
             globalAppBar.Focus(Windows.UI.Xaml.FocusState.Programmatic);
         }
 
+        /// <summary>
+        /// Globals the application bar_ opened.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
         void globalAppBar_Opened(object sender, object e)
         {
             globalAppBar.Focus(Windows.UI.Xaml.FocusState.Programmatic);
@@ -31,7 +50,7 @@ namespace CloudEDU.Common
 
         /// <summary>
         /// Invoked as an event handler to navigate backward in the page's associated
-        /// <see cref="Frame"/> until it reaches the top of the navigation stack.
+        /// <see cref="Frame" /> until it reaches the top of the navigation stack.
         /// </summary>
         /// <param name="sender">Instance that triggered the event.</param>
         /// <param name="e">Event data describing the conditions that led to the event.</param>
@@ -46,7 +65,7 @@ namespace CloudEDU.Common
 
         /// <summary>
         /// Invoked as an event handler to navigate backward in the navigation stack
-        /// associated with this page's <see cref="Frame"/>.
+        /// associated with this page's <see cref="Frame" />.
         /// </summary>
         /// <param name="sender">Instance that triggered the event.</param>
         /// <param name="e">Event data describing the conditions that led to the
@@ -59,7 +78,7 @@ namespace CloudEDU.Common
 
         /// <summary>
         /// Invoked as an event handler to navigate forward in the navigation stack
-        /// associated with this page's <see cref="Frame"/>.
+        /// associated with this page's <see cref="Frame" />.
         /// </summary>
         /// <param name="sender">Instance that triggered the event.</param>
         /// <param name="e">Event data describing the conditions that led to the

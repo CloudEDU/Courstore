@@ -11,11 +11,23 @@ using Windows.UI.Xaml.Input;
 
 namespace CloudEDU.Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public sealed partial class AppbarContent : UserControl
     {
+        /// <summary>
+        /// The search text block
+        /// </summary>
         public static TextBox searchTextBlock = null;
+        /// <summary>
+        /// The advance search button
+        /// </summary>
         public Button advanceSearchButton = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AppbarContent"/> class.
+        /// </summary>
         public AppbarContent()
         {
             this.InitializeComponent();
@@ -54,6 +66,11 @@ namespace CloudEDU.Common
             ((Frame)Window.Current.Content).Navigate(typeof(Uploading));
         }
 
+        /// <summary>
+        /// Handles the 1 event of the LogoutButton_Click control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void LogoutButton_Click_1(object sender, RoutedEventArgs e)
         {
             ((Frame)Window.Current.Content).Navigate(typeof(Login.LoginSel));
@@ -70,6 +87,11 @@ namespace CloudEDU.Common
             }
         }
 
+        /// <summary>
+        /// Handles the Clicked event of the Enter control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyRoutedEventArgs"/> instance containing the event data.</param>
         private void Enter_Clicked(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == VirtualKey.Enter)

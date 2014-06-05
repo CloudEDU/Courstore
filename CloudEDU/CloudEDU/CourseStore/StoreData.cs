@@ -1,5 +1,4 @@
 ﻿using CloudEDU.Common;
-using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,40 +6,36 @@ using System.Linq;
 namespace CloudEDU.CourseStore
 {
     /// <summary>
-    /// The Model used to group the data according to the category, provide 
-    /// GetSingleGroupByCategoryTitle(), GetGroupsByCategory(string categoryTitle) 
-    /// and GetGroupsByAttendingOrTeaching() three methods.
-    /// Here is the Demo.
-    /// <code>
-    /// Course course = new Course();
-    /// List<Course> courses = new List<Course>();
-    /// for (int i = 0; i < 10; ++)
-    /// {
-    ///     Course tmpCourse = new Course();
-    ///     courses.Add(tempCourse);
-    /// }
-    /// StoreData storeData = new Store();
-    /// storeData.Add(course);
-    /// storeData.Add(courses);
-    /// List<GroupInfoList<object>> singleGroupByPhysics = storeData.GetSingleGroupByCategoryTitle("Physics");
-    /// List<GroupInfoList<object>> GroupedData = storeData.GetGroupsByCategory();
-    /// List<GroupInfoList<object>> MyCourses = storeData.GetGroupsByAttendingOrTeaching();
-    /// </code>
+    /// 
     /// </summary>
     public class StoreData
     {
-        CloudEDUEntities ctx = null;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StoreData"/> class.
+        /// </summary>
         public StoreData()
         {
         }
 
+        /// <summary>
+        /// Counts this instance.
+        /// </summary>
+        /// <returns></returns>
         public int Count()
         {
             return Collection.Count();
         }
 
+        /// <summary>
+        /// The _collection
+        /// </summary>
         private CourseCollection _collection = new CourseCollection();
+        /// <summary>
+        /// Gets the collection.
+        /// </summary>
+        /// <value>
+        /// The collection.
+        /// </value>
         public CourseCollection Collection
         {
             get
@@ -53,7 +48,7 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Add course to the list used to display.
         /// </summary>
-        /// <param Title="course">The course to be added.</param>
+        /// <param name="course">The course.</param>
         public void AddCourse(Course course)
         {
             Collection.Add(course);
@@ -62,7 +57,7 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Add a group of courses to the list used to display.
         /// </summary>
-        /// <param Title="courses">The course list to be added.</param>
+        /// <param name="courses">The courses.</param>
         public void AddCourses(List<Course> courses)
         {
             foreach (Course course in courses)
@@ -84,9 +79,11 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Get the single group classified by the category Title.
         /// </summary>
-        /// <param Title="categoryTitle">The category Title need to be group.</param>
-        /// <returns>A list only contain a single GroupInfoList, which contain the 
-        /// elements that had been grouped.</returns>
+        /// <param name="categoryTitle">The category title.</param>
+        /// <returns>
+        /// A list only contain a single GroupInfoList, which contain the
+        /// elements that had been grouped.
+        /// </returns>
         internal List<GroupInfoList<object>> GetSingleGroupByCategoryTitle(string categoryTitle)
         {
             List<GroupInfoList<object>> group = new List<GroupInfoList<object>>();
@@ -113,8 +110,10 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Get the list that has been grouped by the category.
         /// </summary>
-        /// <returns>A list of GroupInfoList, each GroupInfoList contains the data 
-        /// classified according to the category.</returns>
+        /// <returns>
+        /// A list of GroupInfoList, each GroupInfoList contains the data
+        /// classified according to the category.
+        /// </returns>
         internal List<GroupInfoList<object>> GetGroupsByCategory()
         {
             List<GroupInfoList<object>> groups = new List<GroupInfoList<object>>();
@@ -212,8 +211,10 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Get the list that has been grouped by whether user has bought or teached.
         /// </summary>
-        /// <returns>A list contains two GroupInfoList, one is attending list, another 
-        /// is teaching list.</returns>
+        /// <returns>
+        /// A list contains two GroupInfoList, one is attending list, another
+        /// is teaching list.
+        /// </returns>
         internal List<GroupInfoList<object>> GetGroupsByAttendingOrTeaching()
         {
             List<GroupInfoList<object>> groups = new List<GroupInfoList<object>>();
@@ -241,6 +242,11 @@ namespace CloudEDU.CourseStore
             return groups;
         }
 
+        /// <summary>
+        /// Gets the search result group.
+        /// </summary>
+        /// <param name="searchCount">The search count.</param>
+        /// <returns></returns>
         internal List<GroupInfoList<object>> GetSearchResultGroup(string searchCount)
         {
             List<GroupInfoList<object>> group = new List<GroupInfoList<object>>();

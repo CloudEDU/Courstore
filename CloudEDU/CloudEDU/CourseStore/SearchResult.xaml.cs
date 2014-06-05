@@ -19,18 +19,48 @@ namespace CloudEDU.CourseStore
     /// </summary>
     public sealed partial class SearchResult : GlobalPage
     {
+        /// <summary>
+        /// The store search result
+        /// </summary>
         private StoreData storeSearchResult;
+        /// <summary>
+        /// The search results
+        /// </summary>
         private List<GroupInfoList<Object>> searchResults;
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The course DSQ
+        /// </summary>
         private DataServiceQuery<COURSE_AVAIL> courseDsq = null;
 
+        /// <summary>
+        /// The search title key
+        /// </summary>
         private string searchTitleKey;
+        /// <summary>
+        /// The search author key
+        /// </summary>
         private string searchAuthorKey;
+        /// <summary>
+        /// The search description key
+        /// </summary>
         private string searchDescriptionKey;
+        /// <summary>
+        /// The search category key
+        /// </summary>
         private string searchCategoryKey;
 
+        /// <summary>
+        /// The search options
+        /// </summary>
         List<string> searchOptions = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchResult"/> class.
+        /// </summary>
         public SearchResult()
         {
             this.InitializeComponent();
@@ -77,6 +107,10 @@ namespace CloudEDU.CourseStore
             UserProfileBt.DataContext = Constants.User;
         }
 
+        /// <summary>
+        /// Called when [search result complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnSearchResultComplete(IAsyncResult result)
         {
             storeSearchResult = new StoreData();
@@ -101,6 +135,11 @@ namespace CloudEDU.CourseStore
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the BackButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (Frame.CanGoBack)
@@ -124,6 +163,11 @@ namespace CloudEDU.CourseStore
 
             Frame.Navigate(typeof(CourseOverview), course);
         }
+        /// <summary>
+        /// Handles the Click event of the UserProfileButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));
@@ -132,6 +176,7 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(String msg = "No network has been fooooooound ")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>

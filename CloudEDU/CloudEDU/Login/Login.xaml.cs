@@ -3,7 +3,6 @@ using CloudEDU.CourseStore;
 using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
-using System.Data.Services.Client;
 using System.Threading.Tasks;
 using Windows.UI.Core;
 using Windows.UI.Popups;
@@ -21,12 +20,23 @@ namespace CloudEDU.Login
     /// </summary>
     public sealed partial class Login : Page
     {
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
-        private DataServiceQuery<CUSTOMER> customerDsq = null;
 
+        /// <summary>
+        /// The empty username
+        /// </summary>
         private string emptyUsername;
+        /// <summary>
+        /// The first time for username
+        /// </summary>
         private bool firstTimeForUsername = true;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Login"/> class.
+        /// </summary>
         public Login()
         {
             this.InitializeComponent();
@@ -40,7 +50,7 @@ namespace CloudEDU.Login
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.  The Parameter
         /// property is typically used to configure the page.</param>
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             InputUsername.IsEnabled = InputPassword.IsEnabled = LoginButton.IsEnabled = SignUpButton.IsEnabled = true;
 
@@ -78,6 +88,11 @@ namespace CloudEDU.Login
             Frame.Navigate(typeof(SignUp));
         }
 
+        /// <summary>
+        /// Handles the Click event of the LoginButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             InputUsername.IsEnabled = InputPassword.IsEnabled = LoginButton.IsEnabled = SignUpButton.IsEnabled = false;
@@ -176,6 +191,11 @@ namespace CloudEDU.Login
             InputUsername.IsEnabled = InputPassword.IsEnabled = LoginButton.IsEnabled = SignUpButton.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Handles the TextChanged event of the InputUsername control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
         private void InputUsername_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!firstTimeForUsername)
@@ -208,6 +228,11 @@ namespace CloudEDU.Login
             });
         }
 
+        /// <summary>
+        /// Handles the KeyDown event of the InputPassword control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyRoutedEventArgs"/> instance containing the event data.</param>
         private void InputPassword_KeyDown(object sender, KeyRoutedEventArgs e)
         {
             if (e.Key == Windows.System.VirtualKey.Enter)

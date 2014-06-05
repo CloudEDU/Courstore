@@ -3,20 +3,12 @@ using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -28,18 +20,39 @@ namespace CloudEDU.CourseStore
     /// </summary>
     public sealed partial class Category : GlobalPage
     {
+        /// <summary>
+        /// The category courses
+        /// </summary>
         private StoreData categoryCourses;
+        /// <summary>
+        /// The data category
+        /// </summary>
         private List<GroupInfoList<Object>> dataCategory;
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The course DSQ
+        /// </summary>
         private DataServiceQuery<COURSE_AVAIL> courseDsq = null;
+        /// <summary>
+        /// The record DSQ
+        /// </summary>
         private DataServiceQuery<COURSE_RECO_AVAIL> recDsq = null;
 
+        /// <summary>
+        /// The category name
+        /// </summary>
         string categoryName = null;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Category"/> class.
+        /// </summary>
         public Category()
         {
             this.InitializeComponent();
-            
+
             ctx = new CloudEDUEntities(new Uri(Constants.DataServiceURI));
         }
 
@@ -100,6 +113,10 @@ namespace CloudEDU.CourseStore
             UserProfileBt.DataContext = Constants.User;
         }
 
+        /// <summary>
+        /// Called when [recommendation courses complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnRecommendationCoursesComplete(IAsyncResult result)
         {
             categoryCourses = new StoreData();
@@ -153,6 +170,7 @@ namespace CloudEDU.CourseStore
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(String msg = "No network has been fooooooound ")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
@@ -216,10 +234,15 @@ namespace CloudEDU.CourseStore
                 Frame.Navigate(typeof(CategoryForNewest));
             }
         }
+        /// <summary>
+        /// Handles the Click event of the UserProfileButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));
         }
-        
+
     }
 }

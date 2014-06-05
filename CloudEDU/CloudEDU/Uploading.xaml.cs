@@ -8,10 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Networking.BackgroundTransfer;
-using Windows.Security.Credentials.UI;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.UI;
@@ -20,9 +17,6 @@ using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
@@ -36,32 +30,92 @@ namespace CloudEDU
     /// </summary>
     public sealed partial class Uploading : GlobalPage
     {
+        /// <summary>
+        /// The categories
+        /// </summary>
         private List<CATEGORY> categories;
+        /// <summary>
+        /// The PGS
+        /// </summary>
         private List<PARENT_GUIDE> pgs;
 
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The category DSQ
+        /// </summary>
         private DataServiceQuery<CATEGORY> categoryDsq = null;
+        /// <summary>
+        /// The pg DSQ
+        /// </summary>
         private DataServiceQuery<PARENT_GUIDE> pgDsq = null;
 
+        /// <summary>
+        /// The images filter type list
+        /// </summary>
         List<string> imagesFilterTypeList = new List<string> { ".png", ".jpg", ".bmp" };
+        /// <summary>
+        /// The docs filter type list
+        /// </summary>
         List<string> docsFilterTypeList = new List<string> { ".doc", ".docx", ".pdf", ".txt", ".ppt", ".pptx", ".c", ".cpp", ".java", ".py", ".cs", ".s" };
+        /// <summary>
+        /// The audios filter type list
+        /// </summary>
         List<string> audiosFilterTypeList = new List<string> { ".mp3", ".wmv" };
+        /// <summary>
+        /// The videos filter type list
+        /// </summary>
         List<string> videosFilterTypeList = new List<string> { ".mp4", ".avi", ".rm", ".rmvb" };
 
+        /// <summary>
+        /// The images
+        /// </summary>
         IReadOnlyList<StorageFile> images = null;
+        /// <summary>
+        /// The docs
+        /// </summary>
         IReadOnlyList<StorageFile> docs = null;
+        /// <summary>
+        /// The audios
+        /// </summary>
         IReadOnlyList<StorageFile> audios = null;
+        /// <summary>
+        /// The videos
+        /// </summary>
         IReadOnlyList<StorageFile> videos = null;
 
+        /// <summary>
+        /// All lessons
+        /// </summary>
         private List<Lesson> allLessons;
+        /// <summary>
+        /// To be upload course
+        /// </summary>
         private Course toBeUploadCourse;
+        /// <summary>
+        /// The resource dic
+        /// </summary>
         private Dictionary<string, int> resourceDic;
+        /// <summary>
+        /// The has image
+        /// </summary>
         private bool hasImage;
 
+        /// <summary>
+        /// The add image button
+        /// </summary>
         private Button addImageButton;
 
+        /// <summary>
+        /// The CTS
+        /// </summary>
         private CancellationTokenSource cts;
 
+        /// <summary>
+        /// The lesson count
+        /// </summary>
         int lessonCount = 0;
 
         /// <summary>
@@ -108,6 +162,10 @@ namespace CloudEDU
             }
         }
 
+        /// <summary>
+        /// Called when [pg complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private async void OnPGComplete(IAsyncResult result)
         {
             try
@@ -126,6 +184,10 @@ namespace CloudEDU
             }
         }
 
+        /// <summary>
+        /// Called when [upload course complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void OnUploadCourseComplete(IAsyncResult result)
         {
             ctx.EndExecute(result);
@@ -369,6 +431,8 @@ namespace CloudEDU
         /// </summary>
         /// <param name="sender">The all upload button clicked.</param>
         /// <param name="e">Event data that describes how the click was initiated.</param>
+        /// <exception cref="InvalidDataException">
+        /// </exception>
         private async void allUploadButton_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckCourseInfomation())
@@ -525,7 +589,9 @@ namespace CloudEDU
         /// Create FileOpenPicker and set file filter.
         /// </summary>
         /// <param name="typeFilterList">The filter type list.</param>
-        /// <returns>The FileOpenPicker created.</returns>
+        /// <returns>
+        /// The FileOpenPicker created.
+        /// </returns>
         private FileOpenPicker FileTypePicker(List<string> typeFilterList)
         {
             // Verify that we are currently not snapped, or that we can unsnap to open the picker.
@@ -549,7 +615,9 @@ namespace CloudEDU
         /// Create the BackgroundTransferContentPart list.
         /// </summary>
         /// <param name="files">The file list.</param>
-        /// <returns>The BackgroundTransferContentPart list created.</returns>
+        /// <returns>
+        /// The BackgroundTransferContentPart list created.
+        /// </returns>
         private List<BackgroundTransferContentPart> CreateBackgroundTransferContentPartList(IReadOnlyList<StorageFile> files)
         {
             if (files == null) return null;
@@ -601,7 +669,9 @@ namespace CloudEDU
         /// </summary>
         /// <param name="upload">UploadOperation handled.</param>
         /// <param name="start">Whether uplaod is started.</param>
-        /// <returns>Represent the asynchronous operation.</returns>
+        /// <returns>
+        /// Represent the asynchronous operation.
+        /// </returns>
         private async Task HandleUploadAsync(UploadOperation upload, bool start)
         {
             try
@@ -626,29 +696,19 @@ namespace CloudEDU
                     ShowMessageDialog("Error90! Upload canceled.");
                 }
 
-                    ResponseInformation response = upload.GetResponseInformation();
-                    foreach (var c in response.Headers)
-                    {
-                        System.Diagnostics.Debug.WriteLine("{0}, {1}. markkkkkkkk", c.Key, c.Value);
-                    }
+                ResponseInformation response = upload.GetResponseInformation();
+                foreach (var c in response.Headers)
+                {
+                    System.Diagnostics.Debug.WriteLine("{0}, {1}. markkkkkkkk", c.Key, c.Value);
+                }
 
-                    if (images != null && images.Count != 0 && hasImage == false)
-                    {
-                        ///!!!!!!!!
-                        toBeUploadCourse.ImageUri = response.Headers[images.FirstOrDefault().Name];
-                        ///
-                        hasImage = true;
-                    }
-                
-                
-
-                //!!!!!!!!!
+                if (images != null && images.Count != 0 && hasImage == false)
+                {
+                    toBeUploadCourse.ImageUri = response.Headers[images.FirstOrDefault().Name];
+                    hasImage = true;
+                }
                 SaveUploadLessonToListAsync(response);
-               
-                
-                
-                
-                
+
             }
             catch (TaskCanceledException)
             {
@@ -842,7 +902,9 @@ namespace CloudEDU
         /// <summary>
         /// Check whether lesson information is legal.
         /// </summary>
-        /// <returns>If legal, then true; else false.</returns>
+        /// <returns>
+        /// If legal, then true; else false.
+        /// </returns>
         private bool CheckLessonInfomation()
         {
             bool result = true;
@@ -863,7 +925,9 @@ namespace CloudEDU
         /// <summary>
         /// Check whether course information is legal.
         /// </summary>
-        /// <returns>If legal, then true; else false.</returns>
+        /// <returns>
+        /// If legal, then true; else false.
+        /// </returns>
         private bool CheckCourseInfomation()
         {
             bool result = true;
@@ -890,7 +954,8 @@ namespace CloudEDU
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
-        private async void ShowNetworkMessageDialog(String msg ="No network hasssss been found! ")
+        /// <param name="msg">The MSG.</param>
+        private async void ShowNetworkMessageDialog(String msg = "No network hasssss been found! ")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {
@@ -914,6 +979,7 @@ namespace CloudEDU
         /// <summary>
         /// Upload information error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(string msg)
         {
             var messageDialog = new MessageDialog(msg);

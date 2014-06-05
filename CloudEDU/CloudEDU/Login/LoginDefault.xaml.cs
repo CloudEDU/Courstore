@@ -1,24 +1,14 @@
 ﻿using CloudEDU.Common;
-using CloudEDU.CourseStore;
 using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Media;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 
@@ -30,25 +20,42 @@ namespace CloudEDU.Login
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    /// 
 
     public sealed partial class LoginDefault : Page
     {
 
+        /// <summary>
+        /// The CSL
+        /// </summary>
         private List<CUSTOMER> csl;
+        /// <summary>
+        /// The CTX
+        /// </summary>
         private CloudEDUEntities ctx = null;
+        /// <summary>
+        /// The customer DSQ
+        /// </summary>
         private DataServiceQuery<CUSTOMER> customerDsq = null;
         //static int WidthOfScreen = 1366;
 
         //UserSelButtonControl LastSelectedUser;
         //UserSelButtonControl SelectedUser;
+        /// <summary>
+        /// The user
+        /// </summary>
         User user;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginDefault"/> class.
+        /// </summary>
         public LoginDefault()
         {
             this.InitializeComponent();
             Setup();
         }
 
+        /// <summary>
+        /// Setups this instance.
+        /// </summary>
         private void Setup()
         {
             ctx = new CloudEDUEntities(new Uri(Constants.DataServiceURI));
@@ -61,6 +68,9 @@ namespace CloudEDU.Login
             //test.UserName = test.user.NAME;
         }
 
+        /// <summary>
+        /// Sets the user.
+        /// </summary>
         private void SetUser()
         {
             //string imageSource = Constants.ComputeMD5("yougmark94@gmail.com");
@@ -81,16 +91,30 @@ namespace CloudEDU.Login
             customerDsq.BeginExecute(OnCustomerComplete, null);
         }
 
+        /// <summary>
+        /// Handles the Click event of the Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(LoginSel));
         }
 
+        /// <summary>
+        /// Handles the Click event of the SignUpButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void SignUpButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(SignUp));
         }
 
+        /// <summary>
+        /// Called when [customer complete].
+        /// </summary>
+        /// <param name="result">The result.</param>
         private void OnCustomerComplete(IAsyncResult result)
         {
             IEnumerable<CUSTOMER> cs = customerDsq.EndExecute(result);
@@ -98,6 +122,11 @@ namespace CloudEDU.Login
             System.Diagnostics.Debug.WriteLine(csl[0].NAME);
         }
 
+        /// <summary>
+        /// Handles the Click event of the LoginButton control.
+        /// </summary>
+        /// <param name="sende">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void LoginButton_Click(object sende, RoutedEventArgs e)
         {
 
@@ -111,7 +140,7 @@ namespace CloudEDU.Login
             }
 
 
-            
+
             try
             {
                 TaskFactory<IEnumerable<CUSTOMER>> tf = new TaskFactory<IEnumerable<CUSTOMER>>();
@@ -124,7 +153,7 @@ namespace CloudEDU.Login
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 ShowMessageDialog("customerdsq error!");
             }
-            
+
 
             foreach (CUSTOMER c in csl)
             {
@@ -195,12 +224,13 @@ namespace CloudEDU.Login
             {
                 ShowMessageDialog("Username or password is wrong!");
             }
-            
+
         }
         /// <summary>
         /// Network Connection error MessageDialog.
         /// </summary>
-        private async void ShowMessageDialog(String msg="No Network has been foundddd!")
+        /// <param name="msg">The MSG.</param>
+        private async void ShowMessageDialog(String msg = "No Network has been foundddd!")
         {
             await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
             {

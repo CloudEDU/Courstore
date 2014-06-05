@@ -9,17 +9,13 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Networking.BackgroundTransfer;
 using Windows.Storage;
-using Windows.Storage.Search;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
@@ -35,15 +31,36 @@ namespace CloudEDU.CourseStore.CoursingDetail
     public sealed partial class Lecture : Page
     {
 
+        /// <summary>
+        /// The dba
+        /// </summary>
         DBAccessAPIs dba = null;
+        /// <summary>
+        /// All lessons
+        /// </summary>
         List<LESSON> allLessons = null;
+        /// <summary>
+        /// The resource dic
+        /// </summary>
         Dictionary<string, int> resourceDic = null;
+        /// <summary>
+        /// The res_ URL
+        /// </summary>
         Dictionary<Image, string> Res_URL = null;
+        /// <summary>
+        /// The img_ LSN
+        /// </summary>
         Dictionary<Image, int> Img_Lsn = null;
+        /// <summary>
+        /// The learned lessons
+        /// </summary>
         List<LESSON> LearnedLessons = null;
 
         //int testLessonID;
 
+        /// <summary>
+        /// The course
+        /// </summary>
         Course course = null;
 
         /// <summary>
@@ -56,7 +73,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
             dba = new DBAccessAPIs();
 
             allLessons = new List<LESSON>();
-            
+
             Res_URL = new Dictionary<Image, string>();
             Img_Lsn = new Dictionary<Image, int>();
         }
@@ -74,12 +91,15 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
 
 
-            
+
             //allLessonsStackPanel.Children.Add(GenerateALessonBox(null));
             //allLessonsStackPanel.Children.Add(GenerateALessonBox(null));
         }
 
 
+        /// <summary>
+        /// Gets the learned lessons.
+        /// </summary>
         private async void GetLearnedLessons()
         {
             /*
@@ -97,7 +117,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
                 return;
             }
             */
-            
+
             System.Diagnostics.Debug.WriteLine("get learned courses");
             try
             {
@@ -107,11 +127,12 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
 
                 LearnedLessons = new List<LESSON>();
-                foreach (LESSON l in lessons){
-                    System.Diagnostics.Debug.WriteLine("lessons learned:"+l.TITLE+"id:"+l.ID);
+                foreach (LESSON l in lessons)
+                {
+                    System.Diagnostics.Debug.WriteLine("lessons learned:" + l.TITLE + "id:" + l.ID);
                     LearnedLessons.Add(l);
                 }
-                
+
             }
             catch
             {
@@ -123,13 +144,17 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
         }
 
+        /// <summary>
+        /// Ons the get lesson complete.
+        /// </summary>
+        /// <param name="iar">The iar.</param>
         private async void onGetLessonComplete(IAsyncResult iar)
         {
             try
             {
                 System.Diagnostics.Debug.WriteLine("get lesson complete");
                 IEnumerable<LESSON> lessons = dba.lessonDsq.EndExecute(iar);
-                
+
                 foreach (var l in lessons)
                 {
                     this.allLessons.Add(l);
@@ -157,7 +182,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
             try
             {
                 resourceDic = new Dictionary<string, int>(Constants.ResourceType.Count);
-                for (int i = 0; i <Constants.ResourceType.Count; ++i)
+                for (int i = 0; i < Constants.ResourceType.Count; ++i)
                 {
                     DataServiceQuery<RES_TYPE> dps = (DataServiceQuery<RES_TYPE>)(from res_type in ctx.RES_TYPE
                                                                                   where res_type.DESCRIPTION.Trim() == Constants.ResourceType[i]
@@ -183,6 +208,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
         /// <summary>
         /// Upload information error MessageDialog.
         /// </summary>
+        /// <param name="msg">The MSG.</param>
         private async void ShowMessageDialog(string msg)
         {
             var messageDialog = new MessageDialog(msg);
@@ -192,22 +218,43 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
 
 
+        /// <summary>
+        /// Generates the document image.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         private Image GenerateDocImage(string url)
         {
-            return GenerateImage("ms-appx:///Images/Upload/doc_white.png",url);
+            return GenerateImage("ms-appx:///Images/Upload/doc_white.png", url);
         }
 
+        /// <summary>
+        /// Generates the audio image.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         private Image GenerateAudioImage(string url)
         {
-            return GenerateImage("ms-appx:///Images/Upload/audio_white.png",url);
+            return GenerateImage("ms-appx:///Images/Upload/audio_white.png", url);
         }
 
+        /// <summary>
+        /// Generates the video image.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
         private Image GenerateVideoImage(string url)
         {
-            return GenerateImage("ms-appx:///Images/Upload/video_white.png",url);
+            return GenerateImage("ms-appx:///Images/Upload/video_white.png", url);
         }
 
-        private Image GenerateImage(string uri,string url)
+        /// <summary>
+        /// Generates the image.
+        /// </summary>
+        /// <param name="uri">The URI.</param>
+        /// <param name="url">The URL.</param>
+        /// <returns></returns>
+        private Image GenerateImage(string uri, string url)
         {
             Image image = new Image
             {
@@ -217,12 +264,17 @@ namespace CloudEDU.CourseStore.CoursingDetail
                 Height = 40,
                 HorizontalAlignment = HorizontalAlignment.Right,
             };
-            Res_URL.Add(image,url);
+            Res_URL.Add(image, url);
 
             return image;
         }
 
-        
+
+        /// <summary>
+        /// Generates a lesson box.
+        /// </summary>
+        /// <param name="les">The les.</param>
+        /// <returns></returns>
         private Grid GenerateALessonBox(LESSON les)
         {
             if (les == null)
@@ -237,7 +289,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
                 Foreground = new SolidColorBrush(Colors.White),
                 HorizontalAlignment = HorizontalAlignment.Left,
                 Text = les.TITLE,
-                
+
             };
             /*
             Image docImage = new Image
@@ -288,6 +340,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
             return newLesson;
         }
 
+        /// <summary>
+        /// Adds the image button.
+        /// </summary>
+        /// <param name="lessonId">The lesson identifier.</param>
+        /// <param name="parent">The parent.</param>
         private async void AddImageButton(int lessonId, StackPanel parent)
         {
             //System.Diagnostics.Debug.WriteLine("AddImageButton!");
@@ -321,6 +378,10 @@ namespace CloudEDU.CourseStore.CoursingDetail
         }
 
         //string fileToLaunch = null;
+        /// <summary>
+        /// Launches the file open with.
+        /// </summary>
+        /// <param name="fileName">Name of the file.</param>
         private async void LaunchFileOpenWith(string fileName)
         {
 
@@ -351,11 +412,21 @@ namespace CloudEDU.CourseStore.CoursingDetail
         }
 
 
+        /// <summary>
+        /// Handles the clicked event of the close_button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void close_button_clicked(object sender, RoutedEventArgs e)
         {
             pop.IsOpen = false;
         }
 
+        /// <summary>
+        /// Resources the image tapped.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private async void ResImageTapped(object sender, TappedRoutedEventArgs e)
         {
             Image image = (Image)sender;
@@ -386,9 +457,9 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
 
             System.Diagnostics.Debug.WriteLine(url);
-            Uri uri = new Uri(Constants.DataCenterURI+url);
+            Uri uri = new Uri(Constants.DataCenterURI + url);
             string[] fileArray = url.Split('\\');
-            
+
 
             string fileName = fileArray[fileArray.Length - 1];
             System.Diagnostics.Debug.WriteLine(fileName);
@@ -422,7 +493,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
 
 
-                
+
                 //System.Diagnostics.Debug.WriteLine("somepath"+KnownFolders.VideosLibrary.Path+"asdfa");
 
                 //ShowMessageDialog("file already exist!!");
@@ -436,7 +507,7 @@ namespace CloudEDU.CourseStore.CoursingDetail
             {
                 destinationFile = await KnownFolders.VideosLibrary.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
             }
-            catch (FileNotFoundException ex)
+            catch (FileNotFoundException)
             {
                 //rootPage.NotifyUser("Error while creating file: " + ex.Message, NotifyType.ErrorMessage);
                 return;
@@ -449,9 +520,18 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
         }
 
+        /// <summary>
+        /// The CTS
+        /// </summary>
         private CancellationTokenSource cts;
 
 
+        /// <summary>
+        /// Handles the download asynchronous.
+        /// </summary>
+        /// <param name="download">The download.</param>
+        /// <param name="start">if set to <c>true</c> [start].</param>
+        /// <returns></returns>
         private async Task HandleDownloadAsync(DownloadOperation download, bool start)
         {
             try
@@ -476,52 +556,70 @@ namespace CloudEDU.CourseStore.CoursingDetail
                 }
                 ShowMessageDialog("Download Complete!");
                 ResponseInformation response = download.GetResponseInformation();
-                
+
                 //LogStatus(String.Format("Completed: {0}, Status Code: {1}", download.Guid, response.StatusCode),
-                    //NotifyType.StatusMessage);
+                //NotifyType.StatusMessage);
             }
-            catch (TaskCanceledException e)
+            catch (TaskCanceledException)
             {
-                
+
                 //LogStatus("Canceled: " + download.Guid, NotifyType.StatusMessage);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 ShowMessageDialog("Execution error!12");
                 //if (!IsExceptionHandled("Execution error", ex, download))
                 //{
-                   // throw;
+                // throw;
                 //}
             }
             finally
             {
                 //activeDownloads.Remove(download);
             }
-            
+
         }
 
 
 
 
+        /// <summary>
+        /// Handles the Tapped event of the noteImage control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
         private void noteImage_Tapped(object sender, TappedRoutedEventArgs e)
         {
             this.addNotePopup.IsOpen = true;
-            List<string> list= new List<string>();
+            List<string> list = new List<string>();
             for (int i = 0; i < allLessons.Count; i++)
             {
-                list.Add("Lesson " + (i+1));
+                list.Add("Lesson " + (i + 1));
             }
             this.selectLessonComboBox.ItemsSource = list;
             //throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Handles the Click event of the CancelUploadButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void CancelUploadButton_Click(object sender, RoutedEventArgs e)
         {
             this.addNotePopup.IsOpen = false;
         }
 
+        /// <summary>
+        /// The CTX
+        /// </summary>
         CloudEDUEntities ctx = null;
 
+        /// <summary>
+        /// Handles the Click event of the SaveNoteButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private async void SaveNoteButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -550,17 +648,24 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
 
         }
+        /// <summary>
+        /// Ons the note saved.
+        /// </summary>
+        /// <param name="iar">The iar.</param>
         private void onNoteSaved(IAsyncResult iar)
         {
             try
             {
                 ctx.EndSaveChanges(iar);
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                
+
             }
         }
+        /// <summary>
+        /// Clears the note.
+        /// </summary>
         private void ClearNote()
         {
             this.noteTitle.Text = "Title";
@@ -570,6 +675,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
         }
 
+        /// <summary>
+        /// Handles the GotFocus event of the noteContent control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void noteContent_GotFocus(object sender, RoutedEventArgs e)
         {
             if (this.noteContent.Text.Equals("Note Content..."))
@@ -580,6 +690,11 @@ namespace CloudEDU.CourseStore.CoursingDetail
 
         }
 
+        /// <summary>
+        /// Handles the GotFocus event of the noteTitle control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void noteTitle_GotFocus(object sender, RoutedEventArgs e)
         {
             if (this.noteTitle.Text.Equals("Title"))

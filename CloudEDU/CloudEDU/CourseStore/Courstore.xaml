@@ -124,7 +124,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <TextBlock Grid.Column="0" Text="Title:" />
-                        <TextBox Grid.Column="1" Text="Title" />
+                        <TextBox x:Name="SearchPopTitleText" Grid.Column="1" Text="Title" />
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -133,7 +133,7 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="Author:" />
-                        <TextBox Grid.Column="1" Text="Author" />
+                        <TextBox x:Name="SearchPopAuthorText" Grid.Column="1" Text="Author" />
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -142,7 +142,7 @@
                         </Grid.ColumnDefinitions>
                         
                         <TextBlock Grid.Column="0" Text="Description:" />
-                        <TextBox Grid.Column="1" Text="Description" />
+                        <TextBox x:Name="SearchPopDescriptionText" Grid.Column="1" Text="Description" />
                     </Grid>
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -151,7 +151,13 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Text="Category:"/>
-                        <ComboBox Grid.Column="1" SelectedValue="Choose your Type" FontSize="40" />
+                        <ComboBox x:Name="categorySearchComboBox" Grid.Column="1" SelectedValue="Choose your Type">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CATE_NAME}"  FontSize="35" />
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </Grid>
                     <Grid x:Name="searchButtonsGrid" Margin="10" Height="70">
                         <Grid.ColumnDefinitions>

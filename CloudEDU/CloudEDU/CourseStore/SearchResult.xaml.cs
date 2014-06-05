@@ -3,18 +3,11 @@ using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // “空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=234238 上有介绍
@@ -31,7 +24,12 @@ namespace CloudEDU.CourseStore
         private CloudEDUEntities ctx = null;
         private DataServiceQuery<COURSE_AVAIL> courseDsq = null;
 
-        string searchString = null;
+        private string searchTitleKey;
+        private string searchAuthorKey;
+        private string searchDescriptionKey;
+        private string searchCategoryKey;
+
+        List<string> searchOptions = null;
 
         public SearchResult()
         {
@@ -47,12 +45,33 @@ namespace CloudEDU.CourseStore
         /// 属性通常用于配置页。</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            searchString = e.Parameter as string;
+            searchOptions = e.Parameter as List<string>;
             loadingProgressRing.IsActive = true;
 
+            searchTitleKey = searchOptions[0].Trim();
+            searchAuthorKey = searchOptions[1].Trim();
+            searchDescriptionKey = searchOptions[2].Trim();
+            searchCategoryKey = searchOptions[3];
+
             courseDsq = (DataServiceQuery<COURSE_AVAIL>)(from course_avail in ctx.COURSE_AVAIL
-                                                         where course_avail.TITLE.Contains(searchString)
                                                          select course_avail);
+            if (!searchCategoryKey.Equals("Any Categories"))
+            {
+                courseDsq = (DataServiceQuery<COURSE_AVAIL>)courseDsq.Where(c => c.CATE_NAME.Equals(searchCategoryKey));
+            }
+            if (!searchTitleKey.Equals(""))
+            {
+                courseDsq = (DataServiceQuery<COURSE_AVAIL>)courseDsq.Where(c => c.TITLE.Contains(searchTitleKey));
+            }
+            if (!searchAuthorKey.Equals(""))
+            {
+                courseDsq = (DataServiceQuery<COURSE_AVAIL>)courseDsq.Where(c => c.TEACHER_NAME.Contains(searchAuthorKey));
+            }
+            if (!searchDescriptionKey.Equals(""))
+            {
+                courseDsq = (DataServiceQuery<COURSE_AVAIL>)courseDsq.Where(c => c.INTRO.Contains(searchDescriptionKey));
+            }
+
             courseDsq.BeginExecute(OnSearchResultComplete, null);
 
             UserProfileBt.DataContext = Constants.User;
@@ -71,7 +90,7 @@ namespace CloudEDU.CourseStore
                 }
                 await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                     {
-                        searchResults = storeSearchResult.GetSearchResultGroup(searchString);
+                        searchResults = storeSearchResult.GetSearchResultGroup(storeSearchResult.Count().ToString());
                         cvs1.Source = searchResults;
                         loadingProgressRing.IsActive = false;
                     });

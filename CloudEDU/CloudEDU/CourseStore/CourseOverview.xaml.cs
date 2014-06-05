@@ -1,20 +1,14 @@
 ﻿using CloudEDU.Common;
-using CloudEDU.Login;
 using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Services.Client;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -23,7 +17,6 @@ using Windows.UI.Xaml.Navigation;
 
 namespace CloudEDU.CourseStore
 {
-
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -66,7 +59,7 @@ namespace CloudEDU.CourseStore
             //// Prerequisite initialization:
 
 
-            
+
 
 
 
@@ -149,7 +142,7 @@ namespace CloudEDU.CourseStore
                 }
 
                 foreach (var b in bcs)
-                { 
+                {
                     if (b.COURSE_ID == course.ID)
                     {
                         isBuy = true;
@@ -366,7 +359,7 @@ namespace CloudEDU.CourseStore
 
 
 
-        private async void BuyCourse(Button bt,List<Object> courseInfo)
+        private async void BuyCourse(Button bt, List<Object> courseInfo)
         {
 
 
@@ -455,7 +448,7 @@ namespace CloudEDU.CourseStore
                 {
 
 
-                    
+
 
 
                     prerequestCoursePopup.IsOpen = true;
@@ -469,7 +462,7 @@ namespace CloudEDU.CourseStore
                 if (numPrerequisite != 0)
                 {
                     //courseInfo.Add("attending");
-                    
+
                     //Frame.Navigate(typeof(Coursing), courseInfo);
 
 
@@ -594,7 +587,7 @@ namespace CloudEDU.CourseStore
                 courseInfo.Add("attending");
                 Frame.Navigate(typeof(Coursing), courseInfo);
             }
-            else if(tmpButton.Content.ToString() == "Buy")
+            else if (tmpButton.Content.ToString() == "Buy")
             {
                 System.Diagnostics.Debug.WriteLine("Continue Button Clicked with buy");
                 List<object> courseInfo = new List<object>();

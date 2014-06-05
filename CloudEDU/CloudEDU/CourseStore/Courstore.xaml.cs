@@ -25,6 +25,7 @@ namespace CloudEDU.CourseStore
         private List<GroupInfoList<object>> dataCategory;
         private CloudEDUEntities ctx = null;
         private DataServiceQuery<COURSE_AVAIL> courseDsq = null;
+        private DataServiceQuery<CATEGORY> categoryDsq = null;
 
         /// <summary>
         /// Constructor, initialize the components
@@ -130,6 +131,7 @@ namespace CloudEDU.CourseStore
 
         private void InitializePopupStyle()
         {
+            // 样式设置
             var grids = from g in AdvanceSearchStackPanel.Children.OfType<Grid>()
                         where !g.Name.Equals(searchButtonsGrid.Name)
                         select g;
@@ -150,6 +152,36 @@ namespace CloudEDU.CourseStore
                     filterContent.FirstOrDefault().FontSize = 40;
                     filterContent.FirstOrDefault().Text = "";
                 }
+            }
+
+            // Category内容设置
+            categoryDsq = (DataServiceQuery<CATEGORY>)(from category in ctx.CATEGORY select category);
+            categoryDsq.BeginExecute(OnCategoryComplete, null);
+
+            SearchPopTitleText.KeyDown += AdvanceSearch_KeyDown;
+            SearchPopAuthorText.KeyDown += AdvanceSearch_KeyDown;
+            SearchPopDescriptionText.KeyDown += AdvanceSearch_KeyDown;
+        }
+
+        private async void OnCategoryComplete(IAsyncResult result)
+        {
+            try
+            {
+                IEnumerable<CATEGORY> cts = categoryDsq.EndExecute(result);
+                List<CATEGORY> categories = new List<CATEGORY>();
+                CATEGORY defaultCategory = new CATEGORY();
+                defaultCategory.CATE_NAME = "Any Categories";
+                categories.Add(defaultCategory);
+                categories.AddRange(cts);
+                await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    categorySearchComboBox.ItemsSource = categories;
+                    categorySearchComboBox.SelectedIndex = 0;
+                });
+            }
+            catch
+            {
+                ShowMessageDialog();
             }
         }
 
@@ -285,7 +317,11 @@ namespace CloudEDU.CourseStore
             else if (e.Key == Windows.System.VirtualKey.Enter && courstoreSearchBox.Text.Length != 0)
             {
                 string searchKeyText = courstoreSearchBox.Text;
-                Frame.Navigate(typeof(SearchResult), searchKeyText);
+                List<string> searchOptions = new List<string>
+                {
+                    searchKeyText
+                };
+                Frame.Navigate(typeof(SearchResult), searchOptions);
             }
             else
             {
@@ -324,9 +360,25 @@ namespace CloudEDU.CourseStore
             AdvanceSearchPopup.IsOpen = false;
         }
 
+        private void AdvanceSearch_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                AdvanceSearchPopup.IsOpen = false;
+                AdvanceSearchSubmitButton_Click(null, null);
+            }
+        }
+
         private void AdvanceSearchSubmitButton_Click(object sender, RoutedEventArgs e)
         {
-
+            List<string> SearchOption = new List<string>
+            {
+                SearchPopTitleText.Text,
+                SearchPopAuthorText.Text,
+                SearchPopDescriptionText.Text,
+                (categorySearchComboBox.SelectedValue as CATEGORY).CATE_NAME
+            };
+            Frame.Navigate(typeof(SearchResult), SearchOption);
         }
     }
 }

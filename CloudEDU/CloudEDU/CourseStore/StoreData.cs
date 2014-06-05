@@ -2,10 +2,7 @@
 using CloudEDU.Service;
 using System;
 using System.Collections.Generic;
-using System.Data.Services.Client;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CloudEDU.CourseStore
 {
@@ -36,6 +33,11 @@ namespace CloudEDU.CourseStore
 
         public StoreData()
         {
+        }
+
+        public int Count()
+        {
+            return Collection.Count();
         }
 
         private CourseCollection _collection = new CourseCollection();
@@ -205,7 +207,7 @@ namespace CloudEDU.CourseStore
             return groups;
         }
 
-       
+
 
         /// <summary>
         /// Get the list that has been grouped by whether user has bought or teached.
@@ -239,12 +241,12 @@ namespace CloudEDU.CourseStore
             return groups;
         }
 
-        internal List<GroupInfoList<object>> GetSearchResultGroup(string searchKey)
+        internal List<GroupInfoList<object>> GetSearchResultGroup(string searchCount)
         {
             List<GroupInfoList<object>> group = new List<GroupInfoList<object>>();
 
             GroupInfoList<object> searchResult = new GroupInfoList<object>();
-            searchResult.Key = "Search for \"" + searchKey +"\"";
+            searchResult.Key = searchCount + " Result";
 
             foreach (Course g in Collection)
             {

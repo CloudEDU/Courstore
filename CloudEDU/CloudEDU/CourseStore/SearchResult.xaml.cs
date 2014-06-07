@@ -79,13 +79,20 @@ namespace CloudEDU.CourseStore
             loadingProgressRing.IsActive = true;
 
             searchTitleKey = searchOptions[0].Trim();
-            searchAuthorKey = searchOptions[1].Trim();
-            searchDescriptionKey = searchOptions[2].Trim();
-            searchCategoryKey = searchOptions[3];
+            if (searchOptions.Count == 4)
+            {
+                searchAuthorKey = searchOptions[1].Trim();
+                searchDescriptionKey = searchOptions[2].Trim();
+                searchCategoryKey = searchOptions[3];
+            }
+            else
+            {
+                searchAuthorKey = searchDescriptionKey = searchCategoryKey = "";
+            }
 
             courseDsq = (DataServiceQuery<COURSE_AVAIL>)(from course_avail in ctx.COURSE_AVAIL
                                                          select course_avail);
-            if (!searchCategoryKey.Equals("Any Categories"))
+            if (!searchCategoryKey.Equals("Any Categories") && !searchCategoryKey.Equals(""))
             {
                 courseDsq = (DataServiceQuery<COURSE_AVAIL>)courseDsq.Where(c => c.CATE_NAME.Equals(searchCategoryKey));
             }

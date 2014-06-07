@@ -96,10 +96,14 @@ namespace CloudEDU.Common
         {
             if (e.Key == VirtualKey.Enter)
             {
-                string searchText = searchBox.Text;
+                string searchText = searchBox.Text.Trim();
+                List<string> searchOptions = new List<string>
+                {
+                    searchText
+                };
                 if (searchText != null && searchText.Length != 0)
                 {
-                    ((Frame)Window.Current.Content).Navigate(typeof(CourseStore.SearchResult), searchText);
+                    ((Frame)Window.Current.Content).Navigate(typeof(CourseStore.SearchResult), searchOptions);
                 }
             }
         }

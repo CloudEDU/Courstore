@@ -22,7 +22,7 @@ namespace CloudEDU.Common
         /// <summary>
         /// The base URL
         /// </summary>
-        public static string BaseURL = "http://221.239.197.132";
+        public static string BaseURL = "http://221.239.198.33";
         //public static string BaseURL = "http://luyirenmax.oicp.net";
         /// <summary>
         /// The data center URI

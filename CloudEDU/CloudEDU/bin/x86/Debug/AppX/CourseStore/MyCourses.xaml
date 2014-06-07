@@ -82,9 +82,9 @@
             
             <ScrollViewer Width="1366" Height="800" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="-683, 0, 0, 0" Background="Transparent" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" >
                 <Grid x:Name="topograph">
-                    <Image Visibility="Visible" Source="ms-appx:///Images/background.png" Height="800" Width="800" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="249,-9,317,9">
+                    <Image Visibility="Visible" Source="ms-appx:///Images/background.png" Height="800" Width="800" Margin="0,0,0,0">
                     </Image>
-                    <Border Margin="345,118,0,0" CornerRadius="15">
+                    <Border Margin="345,121,0,0" CornerRadius="15">
                         <TextBlock Text="Data&#10;Mathematics" />
                     </Border>
                     <Border  Margin="523,100,0,0">
@@ -96,8 +96,8 @@
                     <Border Margin="355,409,0,0">
                         <TextBlock Text="C Programming"/>
                     </Border>
-                    <Border Margin="364,595,0,0">
-                        <TextBlock Text="Inrto 2 CS"/>
+                    <Border Margin="364,593,0,0">
+                        <TextBlock Text="Intro 2 CS"/>
                     </Border>
                     <Border Margin="597,174,0,0">
                         <TextBlock Text="Compiler" />
@@ -120,7 +120,7 @@
                     <Border  Margin="747,156,0,0">
                         <TextBlock  Text="Machine&#10;Learning" />
                     </Border>
-                    <Border  Margin="775,71,0,0">
+                    <Border  Margin="775,74,0,0">
                         <TextBlock  Text="Statistics"/>
                     </Border>
                     <Border Margin="925,202,0,0">
@@ -132,7 +132,7 @@
                     <Border Margin="803,408,0,0">
                         <TextBlock   Text="Web Programming" />
                     </Border>
-                    <Border Margin="775,680,0,0">
+                    <Border Margin="775,676,0,0">
                         <TextBlock  Text="Computer&#10;Network"   />
                     </Border>
 

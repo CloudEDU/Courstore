@@ -323,6 +323,26 @@
             <param name="em">The em.</param>
             <returns></returns>
         </member>
+        <member name="T:CloudEDU.Common.Constants.CourseAvaiStates">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.Finished">
+            <summary>
+            The finished
+            </summary>
+        </member>
+        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.Learning">
+            <summary>
+            The learning
+            </summary>
+        </member>
+        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.Disable">
+            <summary>
+            The disable
+            </summary>
+        </member>
         <member name="T:CloudEDU.Common.Constants.DepCourse">
             <summary>
             
@@ -376,6 +396,13 @@
         <member name="M:CloudEDU.Common.Constants.DepCourse.IfLearned(System.String)">
             <summary>
             Ifs the learned.
+            </summary>
+            <param name="courseName">Name of the course.</param>
+            <returns></returns>
+        </member>
+        <member name="M:CloudEDU.Common.Constants.DepCourse.GetCourseLearnedState(System.String)">
+            <summary>
+            Gets the state of the course learned.
             </summary>
             <param name="courseName">Name of the course.</param>
             <returns></returns>
@@ -2250,39 +2277,19 @@
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:Windows.UI.Xaml.RoutedEventArgs"/> instance containing the event data.</param>
         </member>
-        <member name="M:CloudEDU.CourseStore.MyCourses.SetCourseState(System.String,CloudEDU.CourseStore.MyCourses.CourseAvaiStates)">
+        <member name="M:CloudEDU.CourseStore.MyCourses.SetCourseState(System.String,CloudEDU.Common.Constants.CourseAvaiStates)">
             <summary>
             Sets the state of the course.
             </summary>
             <param name="courseName">Name of the course.</param>
             <param name="state">The state.</param>
         </member>
-        <member name="M:CloudEDU.CourseStore.MyCourses.SetAllCoursesStates(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{CloudEDU.CourseStore.MyCourses.CourseAvaiStates})">
+        <member name="M:CloudEDU.CourseStore.MyCourses.SetAllCoursesStates(System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{CloudEDU.Common.Constants.CourseAvaiStates})">
             <summary>
             Sets all courses states.
             </summary>
             <param name="courses">The courses.</param>
             <param name="states">The states.</param>
-        </member>
-        <member name="T:CloudEDU.CourseStore.MyCourses.CourseAvaiStates">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:CloudEDU.CourseStore.MyCourses.CourseAvaiStates.Finished">
-            <summary>
-            The finished
-            </summary>
-        </member>
-        <member name="F:CloudEDU.CourseStore.MyCourses.CourseAvaiStates.Learning">
-            <summary>
-            The learning
-            </summary>
-        </member>
-        <member name="F:CloudEDU.CourseStore.MyCourses.CourseAvaiStates.Disable">
-            <summary>
-            The disable
-            </summary>
         </member>
         <member name="T:CloudEDU.CourseStore.SearchResult">
             <summary>

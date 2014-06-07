@@ -93,7 +93,7 @@ namespace CloudEDU.CourseStore
             */
 
 
-            List<Constants.DepCourse> results = Constants.DepCourse.GetDepCourses("Mobile Programming");
+            List<Constants.DepCourse> results = Constants.DepCourse.GetDepCourses(course.Title);
 
 
 
@@ -476,6 +476,8 @@ namespace CloudEDU.CourseStore
             tmpButton = bt;
             List<object> courseInfo = new List<object>();
             courseInfo.Add(course);
+
+            if (bt.Content == null || bt.Content.ToString().Equals("")) return;
 
             if (bt.Content.ToString() == "Teach")
             {

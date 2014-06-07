@@ -48,24 +48,6 @@ namespace CloudEDU.CourseStore
         /// </summary>
         private DataServiceQuery<COURSE_AVAIL> teachDsq = null;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        enum CourseAvaiStates
-        {
-            /// <summary>
-            /// The finished
-            /// </summary>
-            Finished,
-            /// <summary>
-            /// The learning
-            /// </summary>
-            Learning,
-            /// <summary>
-            /// The disable
-            /// </summary>
-            Disable,
-        }
 
         /// <summary>
         /// Constructor, initialized the components.
@@ -86,7 +68,23 @@ namespace CloudEDU.CourseStore
         {
             SetAllTextBlock();
             allCourses = new List<Course>();
-            SetCourseState("Data Structure", CourseAvaiStates.Disable);
+
+            var borders = from b in topograph.Children.OfType<Border>()
+                          select b;
+
+            List<string> courseNameList = new List<string>();
+            List<CloudEDU.Common.Constants.CourseAvaiStates> courseStatesList = new List<Constants.CourseAvaiStates>();
+            foreach (Border border in borders)
+            {
+                TextBlock textBlock = border.Child as TextBlock;
+                string courseShowName = textBlock.Text.Replace("\n", " ");
+                courseNameList.Add(textBlock.Text);
+                courseStatesList.Add(Constants.DepCourse.GetCourseLearnedState(courseShowName));
+            }
+            SetAllCoursesStates(courseNameList, courseStatesList);
+
+
+            SetCourseState("Compute\nArchitecture", CloudEDU.Common.Constants.CourseAvaiStates.Disable);
 
             try
             {
@@ -236,7 +234,7 @@ namespace CloudEDU.CourseStore
         /// Handles the Click event of the UserProfileButton control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void UserProfileButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login.Profile));
@@ -246,7 +244,7 @@ namespace CloudEDU.CourseStore
         /// Handles the Tapped event of the CourseTextBlock control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs" /> instance containing the event data.</param>
         private void CourseTextBlock_Tapped(object sender, TappedRoutedEventArgs e)
         {
             TextBlock courseNameBlock = sender as TextBlock;
@@ -269,7 +267,7 @@ namespace CloudEDU.CourseStore
         /// Handles the Tapped event of the Close control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="TappedRoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="TappedRoutedEventArgs" /> instance containing the event data.</param>
         private void Close_Tapped(object sender, TappedRoutedEventArgs e)
         {
             CourseTopoPopup.IsOpen = false;
@@ -279,7 +277,7 @@ namespace CloudEDU.CourseStore
         /// Handles the Click event of the Open_Popup control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs" /> instance containing the event data.</param>
         private void Open_Popup_Click(object sender, RoutedEventArgs e)
         {
             CourseTopoPopup.IsOpen = true;
@@ -290,8 +288,16 @@ namespace CloudEDU.CourseStore
         /// </summary>
         /// <param name="courseName">Name of the course.</param>
         /// <param name="state">The state.</param>
-        private void SetCourseState(string courseName, CourseAvaiStates state)
+        private void SetCourseState(string courseName, CloudEDU.Common.Constants.CourseAvaiStates state)
         {
+            var boders = from b in topograph.Children.OfType<Border>()
+                         select b;
+            foreach (var texb in boders)
+            {
+                TextBlock txt = texb.Child as TextBlock;
+                System.Diagnostics.Debug.WriteLine("xxxxxxxxxxx  " + txt.Text);
+            }
+
             var borders = from b in topograph.Children.OfType<Border>()
                           where (b.Child as TextBlock).Text.Equals(courseName)
                           select b;
@@ -301,10 +307,10 @@ namespace CloudEDU.CourseStore
 
             switch (state)
             {
-                case CourseAvaiStates.Finished:
+                case CloudEDU.Common.Constants.CourseAvaiStates.Finished:
                     border.Background = new SolidColorBrush(Colors.Blue);
                     break;
-                case CourseAvaiStates.Learning:
+                case CloudEDU.Common.Constants.CourseAvaiStates.Learning:
                     border.Background = new SolidColorBrush(Colors.Red);
                     break;
                 default:
@@ -318,7 +324,7 @@ namespace CloudEDU.CourseStore
         /// </summary>
         /// <param name="courses">The courses.</param>
         /// <param name="states">The states.</param>
-        private void SetAllCoursesStates(IEnumerable<string> courses, IEnumerable<CourseAvaiStates> states)
+        private void SetAllCoursesStates(IEnumerable<string> courses, IEnumerable<CloudEDU.Common.Constants.CourseAvaiStates> states)
         {
             for (int i = 0; i < courses.Count(); ++i)
             {

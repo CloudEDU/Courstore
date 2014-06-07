@@ -77,6 +77,25 @@ namespace CloudEDU.Common
         public static List<CUSTOMER> csl;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public enum CourseAvaiStates
+        {
+            /// <summary>
+            /// The finished
+            /// </summary>
+            Finished,
+            /// <summary>
+            /// The learning
+            /// </summary>
+            Learning,
+            /// <summary>
+            /// The disable
+            /// </summary>
+            Disable,
+        };
+
+        /// <summary>
         /// Determines whether this instance is internet.
         /// </summary>
         /// <returns></returns>
@@ -130,7 +149,7 @@ namespace CloudEDU.Common
             public bool Learned = false;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="DepCourse"/> class.
+            /// Initializes a new instance of the <see cref="DepCourse" /> class.
             /// </summary>
             /// <param name="_CourseName">Name of the _ course.</param>
             public DepCourse(string _CourseName)
@@ -232,6 +251,19 @@ namespace CloudEDU.Common
                 }
                 return false;
             }
+
+            /// <summary>
+            /// Gets the state of the course learned.
+            /// </summary>
+            /// <param name="courseName">Name of the course.</param>
+            /// <returns></returns>
+            public static CourseAvaiStates GetCourseLearnedState(string courseName)
+            {
+                if (IfLearned(courseName)) return CourseAvaiStates.Finished;
+                else if (GetDepCourses(courseName).Count == 0) return CourseAvaiStates.Disable;
+                else return CourseAvaiStates.Learning;
+            }
+
             /// <summary>
             /// Gets all learned.
             /// </summary>

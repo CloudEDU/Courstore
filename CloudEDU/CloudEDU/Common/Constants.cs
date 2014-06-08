@@ -82,17 +82,17 @@ namespace CloudEDU.Common
         public enum CourseAvaiStates
         {
             /// <summary>
-            /// The finished
+            /// The learned
             /// </summary>
-            Finished,
+            Learned,
             /// <summary>
-            /// The learning
+            /// The not learned but available
             /// </summary>
-            Learning,
+            NotLearnedButAvailable,
             /// <summary>
-            /// The disable
+            /// The not learned disable
             /// </summary>
-            Disable,
+            NotLearnedDisable,
         };
 
         /// <summary>
@@ -259,9 +259,9 @@ namespace CloudEDU.Common
             /// <returns></returns>
             public static CourseAvaiStates GetCourseLearnedState(string courseName)
             {
-                if (IfLearned(courseName)) return CourseAvaiStates.Finished;
-                else if (GetDepCourses(courseName).Count == 0) return CourseAvaiStates.Disable;
-                else return CourseAvaiStates.Learning;
+                if (IfLearned(courseName)) return CourseAvaiStates.Learned;
+                else if (GetDepCourses(courseName).Count == 0) return CourseAvaiStates.NotLearnedButAvailable;
+                else return CourseAvaiStates.NotLearnedDisable;
             }
 
             /// <summary>

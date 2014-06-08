@@ -84,7 +84,7 @@ namespace CloudEDU.CourseStore
             SetAllCoursesStates(courseNameList, courseStatesList);
 
 
-            SetCourseState("Compute\nArchitecture", CloudEDU.Common.Constants.CourseAvaiStates.Disable);
+            SetCourseState("Compute\nArchitecture", CloudEDU.Common.Constants.CourseAvaiStates.NotLearnedDisable);
 
             try
             {
@@ -307,10 +307,10 @@ namespace CloudEDU.CourseStore
 
             switch (state)
             {
-                case CloudEDU.Common.Constants.CourseAvaiStates.Finished:
+                case CloudEDU.Common.Constants.CourseAvaiStates.Learned:
                     border.Background = new SolidColorBrush(Colors.Blue);
                     break;
-                case CloudEDU.Common.Constants.CourseAvaiStates.Learning:
+                case CloudEDU.Common.Constants.CourseAvaiStates.NotLearnedButAvailable:
                     border.Background = new SolidColorBrush(Colors.Red);
                     break;
                 default:

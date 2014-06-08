@@ -328,19 +328,19 @@
             
             </summary>
         </member>
-        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.Finished">
+        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.Learned">
             <summary>
-            The finished
+            The learned
             </summary>
         </member>
-        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.Learning">
+        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.NotLearnedButAvailable">
             <summary>
-            The learning
+            The not learned but available
             </summary>
         </member>
-        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.Disable">
+        <member name="F:CloudEDU.Common.Constants.CourseAvaiStates.NotLearnedDisable">
             <summary>
-            The disable
+            The not learned disable
             </summary>
         </member>
         <member name="T:CloudEDU.Common.Constants.DepCourse">

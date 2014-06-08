@@ -18,6 +18,7 @@
             <RowDefinition />
             <RowDefinition Height="50" />
         </Grid.RowDefinitions>
+        <ProgressRing x:Name="loadingProgressRing" Grid.RowSpan="2" Width="100" Height="100" />
 
         <GridView x:ConnectionId='1' Grid.Row="1" SelectionMode="None" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                   ItemsSource="{Binding Source={StaticResource cvs1}}"
@@ -84,23 +85,23 @@
                 <Grid x:Name="topograph">
                     <Image Visibility="Visible" Source="ms-appx:///Images/background.png" Height="800" Width="800" Margin="0,0,0,0">
                     </Image>
-                    <Border Margin="345,121,0,0" CornerRadius="15">
-                        <TextBlock Text="Data&#10;Mathematics" />
+                    <Border Margin="345,121,0,0">
+                        <TextBlock Text="Discrete&#10;Mathematics" />
                     </Border>
                     <Border  Margin="523,100,0,0">
-                        <TextBlock Text="Algorithms"/>
+                        <TextBlock Text="Algorithm&#10;Design"/>
                     </Border>
                     <Border Margin="327,325,0,0" >
                         <TextBlock Text="Data Structure"/>
                     </Border>
                     <Border Margin="355,409,0,0">
-                        <TextBlock Text="C Programming"/>
+                        <TextBlock Text="C Programming&#10;Language"/>
                     </Border>
                     <Border Margin="364,593,0,0">
-                        <TextBlock Text="Intro 2 CS"/>
+                        <TextBlock Text="Computer Basics"/>
                     </Border>
                     <Border Margin="597,174,0,0">
-                        <TextBlock Text="Compiler" />
+                        <TextBlock Text="Compilers" />
                     </Border>
                     <Border  Margin="523,277,0,0">
                         <TextBlock Text="Operating&#10;System"/>
@@ -121,7 +122,7 @@
                         <TextBlock  Text="Machine&#10;Learning" />
                     </Border>
                     <Border  Margin="775,74,0,0">
-                        <TextBlock  Text="Statistics"/>
+                        <TextBlock  Text="Probability&#10;and Statistics"/>
                     </Border>
                     <Border Margin="925,202,0,0">
                         <TextBlock  Text="Data Mining" />
@@ -130,7 +131,7 @@
                         <TextBlock  Text="Mobile&#10;Programming"  />
                     </Border>
                     <Border Margin="803,408,0,0">
-                        <TextBlock   Text="Web Programming" />
+                        <TextBlock Text="Web2.0&#10;Program&#10;Design" />
                     </Border>
                     <Border Margin="775,676,0,0">
                         <TextBlock  Text="Computer&#10;Network"   />

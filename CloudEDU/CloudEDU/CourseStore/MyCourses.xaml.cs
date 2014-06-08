@@ -68,6 +68,7 @@ namespace CloudEDU.CourseStore
         {
             SetAllTextBlock();
             allCourses = new List<Course>();
+            loadingProgressRing.IsActive = true;
 
             var borders = from b in topograph.Children.OfType<Border>()
                           select b;
@@ -84,7 +85,7 @@ namespace CloudEDU.CourseStore
             SetAllCoursesStates(courseNameList, courseStatesList);
 
 
-            SetCourseState("Compute\nArchitecture", CloudEDU.Common.Constants.CourseAvaiStates.NotLearnedDisable);
+            SetCourseState("Compute\nArchitecture", Constants.CourseAvaiStates.NotLearnedDisable);
 
             try
             {
@@ -99,6 +100,15 @@ namespace CloudEDU.CourseStore
                     iar => ctx.EndExecute<COURSE_AVAIL>(iar));
                 IEnumerable<COURSE_AVAIL> teaches = await tf.FromAsync(teachDsq.BeginExecute(null, null), iar => teachDsq.EndExecute(iar));
 
+                DataServiceQuery<COURSE_AVAIL> allCoursesDsq = (DataServiceQuery<COURSE_AVAIL>)(from c in ctx.COURSE_AVAIL
+                                                                                                select c);
+                IEnumerable<COURSE_AVAIL> allCoursesEnum = await tf.FromAsync(allCoursesDsq.BeginExecute(null, null), iar => allCoursesDsq.EndExecute(iar));
+                foreach (var c in allCoursesEnum)
+                {
+                    Course tmpCourse = Constants.CourseAvail2Course(c);
+                    allCourses.Add(tmpCourse);
+                }
+
                 courseData = new StoreData();
                 foreach (var c in attends)
                 {
@@ -106,7 +116,6 @@ namespace CloudEDU.CourseStore
                     tmpCourse.IsBuy = true;
                     tmpCourse.IsTeach = false;
                     courseData.AddCourse(tmpCourse);
-                    allCourses.Add(tmpCourse);
                 }
                 foreach (var c in teaches)
                 {
@@ -114,7 +123,6 @@ namespace CloudEDU.CourseStore
                     tmpCourse.IsTeach = true;
                     tmpCourse.IsBuy = false;
                     courseData.AddCourse(tmpCourse);
-                    allCourses.Add(tmpCourse);
                 }
 
                 dataCategory = courseData.GetGroupsByAttendingOrTeaching();
@@ -127,6 +135,7 @@ namespace CloudEDU.CourseStore
                 ShowMessageDialog("on navi to");
             }
 
+            loadingProgressRing.IsActive = false;
         }
 
         /// <summary>
@@ -150,7 +159,7 @@ namespace CloudEDU.CourseStore
 
                 textBlock.TextWrapping = TextWrapping.Wrap;
                 textBlock.Foreground = new SolidColorBrush(Colors.Black);
-                textBlock.FontSize = 13;
+                textBlock.FontSize = 15;
                 textBlock.VerticalAlignment = VerticalAlignment.Center;
                 textBlock.TextAlignment = TextAlignment.Center;
                 textBlock.Padding = new Thickness(3);
@@ -252,7 +261,7 @@ namespace CloudEDU.CourseStore
 
             foreach (Course c in allCourses)
             {
-                if (c.Title.Equals(courseNameBlock.Text.Replace("\n", " ")))
+                if (c.Title.ToLower().Equals(courseNameBlock.Text.Replace("\n", " ").ToLower()))
                 {
                     Frame.Navigate(typeof(CourseOverview), c);
                 }
@@ -290,16 +299,8 @@ namespace CloudEDU.CourseStore
         /// <param name="state">The state.</param>
         private void SetCourseState(string courseName, CloudEDU.Common.Constants.CourseAvaiStates state)
         {
-            var boders = from b in topograph.Children.OfType<Border>()
-                         select b;
-            foreach (var texb in boders)
-            {
-                TextBlock txt = texb.Child as TextBlock;
-                System.Diagnostics.Debug.WriteLine("xxxxxxxxxxx  " + txt.Text);
-            }
-
             var borders = from b in topograph.Children.OfType<Border>()
-                          where (b.Child as TextBlock).Text.Equals(courseName)
+                          where (b.Child as TextBlock).Text.ToLower().Equals(courseName.ToLower())
                           select b;
 
             if (borders.Count() == 0) return;
@@ -307,13 +308,13 @@ namespace CloudEDU.CourseStore
 
             switch (state)
             {
-                case CloudEDU.Common.Constants.CourseAvaiStates.Learned:
+                case Constants.CourseAvaiStates.Learned:
                     border.Background = new SolidColorBrush(Colors.Blue);
                     break;
-                case CloudEDU.Common.Constants.CourseAvaiStates.NotLearnedButAvailable:
+                case Constants.CourseAvaiStates.NotLearnedButAvailable:
                     border.Background = new SolidColorBrush(Colors.Red);
                     break;
-                default:
+                case Constants.CourseAvaiStates.NotLearnedDisable:
                     border.Background = new SolidColorBrush(Colors.Gray);
                     break;
             }

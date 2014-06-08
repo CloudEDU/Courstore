@@ -252,7 +252,7 @@ namespace CloudEDU.CourseStore
 
             foreach (Course c in allCourses)
             {
-                if (c.Title.Equals(courseNameBlock.Text))
+                if (c.Title.Equals(courseNameBlock.Text.Replace("\n", " ")))
                 {
                     Frame.Navigate(typeof(CourseOverview), c);
                 }
